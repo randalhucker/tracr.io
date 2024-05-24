@@ -1,5 +1,3 @@
-import { ESLint } from 'eslint';
-
 export default [
   {
     files: ['**/*.ts'],
@@ -10,10 +8,11 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
     },
     rules: {
       '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-use-before-define': 'error',
     },
   },
 ];
