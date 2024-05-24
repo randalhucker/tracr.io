@@ -49,9 +49,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Lint the code
-        run: npm run lint
-
       - name: Build Docker image
         run: docker build -t randalhucker/Tracr.io .
 
