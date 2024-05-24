@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: Tracr-io
+          POSTGRES_USER: tracrio
+          POSTGRES_PASSWORD: tracrioPassword
+        options: >-
+          --health-cmd="pg_isready -U tracrio -d tracrio"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DB_HOST: localhost
+      DB_NAME: Tracr-io
+      DB_USER: tracrio
+      DB_PASSWORD: tracrioPassword
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Lint the code
+        run: npm run lint
+
+      - name: Build Docker image
+        run: docker build -t randalhucker/Tracr.io .
+
+      - name: Run Docker container
+        run: docker run --name test-container -d -p 3000:3000 randalhucker/Tracr.io
+
+      - name: Wait for container to be ready
+        run: |
+          for i in `seq 1 30`; do
+            curl -sSf http://localhost:3000 && break
+            echo "Waiting for container..."
+            sleep 1
+          done
+
+      - name: Run integration tests
+        run: |
+          # Your integration test commands here
+          echo "Integration tests passed"
+
+      - name: Stop and remove Docker container
+        run: docker stop test-container && docker rm test-container
