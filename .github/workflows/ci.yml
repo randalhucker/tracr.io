@@ -50,10 +50,10 @@ jobs:
         run: npm test
 
       - name: Build Docker image
-        run: docker build -t randalhucker/Tracr.io .
+        run: docker build -t randalhucker/tracr.io .
 
       - name: Run Docker container
-        run: docker run --name test-container -d -p 3000:3000 randalhucker/Tracr.io
+        run: docker run --name test-container -d -p 3000:3000 randalhucker/tracr.io
 
       - name: Wait for container to be ready
         run: |
