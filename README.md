@@ -27,13 +27,12 @@ Before you begin, ensure you have met the following requirements:
 
 2. **Set up environment variables**:
     - Create a .env file in the root of the project and add the following environment variables:
-
-    ```dotenv
-    DB_HOST=db
-    DB_NAME=Tracr-io
-    DB_USER=tracrio
-    DB_PASSWORD=tracrioPassword
-    ```
+        ```dotenv
+        DB_HOST=db
+        DB_NAME=Tracr-io
+        DB_USER=tracrio
+        DB_PASSWORD=tracrioPassword
+        ```
 
 ## Running the Application
 
