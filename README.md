@@ -16,13 +16,14 @@ Before you begin, ensure you have met the following requirements:
 
 - **Docker**: Install Docker from [Docker's official website](https://www.docker.com/get-started).
 - **Docker Compose**: Docker Compose is included in Docker Desktop for Windows and Mac. For Linux, follow the instructions [here](https://docs.docker.com/compose/install/).
+- **NodeJS**: Install NodeJS using [Node Version Manager](https://github.com/coreybutler/nvm-windows) or from [NodeJS's official website](https://nodejs.org/dist/v22.2.0/node-v22.2.0-x64.msi).
 
 ## Installation
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/tracr.io.git
+   git clone https://github.com/randalhucker/tracr.io.git
    cd tracr.io
    ```
 
