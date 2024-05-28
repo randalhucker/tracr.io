@@ -1,7 +1,7 @@
 {
   "name": "tracr.io",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app for tacking lost items",
   "main": "src/electron-app/main.js",
   "scripts": {
     "start": "node dist/server/index.js",
