@@ -30,10 +30,14 @@ Before you begin, ensure you have met the following requirements:
 2. **Set up environment variables**:
    - Create a .env file in the root of the project and add the following environment variables:
      ```dotenv
-     DB_HOST=db
-     DB_NAME=Tracr-io
-     DB_USER=tracrio
-     DB_PASSWORD=tracrioPassword
+     # Environment variables declared in this file are automatically made available to Prisma.
+     # See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+     # Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+     # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+     DATABASE_URL="postgresql://sssadmin:ssspassword@postgres:5432/supershoppingservice?schema=public"
+
+     # DATABASE_URL="postgresql://tracradmin:tracrpassword@localhost:5432/tracrio?schema=public" # DATABASE_URL_DEV
      ```
 
 ## Running the Application
@@ -98,6 +102,18 @@ Before you begin, ensure you have met the following requirements:
    ```
 
 3. **Build the application**:
+
    ```bash
    npm run build
    ```
+
+4. **Pushing Prisma Migrations**:
+
+   - Change the prisma schema db url from DATABASE_URL to DATABASE_URL_DEV.
+   - Run the following command to create a new migration:
+
+     ```bash
+     npx prisma migrate dev --name <migration-name>
+     ```
+     
+   - Change the prisma schema db url back from DATABASE_URL_DEV to DATABASE_URL.

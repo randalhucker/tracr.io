@@ -1,29 +1,36 @@
 services:
+  postgres:
+    image: postgres:16
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=tracrio
+      - POSTGRES_USER=tracradmin
+      - POSTGRES_PASSWORD=tracrpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tracrio-network
+
   api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.api
     ports:
-      - "3000:3000"
+      - "5431:5431"
     depends_on:
-      - db
+      - postgres
     environment:
       - DB_HOST=db
-      - DB_USER=tracrio
-      - DB_PASSWORD=tracrioPassword
-      - DB_NAME=Tracr-io
-    command: ["npm", "start"]
-
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_DB: Tracr-io
-      POSTGRES_USER: tracrio
-      POSTGRES_PASSWORD: tracrioPassword
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - DB_USER=tracradmin
+      - DB_PASSWORD=tracrpassword
+      - DB_NAME=tracrio
+    networks:
+      - tracrio-network
 
 volumes:
   postgres_data:
+
+networks:
+  tracrio-network:
