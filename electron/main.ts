@@ -1,13 +1,17 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import { exec, ChildProcess } from 'child_process';
-import isDev from 'electron-is-dev';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 let expressProcess: ChildProcess | null = null;
 
-function startExpressServer() {
-  const serverPath = path.join(__dirname, '..', 'api', 'index.ts');
-  expressProcess = exec(`npx ts-node ${serverPath}`, (error, stdout, stderr) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+async function startExpressServer() {
+  const serverPath = path.join(__dirname, '..', 'api', 'index.js');
+  expressProcess = exec(`node ${serverPath}`, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error starting Express server: ${error.message}`);
       return;
@@ -20,7 +24,8 @@ function startExpressServer() {
   });
 }
 
-function createWindow() {
+async function createWindow() {
+  const { default: isDev } = await import('electron-is-dev');
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -44,7 +49,9 @@ function createWindow() {
 
 app.on('ready', () => {
   startExpressServer();
-  createWindow();
+  createWindow().catch((err) => {
+    console.error('Error creating window:', err);
+  });
 });
 
 app.on('window-all-closed', () => {
@@ -58,6 +65,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+    createWindow().catch((err) => {
+      console.error('Error creating window:', err);
+    });
   }
 });

@@ -1,8 +1,10 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "outDir": "../dist/api",
     "noEmit": false,
-    "outDir": "../dist/api"
+    "rootDir": ".",
+    "module": "ESNext"
   },
   "include": ["**/*.ts"]
 }
