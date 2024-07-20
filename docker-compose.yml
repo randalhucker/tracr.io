@@ -5,13 +5,13 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_DB=tracrio
-      - POSTGRES_USER=tracradmin
-      - POSTGRES_PASSWORD=tracrpassword
+      - POSTGRES_DB=supershoppingservice
+      - POSTGRES_USER=sssadmin
+      - POSTGRES_PASSWORD=ssspassword
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - tracrio-network
+      - sss-network
 
   api:
     build:
@@ -23,14 +23,26 @@ services:
       - postgres
     environment:
       - DB_HOST=db
-      - DB_USER=tracradmin
-      - DB_PASSWORD=tracrpassword
-      - DB_NAME=tracrio
+      - DB_USER=sssadmin
+      - DB_PASSWORD=ssspassword
+      - DB_NAME=supershoppingservice
     networks:
-      - tracrio-network
+      - sss-network
+
+  # Comment out client for local build (npm run dev)
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - sss-network
 
 volumes:
   postgres_data:
 
 networks:
-  tracrio-network:
+  sss-network:
