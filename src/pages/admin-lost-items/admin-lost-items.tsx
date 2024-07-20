@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import FrameComponent from "../components/frame-component2";
-import ClaimsList from "../components/claims-list";
+import FrameComponent from "../../components/frame-component2";
+import ClaimsList from "../../components/claims-list";
 import styles from "./index.module.css";
 
 const AdminLostItems: NextPage = () => {

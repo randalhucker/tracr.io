@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import GroupComponent1 from "../components/group-component1";
+import GroupComponent1 from "../../components/group-component1";
 import styles from "./register.module.css";
 
 const Register: NextPage = () => {

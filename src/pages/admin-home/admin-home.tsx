@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import FrameComponent1 from "../components/frame-component1";
+import FrameComponent1 from "../../components/frame-component1";
 import styles from "./admin-home.module.css";
 
 const AdminHome: NextPage = () => {

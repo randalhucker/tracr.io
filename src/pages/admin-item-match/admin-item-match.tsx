@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import FrameComponent from "../components/frame-component2";
+import FrameComponent from "../../components/frame-component2";
 import styles from "./admin-item-match.module.css";
 
 const AdminItemMatch: NextPage = () => {

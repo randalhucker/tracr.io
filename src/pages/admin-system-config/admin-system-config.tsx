@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import FrameComponent from "../components/frame-component2";
-import Footer from "../components/footer";
+import FrameComponent from "../../components/frame-component2";
+import Footer from "../../components/footer";
 import styles from "./admin-system-config.module.css";
 
 const AdminSystemConfig: NextPage = () => {
