@@ -1,0 +1,420 @@
+.frameChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  width: 318px;
+  height: 55px;
+  z-index: 1;
+}
+.coreDumpersLimited {
+  position: absolute;
+  top: 14px;
+  left: 48px;
+  z-index: 2;
+}
+.rectangleParent {
+  position: absolute;
+  top: 939px;
+  left: 824px;
+  width: 318px;
+  height: 44px;
+}
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  left: 0;
+  top: 15px;
+  transform: scale(1.025);
+}
+.wrapperGroup9 {
+  position: absolute;
+  top: 0;
+  left: -84px;
+  width: 2037px;
+  height: 1326px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.frameItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-6xl);
+  background-color: var(--colors-base-danger-foreground);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.deleteAccount {
+  position: absolute;
+  top: 706px;
+  left: 879px;
+  font-size: var(--font-size-13xl);
+  text-decoration: underline;
+  line-height: 24px;
+  font-family: var(--font-inter);
+  color: var(--color-red-100);
+  text-align: left;
+  z-index: 2;
+}
+.vuesaxlinearcircleIcon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button,
+.logOut {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.logOut {
+  width: 148px;
+  position: relative;
+  font-size: var(--font-size-13xl);
+  line-height: 24px;
+  font-family: var(--font-inter);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+  padding-left: var(--padding-xl);
+  padding-right: var(--padding-xl);
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: 0 0 0 16px;
+  background-color: var(--colors-base-danger);
+  position: absolute;
+  top: 681px;
+  left: 392px;
+  box-shadow: var(--shadow-danger-lg);
+  border-radius: var(--br-xs);
+  width: 372px;
+  height: 74px;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--gap-xs);
+  white-space: nowrap;
+  z-index: 2;
+}
+.button1:hover,
+.button:hover {
+  background-color: var(--color-deeppink);
+}
+.vuesaxlinearcircleIcon1 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button1,
+.submit {
+  display: flex;
+  align-items: center;
+}
+.submit {
+  width: 139px;
+  position: relative;
+  font-size: 29px;
+  line-height: 24px;
+  font-family: var(--font-inter);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+  box-sizing: border-box;
+  padding-left: var(--padding-xl);
+  padding-right: var(--padding-xl);
+}
+.button1 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: var(--colors-base-danger);
+  position: absolute;
+  top: 506px;
+  left: 188px;
+  box-shadow: var(--shadow-danger-lg);
+  border-radius: var(--br-xs);
+  width: 229px;
+  height: 49px;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--gap-xs);
+  z-index: 2;
+}
+.email,
+.resetPassword {
+  font-family: var(--font-inter);
+  text-align: left;
+}
+.resetPassword {
+  position: absolute;
+  top: 210px;
+  left: 31px;
+  font-size: var(--font-size-13xl);
+  line-height: 24px;
+  color: var(--color-black);
+  z-index: 2;
+}
+.email {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 36px;
+  color: var(--colors-base-danger);
+  display: inline-block;
+  min-width: 89px;
+}
+.input,
+.label {
+  position: absolute;
+}
+.label {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input {
+  top: 255px;
+  left: 31px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 2;
+}
+.email1 {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 36px;
+  font-family: var(--font-inter);
+  color: var(--colors-base-danger);
+  text-align: left;
+  display: inline-block;
+  min-width: 96px;
+}
+.input1,
+.label1 {
+  position: absolute;
+}
+.label1 {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input1 {
+  top: 349px;
+  left: 31px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 2;
+}
+.email2,
+.input2,
+.name {
+  font-family: var(--font-inter);
+}
+.input2 {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background-color: var(--colors-base-danger-50);
+  position: absolute;
+  top: 426px;
+  left: 31px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  height: 64px;
+  padding: var(--padding-sm) var(--padding-xs);
+  box-sizing: border-box;
+  font-size: var(--font-size-sm);
+  color: var(--colors-base-danger);
+  z-index: 2;
+}
+.email2,
+.name {
+  display: inline-block;
+  text-align: left;
+}
+.name {
+  position: absolute;
+  top: 210px;
+  left: 617px;
+  font-size: var(--font-size-13xl);
+  line-height: 24px;
+  color: var(--color-black);
+  min-width: 87px;
+  z-index: 2;
+}
+.email2 {
+  position: relative;
+  font-size: var(--font-size-6xl);
+  line-height: 36px;
+  color: var(--colors-base-danger);
+  min-width: 84px;
+}
+.input3,
+.label2 {
+  position: absolute;
+}
+.label2 {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input3 {
+  top: 254px;
+  left: 617px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 515px;
+  height: 64px;
+  z-index: 2;
+}
+.email3 {
+  position: relative;
+  font-size: var(--font-size-6xl);
+  line-height: 36px;
+  display: inline-block;
+  font-family: var(--font-inter);
+  color: var(--colors-base-danger);
+  text-align: left;
+  min-width: 89px;
+}
+.label3 {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input4,
+.input5 {
+  position: absolute;
+  left: 617px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  height: 64px;
+  z-index: 2;
+}
+.input4 {
+  top: 340px;
+  background-color: var(--colors-base-danger-50);
+  width: 515px;
+}
+.input5 {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background-color: #f4f4f4;
+  top: 426px;
+  padding: var(--padding-sm) var(--padding-xs);
+  box-sizing: border-box;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-6xl);
+  color: #9a9a9a;
+}
+.rectangleGroup {
+  margin: 0;
+  position: absolute;
+  top: 83px;
+  left: 378px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-radius: var(--br-6xl);
+  background-color: var(--colors-base-danger-foreground);
+  width: 1164px;
+  height: 788px;
+  z-index: 1;
+}
+.wrapperGroup9Parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.frameParent {
+  align-self: stretch;
+  height: 983px;
+  position: relative;
+}
+.settings {
+  width: 100%;
+  position: relative;
+  background-color: var(--colors-base-danger-foreground);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+@media screen and (max-width: 950px) {
+  .deleteAccount,
+  .name,
+  .resetPassword {
+    font-size: var(--font-size-7xl);
+    line-height: 19px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .deleteAccount {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .submit {
+    font-size: 23px;
+    line-height: 19px;
+  }
+  .name,
+  .resetPassword {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .email2,
+  .email3 {
+    font-size: var(--font-size-xl);
+    line-height: 29px;
+  }
+}

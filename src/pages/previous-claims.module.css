@@ -1,0 +1,524 @@
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  left: 0;
+  top: 15px;
+  transform: scale(1.025);
+}
+.wrapperGroup9 {
+  width: 2037px;
+  height: 1326px;
+  position: absolute;
+  margin: 0 !important;
+  bottom: -157px;
+  left: -84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+.frameChild {
+  width: 1164px;
+  height: 788px;
+  position: relative;
+  border-radius: var(--br-6xl);
+  background-color: var(--colors-base-danger-foreground);
+  display: none;
+  max-width: 100%;
+}
+.claims,
+.inProgress {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 400;
+  font-family: inherit;
+  z-index: 2;
+}
+.inProgress {
+  font-weight: 700;
+}
+.inProgressClaimItem {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 48px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.airpods1 {
+  margin: 0;
+}
+.airpods,
+.smithHall {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: inherit;
+  z-index: 1;
+}
+.smithHall {
+  font-weight: 400;
+}
+.notFound {
+  color: var(--color-red-100);
+}
+.statusNotFoundContainer {
+  position: relative;
+  line-height: 24px;
+  display: inline-block;
+  min-width: 97px;
+  z-index: 1;
+}
+.airpodsLocation,
+.airpodsStatus {
+  display: flex;
+  align-items: flex-start;
+}
+.airpodsStatus {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+  font-size: var(--font-size-xs);
+}
+.airpodsLocation {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  font-size: var(--font-size-lg);
+}
+.itemDescription,
+.itemDetails {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.itemDescription {
+  flex: 1;
+  flex-direction: column;
+  gap: 1px;
+}
+.itemDetails {
+  align-self: stretch;
+  flex-direction: row;
+  padding: 0 0 var(--padding-7xs) var(--padding-12xs);
+  box-sizing: border-box;
+}
+.itemSeparatorChild {
+  height: 1px;
+  flex: 1;
+  position: relative;
+  border-top: 1px solid var(--color-gray-100);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.itemSeparator {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 63px 0 66px;
+}
+.baldwinHall,
+.bearcatCard {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-family: inherit;
+  z-index: 1;
+}
+.bearcatCard {
+  width: 247px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.baldwinHall {
+  font-weight: 400;
+}
+.pending {
+  color: #dc8400;
+}
+.statusPending {
+  position: relative;
+  line-height: 24px;
+  display: inline-block;
+  min-width: 88px;
+  z-index: 1;
+}
+.bearcatCardStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+  font-size: var(--font-size-xs);
+}
+.bearcatCardDate,
+.bearcatCardLocation {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.bearcatCardDate {
+  flex: 1;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.bearcatCardLocation {
+  align-self: stretch;
+  justify-content: flex-start;
+  padding: 0 0 0 var(--padding-12xs);
+  box-sizing: border-box;
+  font-size: var(--font-size-lg);
+}
+.bearcatCardDetails {
+  width: 351px;
+  gap: var(--gap-4xs);
+}
+.bearcatCardDetails,
+.inProgressClaimItems,
+.itemDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.itemDetailsContainer {
+  align-self: stretch;
+  gap: var(--gap-mini);
+  font-size: var(--font-size-12xl);
+}
+.inProgressClaimItems {
+  flex: 1;
+  gap: 48px;
+  min-width: 234px;
+}
+.resolvedSeparatorChild {
+  width: 2px;
+  flex: 1;
+  position: relative;
+  border-right: 2px solid var(--color-gray-200);
+  box-sizing: border-box;
+  z-index: 2;
+}
+.resolvedSeparator {
+  height: 488px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-7xl) var(--padding-3xl) 0 0;
+  box-sizing: border-box;
+}
+.resolved {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+  z-index: 2;
+}
+.resolvedClaimItem {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 60px;
+}
+.recCenter,
+.shoes {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-family: inherit;
+  z-index: 1;
+}
+.shoes {
+  width: 125px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.recCenter {
+  font-weight: 400;
+}
+.found {
+  color: #00ba29;
+}
+.statusFound {
+  position: relative;
+  line-height: 24px;
+  display: inline-block;
+  min-width: 75px;
+  z-index: 1;
+}
+.shoesLocation,
+.shoesStatus {
+  display: flex;
+  align-items: flex-start;
+}
+.shoesStatus {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2px 0 0;
+  font-size: var(--font-size-xs);
+}
+.shoesLocation {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  font-size: var(--font-size-lg);
+}
+.resolvedClaimDetails,
+.shoesDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.shoesDetailsContainer {
+  align-self: stretch;
+  gap: var(--gap-4xs);
+  font-size: var(--font-size-12xl);
+}
+.resolvedClaimDetails {
+  width: 337px;
+  gap: 43px;
+  max-width: 100%;
+}
+.inProgressClaimContainer,
+.inProgressClaimDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.inProgressClaimDetails {
+  width: 797px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 38px;
+}
+.inProgressClaimContainer {
+  align-self: stretch;
+  justify-content: center;
+  padding: 0 0 0 var(--padding-28xl);
+  box-sizing: border-box;
+  font-size: var(--font-size-23xl);
+}
+.footerContainerChild,
+.rectangleParent {
+  background-color: var(--colors-base-danger-foreground);
+  z-index: 1;
+}
+.rectangleParent {
+  align-self: stretch;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-radius: var(--br-6xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-38xl) 69px 112px;
+  box-sizing: border-box;
+  gap: 56px;
+  max-width: 100%;
+}
+.footerContainerChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-mini);
+  width: 318px;
+  height: 55px;
+}
+.coreDumpersLimited {
+  position: absolute;
+  top: 14px;
+  left: 48px;
+  z-index: 2;
+}
+.footerContainer {
+  height: 44px;
+  width: 318px;
+  position: relative;
+}
+.footerContainerWrapper {
+  width: 1118px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+.claimsListContainer {
+  width: 1164px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-49xl);
+  max-width: 100%;
+}
+.claimsListContainerWrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.previousClaims {
+  width: 100%;
+  position: relative;
+  background-color: var(--colors-base-danger-foreground);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-64xl);
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--font-size-43xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+@media screen and (max-width: 1200px) {
+  .rectangleParent {
+    padding-left: var(--padding-15xl);
+    padding-right: var(--padding-15xl);
+    box-sizing: border-box;
+  }
+  .claimsListContainer {
+    gap: var(--gap-15xl);
+  }
+}
+@media screen and (max-width: 975px) {
+  .claims {
+    font-size: var(--font-size-31xl);
+  }
+  .inProgress {
+    font-size: var(--font-size-15xl);
+  }
+  .airpods,
+  .bearcatCard {
+    font-size: var(--font-size-6xl);
+    line-height: 19px;
+  }
+  .resolved {
+    font-size: var(--font-size-15xl);
+  }
+  .shoes {
+    font-size: var(--font-size-6xl);
+    line-height: 19px;
+  }
+  .inProgressClaimContainer {
+    padding-left: 23px;
+    box-sizing: border-box;
+  }
+  .rectangleParent {
+    padding-top: var(--padding-18xl);
+    padding-bottom: 73px;
+    box-sizing: border-box;
+  }
+  .previousClaims {
+    gap: var(--gap-22xl);
+  }
+}
+@media screen and (max-width: 950px) {
+  .rectangleParent {
+    gap: 28px;
+  }
+  .claimsListContainer {
+    gap: var(--gap-mid);
+  }
+  .previousClaims {
+    gap: var(--gap-2xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .claims {
+    font-size: var(--font-size-18xl);
+  }
+  .inProgress {
+    font-size: var(--font-size-6xl);
+  }
+  .inProgressClaimItem {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .airpods {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .airpodsLocation {
+    flex-wrap: wrap;
+  }
+  .itemSeparator {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .bearcatCard {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .bearcatCardDate {
+    flex-wrap: wrap;
+  }
+  .inProgressClaimItems {
+    gap: 24px;
+  }
+  .resolved {
+    font-size: var(--font-size-6xl);
+  }
+  .resolvedClaimItem {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .shoes {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .shoesLocation {
+    flex-wrap: wrap;
+  }
+  .resolvedClaimDetails {
+    gap: var(--gap-2xl);
+  }
+  .inProgressClaimDetails {
+    gap: 19px;
+  }
+  .rectangleParent {
+    padding-top: 24px;
+    padding-bottom: var(--padding-28xl);
+    box-sizing: border-box;
+  }
+}

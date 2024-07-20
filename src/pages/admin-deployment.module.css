@@ -1,0 +1,481 @@
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  left: 0;
+  top: 15px;
+  transform: scale(1.025);
+}
+.wrapperGroup9 {
+  width: 2037px;
+  height: 1326px;
+  position: absolute;
+  margin: 0 !important;
+  bottom: -157px;
+  left: -84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+.frameChild {
+  width: 1164px;
+  height: 788px;
+  position: relative;
+  border-radius: var(--br-6xl);
+  background-color: var(--colors-base-danger-foreground);
+  display: none;
+  max-width: 100%;
+}
+.tracrioDeployment {
+  color: var(--color-black);
+}
+.universityOfCincinnatiContainer {
+  margin: 0;
+  flex: 1;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: inherit;
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
+}
+.itemHeader {
+  width: 1040px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-9xl) 19px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.dropOffLocations {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: inherit;
+  z-index: 1;
+}
+.stegerStudentCenter,
+.stegerStudentCenter1,
+.stegerStudentCenter2,
+.stegerStudentCenter3 {
+  position: relative;
+  text-decoration: underline;
+  line-height: 24px;
+  z-index: 1;
+}
+.stegerOption {
+  flex-direction: column;
+  gap: 39px;
+}
+.dropdownLabel,
+.dropdownOptions,
+.stegerOption {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.dropdownOptions {
+  flex-direction: row;
+  padding: 0 var(--padding-11xl) 0 var(--padding-9xl);
+  box-sizing: border-box;
+  font-size: var(--font-size-12xl);
+}
+.dropdownLabel {
+  flex-direction: column;
+  gap: var(--gap-24xl);
+  min-width: 389px;
+}
+.validItemLocations {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: inherit;
+  z-index: 1;
+}
+.validItemLocation {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-9xs);
+  text-align: left;
+  font-size: var(--font-size-26xl);
+}
+.smithHall {
+  position: relative;
+  text-decoration: underline;
+  line-height: 24px;
+  z-index: 1;
+}
+.smithLocation {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-2xl) var(--padding-10xs) var(--padding-xl);
+  text-align: left;
+}
+.braunsteinHall {
+  position: relative;
+  text-decoration: underline;
+  line-height: 24px;
+  z-index: 1;
+}
+.buildingValues {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+}
+.baldwinHall {
+  position: relative;
+  text-decoration: underline;
+  line-height: 24px;
+  z-index: 1;
+}
+.buildingValues1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+}
+.frenchHall {
+  position: relative;
+  text-decoration: underline;
+  line-height: 24px;
+  z-index: 1;
+}
+.buildingValues2 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+}
+.buildingOptions,
+.itemDropdown {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.buildingOptions {
+  width: 427px;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-19xl);
+  min-width: 427px;
+  text-align: center;
+  font-size: var(--font-size-12xl);
+}
+.itemDropdown {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.buttonIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.saveLabel {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  line-height: 24px;
+  z-index: 2;
+}
+.buttonParent {
+  align-self: stretch;
+  height: 48px;
+  position: relative;
+}
+.saveAction {
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-11xs) 0 0;
+  box-sizing: border-box;
+}
+.buttonIcon1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.exitLabel {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  line-height: 24px;
+  z-index: 2;
+}
+.exitAction {
+  height: 48px;
+  width: 48px;
+  position: relative;
+}
+.actionButtons {
+  width: 699px;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.actionButtons,
+.actions,
+.itemLocation {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.actions {
+  width: 1037px;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+  font-size: var(--font-size-12xl);
+  color: var(--colors-base-danger-foreground);
+}
+.itemLocation {
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-17xl);
+  color: var(--color-black);
+}
+.backgroundShape,
+.rectangleParent {
+  background-color: var(--colors-base-danger-foreground);
+  z-index: 1;
+}
+.rectangleParent {
+  align-self: stretch;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-radius: var(--br-6xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 73px 44px 27px var(--padding-43xl);
+  box-sizing: border-box;
+  gap: 102px;
+  max-width: 100%;
+}
+.backgroundShape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-mini);
+  width: 318px;
+  height: 55px;
+}
+.coreDumpersLimited {
+  position: absolute;
+  top: 14px;
+  left: 48px;
+  z-index: 2;
+}
+.copyrightContent {
+  height: 44px;
+  width: 318px;
+  position: relative;
+}
+.copyright,
+.itemContent {
+  display: flex;
+  max-width: 100%;
+}
+.copyright {
+  width: 1118px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+}
+.itemContent {
+  width: 1164px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-49xl);
+}
+.itemContentWrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.adminDeployment {
+  width: 100%;
+  position: relative;
+  background-color: var(--colors-base-danger-foreground);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-64xl);
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--font-size-26xl);
+  color: var(--color-red-100);
+  font-family: var(--font-inter);
+}
+@media screen and (max-width: 1200px) {
+  .rectangleParent {
+    gap: 51px;
+    padding-left: var(--padding-12xl);
+    padding-right: var(--padding-3xl);
+    box-sizing: border-box;
+  }
+  .itemContent {
+    gap: var(--gap-15xl);
+  }
+}
+@media screen and (max-width: 1050px) {
+  .dropOffLocations,
+  .universityOfCincinnatiContainer {
+    font-size: var(--font-size-17xl);
+    line-height: 19px;
+  }
+  .stegerStudentCenter,
+  .stegerStudentCenter1,
+  .stegerStudentCenter2,
+  .stegerStudentCenter3 {
+    font-size: var(--font-size-6xl);
+    line-height: 19px;
+  }
+  .dropdownLabel {
+    flex: 1;
+  }
+  .validItemLocations {
+    font-size: var(--font-size-17xl);
+    line-height: 19px;
+  }
+  .baldwinHall,
+  .braunsteinHall,
+  .frenchHall,
+  .smithHall {
+    font-size: var(--font-size-6xl);
+    line-height: 19px;
+  }
+  .buildingOptions {
+    flex: 1;
+  }
+  .itemDropdown {
+    flex-wrap: wrap;
+  }
+  .exitLabel,
+  .saveLabel {
+    font-size: var(--font-size-6xl);
+    line-height: 19px;
+  }
+  .rectangleParent {
+    padding-top: 47px;
+    padding-bottom: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .adminDeployment {
+    gap: var(--gap-22xl);
+  }
+}
+@media screen and (max-width: 750px) {
+  .dropOffLocations,
+  .universityOfCincinnatiContainer {
+    font-size: var(--font-size-8xl);
+    line-height: 14px;
+  }
+  .stegerStudentCenter,
+  .stegerStudentCenter1,
+  .stegerStudentCenter2,
+  .stegerStudentCenter3 {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .stegerOption {
+    gap: var(--gap-lgi);
+  }
+  .dropdownLabel {
+    gap: var(--gap-2xl);
+  }
+  .validItemLocations {
+    font-size: var(--font-size-8xl);
+    line-height: 14px;
+  }
+  .baldwinHall,
+  .braunsteinHall,
+  .frenchHall,
+  .smithHall {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .buildingOptions {
+    gap: var(--gap-lgi);
+  }
+  .exitLabel,
+  .saveLabel {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+  .actionButtons {
+    flex-wrap: wrap;
+  }
+  .rectangleParent {
+    padding-top: var(--padding-12xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .buildingOptions,
+  .dropdownLabel {
+    min-width: 100%;
+  }
+  .itemLocation {
+    gap: var(--gap-lg);
+  }
+  .rectangleParent {
+    gap: var(--gap-6xl);
+  }
+  .itemContent {
+    gap: var(--gap-mid);
+  }
+  .adminDeployment {
+    gap: var(--gap-2xl);
+  }
+}
