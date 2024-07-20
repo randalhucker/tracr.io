@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Main from '../components/main';
-import styles from './settings.module.css';
+import styles from './settings.module.scss';
 
 const Settings: NextPage = () => {
   return (

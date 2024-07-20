@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
-import Main from '../components/main';
-import Button from '../components/button';
-import styles from './message.module.css';
+import Main from '../../components/main';
+import Button from '../../components/button';
+import styles from './message.module.scss';
 
 const Message: NextPage = () => {
   return (

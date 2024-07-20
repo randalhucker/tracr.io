@@ -4,7 +4,7 @@ import { TextField, Icon } from '@mui/material';
 import { LocalizationProvider, DatePicker, DateBuilderReturnType } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
-import styles from './report-found-item.module.css';
+import styles from './report-found-item.module.scss';
 
 const ReportFoundItem: NextPage = () => {
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
