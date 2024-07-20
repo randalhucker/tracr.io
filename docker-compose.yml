@@ -5,13 +5,13 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_DB=supershoppingservice
-      - POSTGRES_USER=sssadmin
-      - POSTGRES_PASSWORD=ssspassword
+      - POSTGRES_DB=tracrio
+      - POSTGRES_USER=tracradmin
+      - POSTGRES_PASSWORD=tracrpassword
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - sss-network
+      - tracrio-network
 
   api:
     build:
@@ -23,11 +23,11 @@ services:
       - postgres
     environment:
       - DB_HOST=db
-      - DB_USER=sssadmin
-      - DB_PASSWORD=ssspassword
-      - DB_NAME=supershoppingservice
+      - DB_USER=tracradmin
+      - DB_PASSWORD=tracrpassword
+      - DB_NAME=tracrio
     networks:
-      - sss-network
+      - tracrio-network
 
   # Comment out client for local build (npm run dev)
   client:
@@ -39,10 +39,10 @@ services:
     depends_on:
       - api
     networks:
-      - sss-network
+      - tracrio-network
 
 volumes:
   postgres_data:
 
 networks:
-  sss-network:
+  tracrio-network:
