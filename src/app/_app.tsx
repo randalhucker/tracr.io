@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useClientSide from '../hooks/useClientSide';
 
-import './global.css';
+import './globals.css';
 
 const publicPaths = ['/login', '/signup', '/supplier-auth']; // Add public paths here
 let userId: number | null = null;

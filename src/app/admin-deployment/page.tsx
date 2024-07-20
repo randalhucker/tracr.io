@@ -1,9 +1,15 @@
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import Footer from '../../components/footer';
-import styles from './admin-deployment.module.css';
+import styles from './admin-deployment.module.scss';
+// import { useRouter } from 'next/navigation';
+// import { useEffect } from 'react';
+// import useClientSide from '@/hooks/useClientSide';
 
 const AdminDeployment: NextPage = () => {
+  // const router = useRouter();
+  // const isClient = useClientSide();
+
   return (
     <div className={styles.adminDeployment}>
       <div className={styles.wrapperGroup9}>
