@@ -1,6 +1,7 @@
 {
-  "name": "super-shopping-service",
+  "name": "tracr.io",
   "version": "0.1.0",
+  "description": "An app for tacking lost items",
   "private": true,
   "proxy": "http://localhost:3000",
   "keywords": [],
@@ -19,6 +20,7 @@
   "dependencies": {
     "@prisma/client": "^5.15.0",
     "bcrypt": "^5.1.1",
+    "electron": "^30.0.8",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
@@ -38,6 +40,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
+    "electron": "^30.0.8",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
