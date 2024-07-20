@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "strict": true,
     "lib": ["ESNext", "ES2023", "DOM", "ScriptHost"],
     "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "noEmit": true,
+    "noEmit": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
@@ -23,9 +23,16 @@
       "@/*": ["./src/*"]
     },
     "target": "ESNext",
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "electron/**/*.ts", "api/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "electron/**/*.ts",
+    "api/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

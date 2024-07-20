@@ -6,8 +6,9 @@
   "proxy": "http://localhost:3000",
   "keywords": [],
   "author": "",
+  "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run next\" \"wait-on http://localhost:3000 && electron .\"",
+    "dev": "concurrently \"npm run next\" \"wait-on http://localhost:3000 && npm run start-electron\"",
     "next": "next dev",
     "build": "next build && next export",
     "start": "electron .",
@@ -17,7 +18,10 @@
     "prettier-format": "prettier --config .prettierrc src/**/*.ts* --write",
     "start-api": "node dist/api/index.js",
     "start-api-dev": "npx ts-node api/index.ts",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "build-electron": "tsc --project electron/tsconfig.json",
+    "build-api": "tsc --project api/tsconfig.json",
+    "start-electron": "npm run build-electron && electron dist/electron/main.js"
   },
   "dependencies": {
     "@prisma/client": "^5.15.0",
@@ -28,6 +32,7 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "next": "14.2.3",
+    "node-fetch": "^2.6.1",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.77.4"
@@ -59,13 +64,13 @@
     "typescript": "^5",
     "wait-on": "^7.2.0"
   },
-  "main": "electron/main.ts",
+  "main": "dist/electron/main.js",
   "build": {
-    "appId": "com.example.tracr.io",
+    "appId": "com.tracr.io",
     "files": [
       "out/**/*",
-      "electron/main.ts",
-      "electron/preload.ts"
+      "dist/electron/main.js",
+      "dist/electron/preload.js"
     ],
     "directories": {
       "buildResources": "assets"
