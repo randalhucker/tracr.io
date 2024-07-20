@@ -1,0 +1,56 @@
+.vuesaxlinearcircleIcon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.createNewClaim {
+  position: relative;
+  font-size: var(--font-size-13xl);
+  line-height: 24px;
+  font-family: var(--font-inter);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+}
+.actionButtonLabels {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-7xs-5) 0 0;
+}
+.page1Icon {
+  height: 35px;
+  width: 35px;
+  position: relative;
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-lgi-5) var(--padding-2xl) var(--padding-lgi-5)
+    var(--padding-18xl);
+  background-color: var(--colors-base-danger);
+  box-shadow: var(--shadow-danger-lg);
+  border-radius: var(--br-xs);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-xs);
+  z-index: 1;
+}
+@media screen and (max-width: 975px) {
+  .createNewClaim {
+    font-size: var(--font-size-lgi);
+    line-height: 14px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .createNewClaim {
+    font-size: var(--font-size-7xl);
+    line-height: 19px;
+  }
+  .button {
+    flex-wrap: wrap;
+  }
+}

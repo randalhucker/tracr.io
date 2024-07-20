@@ -1,0 +1,43 @@
+.vuesaxlinearcircleIcon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+  min-height: 24px;
+}
+.saveAndExit {
+  position: relative;
+  font-size: var(--font-size-13xl);
+  line-height: 24px;
+  font-family: var(--font-inter);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+}
+.button,
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 100%;
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-6xl) var(--padding-xl) var(--padding-6xl)
+    var(--padding-17xl);
+  background-color: var(--colors-base-danger);
+  width: 372px;
+  box-shadow: var(--shadow-danger-lg);
+  border-radius: var(--br-xs);
+  box-sizing: border-box;
+  gap: var(--gap-xs);
+  white-space: nowrap;
+  z-index: 2;
+}
+.button:hover {
+  background-color: var(--color-deeppink);
+}
+.footer {
+  width: 1040px;
+}

@@ -1,0 +1,254 @@
+.findYourStuff,
+.forgotYourPassword,
+.tracrio {
+  position: absolute;
+  top: 106px;
+  left: 215px;
+  font-size: var(--font-size-77xl);
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--color-red-200);
+  text-align: left;
+  display: none;
+}
+.findYourStuff,
+.forgotYourPassword {
+  top: 230px;
+  left: 262px;
+  font-size: var(--font-size-13xl);
+  color: var(--color-black);
+}
+.forgotYourPassword {
+  top: 550px;
+  left: 106px;
+  font-size: var(--font-size-mini);
+}
+.forgotYourPassword,
+.makeOne {
+  text-decoration: underline;
+}
+.dontHaveAnContainer {
+  position: absolute;
+  top: 660px;
+  left: 106px;
+  font-size: var(--font-size-mini);
+  display: none;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--color-black);
+  text-align: left;
+}
+.frameChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.email {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 36px;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger);
+  text-align: left;
+  display: inline-block;
+  min-width: 35px;
+}
+.input,
+.label {
+  position: absolute;
+}
+.label {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input {
+  top: 378px;
+  left: 101px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 4;
+}
+.email1 {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 36px;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger);
+  text-align: left;
+  display: inline-block;
+  min-width: 65px;
+}
+.input1,
+.label1 {
+  position: absolute;
+}
+.label1 {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input1 {
+  top: 474px;
+  left: 101px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 4;
+}
+.findYourStuff1,
+.forgotYourPassword1,
+.tracrio1 {
+  position: absolute;
+  font-family: var(--text-base-leading-6-font-medium);
+  text-align: left;
+  z-index: 4;
+}
+.tracrio1 {
+  margin: 0;
+  top: 106px;
+  left: 215px;
+  font-size: var(--font-size-77xl);
+  font-weight: 400;
+  color: var(--color-red-200);
+}
+.findYourStuff1,
+.forgotYourPassword1 {
+  color: var(--color-black);
+}
+.findYourStuff1 {
+  margin: 0;
+  top: 230px;
+  left: 262px;
+  font-size: var(--font-size-13xl);
+  font-weight: 700;
+}
+.forgotYourPassword1 {
+  top: 550px;
+  left: 106px;
+  font-size: var(--font-size-mini);
+}
+.forgotYourPassword1,
+.makeOne1 {
+  text-decoration: underline;
+}
+.dontHaveAnContainer1 {
+  position: absolute;
+  top: 660px;
+  left: 106px;
+  font-size: var(--font-size-mini);
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--color-black);
+  text-align: left;
+  z-index: 4;
+}
+.vuesaxlinearcircleIcon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button1 {
+  width: 82px;
+  position: relative;
+  font-size: var(--text-base-leading-6-font-medium-size);
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding-left: var(--padding-xl);
+  padding-right: var(--padding-xl);
+}
+.vuesaxlinearcircleIcon1 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button,
+.tracrioParent {
+  position: absolute;
+  border-radius: var(--br-mini);
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: 0 var(--padding-base);
+  background-color: var(--colors-base-danger);
+  top: 593px;
+  left: 106px;
+  width: 539px;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--gap-xs);
+  z-index: 4;
+}
+.tracrioParent {
+  margin: 0;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  background-color: var(--colors-base-danger-foreground);
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+@media screen and (max-width: 767px) {
+  .tracrio {
+    font-size: var(--font-size-29xl);
+  }
+  .findYourStuff {
+    font-size: var(--font-size-7xl);
+  }
+  .tracrio1 {
+    font-size: var(--font-size-29xl);
+  }
+  .findYourStuff1 {
+    font-size: var(--font-size-7xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .tracrio {
+    font-size: var(--font-size-10xl);
+  }
+  .findYourStuff {
+    font-size: var(--font-size-lgi);
+  }
+  .tracrio1 {
+    font-size: var(--font-size-10xl);
+  }
+  .findYourStuff1 {
+    font-size: var(--font-size-lgi);
+  }
+}
