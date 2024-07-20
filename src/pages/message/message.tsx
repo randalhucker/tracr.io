@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import Main from "../components/main";
-import Button from "../components/button";
-import styles from "./message.module.css";
+import type { NextPage } from 'next';
+import Main from '../components/main';
+import Button from '../components/button';
+import styles from './message.module.css';
 
 const Message: NextPage = () => {
   return (
@@ -9,11 +9,7 @@ const Message: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
       </div>
-      <Main
-        group7="/group-71.svg"
-        group8="/group-83.svg"
-        button="/button3.svg"
-      />
+      <Main group7="/group-71.svg" group8="/group-83.svg" button="/button3.svg" />
       <div className={styles.messageInner}>
         <div className={styles.frameParent}>
           <div className={styles.frameGroup}>
@@ -60,9 +56,7 @@ const Message: NextPage = () => {
                     </div>
                     <h1 className={styles.bearcatCard}>Bearcat Card</h1>
                     <div className={styles.itemDetails}>
-                      <h3 className={styles.baldwinHall}>
-                        Baldwin Hall | May 2
-                      </h3>
+                      <h3 className={styles.baldwinHall}>Baldwin Hall | May 2</h3>
                       <div className={styles.cfb807629ad6}>cfb807629ad6</div>
                     </div>
                   </div>
@@ -84,9 +78,7 @@ const Message: NextPage = () => {
                   <b className={styles.pm}>2:42 PM</b>
                   <div className={styles.rectangleContainer}>
                     <div className={styles.frameInner} />
-                    <h3 className={styles.thisIsAn}>
-                      this is an automated message
-                    </h3>
+                    <h3 className={styles.thisIsAn}>this is an automated message</h3>
                   </div>
                   <div className={styles.pmWrapper}>
                     <b className={styles.pm1}>2:45 PM</b>
@@ -103,20 +95,14 @@ const Message: NextPage = () => {
                   <div className={styles.messageElements1}>
                     <div className={styles.frameDiv}>
                       <div className={styles.rectangleDiv} />
-                      <h3 className={styles.thisIsAn1}>
-                        this is an automated message
-                      </h3>
+                      <h3 className={styles.thisIsAn1}>this is an automated message</h3>
                     </div>
                   </div>
                 </div>
                 <div className={styles.rectangleParent1}>
                   <div className={styles.frameChild1} />
                   <div className={styles.wrapperButton}>
-                    <img
-                      className={styles.buttonIcon}
-                      alt=""
-                      src="/button-1.svg"
-                    />
+                    <img className={styles.buttonIcon} alt="" src="/button-1.svg" />
                   </div>
                 </div>
               </div>
@@ -125,9 +111,7 @@ const Message: NextPage = () => {
           <div className={styles.footer}>
             <div className={styles.footerContainer}>
               <div className={styles.footerContainerChild} />
-              <b className={styles.coreDumpersLimited}>
-                © Core Dumpers Limited 2024
-              </b>
+              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
             </div>
           </div>
         </div>

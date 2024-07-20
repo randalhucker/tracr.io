@@ -1,39 +1,25 @@
-import type { NextPage } from "next";
-import Main from "../components/main";
-import styles from "./settings.module.css";
+import type { NextPage } from 'next';
+import Main from '../components/main';
+import styles from './settings.module.css';
 
 const Settings: NextPage = () => {
   return (
     <div className={styles.settings}>
-      <Main
-        group7="/group-71.svg"
-        group8="/group-81.svg"
-        button="/button1.svg"
-      />
+      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
       <div className={styles.frameParent}>
         <div className={styles.rectangleParent}>
           <div className={styles.frameChild} />
-          <b className={styles.coreDumpersLimited}>
-            © Core Dumpers Limited 2024
-          </b>
+          <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
         </div>
         <div className={styles.wrapperGroup9Parent}>
           <div className={styles.wrapperGroup9}>
-            <img
-              className={styles.wrapperGroup9Child}
-              alt=""
-              src="/group-9.svg"
-            />
+            <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
           </div>
           <form className={styles.rectangleGroup}>
             <div className={styles.frameItem} />
             <b className={styles.deleteAccount}>delete account</b>
             <button className={styles.button}>
-              <img
-                className={styles.vuesaxlinearcircleIcon}
-                alt=""
-                src="/vuesaxlinearcircle.svg"
-              />
+              <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
               <b className={styles.logOut}>log out</b>
             </button>
             <button className={styles.button1}>
@@ -55,11 +41,7 @@ const Settings: NextPage = () => {
                 <div className={styles.email1}>new password</div>
               </div>
             </div>
-            <input
-              className={styles.input2}
-              placeholder="confirm password"
-              type="text"
-            />
+            <input className={styles.input2} placeholder="confirm password" type="text" />
             <b className={styles.name}>name</b>
             <div className={styles.input3}>
               <div className={styles.label2}>
@@ -71,11 +53,7 @@ const Settings: NextPage = () => {
                 <b className={styles.email3}>Hucker</b>
               </div>
             </div>
-            <input
-              className={styles.input5}
-              placeholder="rhucker@gmail.com"
-              type="text"
-            />
+            <input className={styles.input5} placeholder="rhucker@gmail.com" type="text" />
           </form>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import Main from "../../components/main";
-import styles from "./previous-claims.module.css";
+import type { NextPage } from 'next';
+import Main from '../../components/main';
+import styles from './previous-claims.module.css';
 
 const PreviousClaims: NextPage = () => {
   return (
@@ -8,11 +8,7 @@ const PreviousClaims: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
       </div>
-      <Main
-        group7="/group-72.svg"
-        group8="/group-82.svg"
-        button="/button2.svg"
-      />
+      <Main group7="/group-72.svg" group8="/group-82.svg" button="/button2.svg" />
       <div className={styles.claimsListContainerWrapper}>
         <div className={styles.claimsListContainer}>
           <div className={styles.rectangleParent}>
@@ -31,9 +27,7 @@ const PreviousClaims: NextPage = () => {
                           <p className={styles.airpods1}>AirPods</p>
                         </h1>
                         <div className={styles.airpodsLocation}>
-                          <h3 className={styles.smithHall}>
-                            Smith Hall | Apr. 27
-                          </h3>
+                          <h3 className={styles.smithHall}>Smith Hall | Apr. 27</h3>
                           <div className={styles.airpodsStatus}>
                             <div className={styles.statusNotFoundContainer}>
                               <span>{`status: `}</span>
@@ -50,9 +44,7 @@ const PreviousClaims: NextPage = () => {
                       <h1 className={styles.bearcatCard}>Bearcat Card</h1>
                       <div className={styles.bearcatCardLocation}>
                         <div className={styles.bearcatCardDate}>
-                          <h3 className={styles.baldwinHall}>
-                            Baldwin Hall | May 2
-                          </h3>
+                          <h3 className={styles.baldwinHall}>Baldwin Hall | May 2</h3>
                           <div className={styles.bearcatCardStatus}>
                             <div className={styles.statusPending}>
                               <span>{`status: `}</span>
@@ -90,9 +82,7 @@ const PreviousClaims: NextPage = () => {
           <footer className={styles.footerContainerWrapper}>
             <div className={styles.footerContainer}>
               <div className={styles.footerContainerChild} />
-              <b className={styles.coreDumpersLimited}>
-                © Core Dumpers Limited 2024
-              </b>
+              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
             </div>
           </footer>
         </div>

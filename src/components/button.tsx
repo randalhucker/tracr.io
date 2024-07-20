@@ -1,5 +1,5 @@
-import type { NextPage } from "next";
-import styles from "./button.module.css";
+import type { NextPage } from 'next';
+import styles from './button.module.css';
 
 export type ButtonType = {
   className?: string;
@@ -9,18 +9,14 @@ export type ButtonType = {
 };
 
 const Button: NextPage<ButtonType> = ({
-  className = "",
+  className = '',
   vuesaxlinearcircle,
   createNewClaim,
-  page1,
+  page1
 }) => {
   return (
-    <button className={[styles.button, className].join(" ")}>
-      <img
-        className={styles.vuesaxlinearcircleIcon}
-        alt=""
-        src={vuesaxlinearcircle}
-      />
+    <button className={[styles.button, className].join(' ')}>
+      <img className={styles.vuesaxlinearcircleIcon} alt="" src={vuesaxlinearcircle} />
       <div className={styles.actionButtonLabels}>
         <b className={styles.createNewClaim}>{createNewClaim}</b>
       </div>

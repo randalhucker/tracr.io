@@ -1,36 +1,25 @@
-import type { NextPage } from "next";
-import { useState } from "react";
-import { TextField, Icon } from "@mui/material";
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import Main from "../../components/main";
-import styles from "./index.module.css";
+import type { NextPage } from 'next';
+import { useState } from 'react';
+import { TextField, Icon } from '@mui/material';
+import { LocalizationProvider, DatePicker, DateBuilderReturnType } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import Main from '../../components/main';
+import styles from './index.module.css';
 
 const CreateNewClaim: NextPage = () => {
-  const [inputDateTimePickerValue, setInputDateTimePickerValue] =
-    useState(null);
+  const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <div className={styles.createNewClaim}>
-        <Main
-          group7="/group-7.svg"
-          group8="/group-8.svg"
-          button="/button.svg"
-        />
+        <Main group7="/group-7.svg" group8="/group-8.svg" button="/button.svg" />
         <div className={styles.footer}>
           <div className={styles.footerContent}>
             <div className={styles.footerContentChild} />
-            <b className={styles.coreDumpersLimited}>
-              © Core Dumpers Limited 2024
-            </b>
+            <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
           </div>
           <div className={styles.wrapperGroup9Parent}>
             <div className={styles.wrapperGroup9}>
-              <img
-                className={styles.wrapperGroup9Child}
-                alt=""
-                src="/group-9.svg"
-              />
+              <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
             </div>
             <div className={styles.rectangleParent}>
               <div className={styles.frameChild} />
@@ -42,33 +31,29 @@ const CreateNewClaim: NextPage = () => {
                 <input className={styles.label} placeholder="lat" type="text" />
               </div>
               <div className={styles.input1}>
-                <input
-                  className={styles.label1}
-                  placeholder="long"
-                  type="text"
-                />
+                <input className={styles.label1} placeholder="long" type="text" />
               </div>
               <div className={styles.input2}>
                 <DatePicker
                   value={inputDateTimePickerValue}
-                  onChange={(newValue: any) => {
+                  onChange={(newValue: Date | null) => {
                     setInputDateTimePickerValue(newValue);
                   }}
                   sx={{}}
                   slotProps={{
                     textField: {
-                      name: "",
-                      id: "",
-                      size: "medium",
+                      name: '',
+                      id: '',
+                      size: 'medium',
                       fullWidth: false,
                       required: false,
                       autoFocus: false,
                       error: false,
-                      color: "primary",
+                      color: 'primary'
                     },
                     openPickerIcon: {
-                      component: () => <></>,
-                    },
+                      component: () => <></>
+                    }
                   }}
                 />
               </div>

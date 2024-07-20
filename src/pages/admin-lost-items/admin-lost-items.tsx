@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import FrameComponent from "../../components/frame-component2";
-import ClaimsList from "../../components/claims-list";
-import styles from "./index.module.css";
+import type { NextPage } from 'next';
+import FrameComponent from '../../components/frame-component2';
+import ClaimsList from '../../components/claims-list';
+import styles from './index.module.css';
 
 const AdminLostItems: NextPage = () => {
   return (
@@ -24,9 +24,7 @@ const AdminLostItems: NextPage = () => {
               <div className={styles.copyright}>
                 <div className={styles.copyrightDetails}>
                   <div className={styles.copyrightDetailsChild} />
-                  <b className={styles.coreDumpersLimited}>
-                    © Core Dumpers Limited 2024
-                  </b>
+                  <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
                 </div>
               </div>
             </div>

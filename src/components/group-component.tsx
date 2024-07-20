@@ -1,13 +1,13 @@
-import type { NextPage } from "next";
-import styles from "./group-component.module.css";
+import type { NextPage } from 'next';
+import styles from './group-component.module.css';
 
 export type GroupComponentType = {
   className?: string;
 };
 
-const GroupComponent: NextPage<GroupComponentType> = ({ className = "" }) => {
+const GroupComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
   return (
-    <form className={[styles.tracrioParent, className].join(" ")}>
+    <form className={[styles.tracrioParent, className].join(' ')}>
       <div className={styles.tracrio}>tracr.io</div>
       <b className={styles.findYourStuff}>find your stuff</b>
       <b className={styles.forgotYourPassword}>forgot your password?</b>
@@ -34,17 +34,9 @@ const GroupComponent: NextPage<GroupComponentType> = ({ className = "" }) => {
         <span className={styles.makeOne1}>make one</span>
       </b>
       <button className={styles.button}>
-        <img
-          className={styles.vuesaxlinearcircleIcon}
-          alt=""
-          src="/vuesaxlinearcircle.svg"
-        />
+        <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>log in</div>
-        <img
-          className={styles.vuesaxlinearcircleIcon1}
-          alt=""
-          src="/vuesaxlinearcircle.svg"
-        />
+        <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />
       </button>
     </form>
   );

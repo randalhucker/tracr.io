@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import FrameComponent from "../../components/frame-component2";
-import styles from "./admin-message.module.css";
+import type { NextPage } from 'next';
+import FrameComponent from '../../components/frame-component2';
+import styles from './admin-message.module.css';
 
 const AdminMessage: NextPage = () => {
   return (
@@ -64,9 +64,7 @@ const AdminMessage: NextPage = () => {
                   <b className={styles.pm}>2:42 PM</b>
                   <div className={styles.rectangleContainer}>
                     <div className={styles.frameInner} />
-                    <h3 className={styles.thisIsAn}>
-                      this is an automated message
-                    </h3>
+                    <h3 className={styles.thisIsAn}>this is an automated message</h3>
                   </div>
                   <div className={styles.pmWrapper}>
                     <b className={styles.pm1}>2:45 PM</b>
@@ -83,20 +81,14 @@ const AdminMessage: NextPage = () => {
                   <div className={styles.messageContent1}>
                     <div className={styles.frameDiv}>
                       <div className={styles.rectangleDiv} />
-                      <h3 className={styles.thisIsAn1}>
-                        this is an automated message
-                      </h3>
+                      <h3 className={styles.thisIsAn1}>this is an automated message</h3>
                     </div>
                   </div>
                 </div>
                 <div className={styles.rectangleParent1}>
                   <div className={styles.frameChild1} />
                   <div className={styles.wrapperButton}>
-                    <img
-                      className={styles.buttonIcon}
-                      alt=""
-                      src="/button-12.svg"
-                    />
+                    <img className={styles.buttonIcon} alt="" src="/button-12.svg" />
                   </div>
                 </div>
               </div>
@@ -105,9 +97,7 @@ const AdminMessage: NextPage = () => {
           <div className={styles.footerContentWrapper}>
             <div className={styles.footerContent}>
               <div className={styles.footerContentChild} />
-              <b className={styles.coreDumpersLimited}>
-                © Core Dumpers Limited 2024
-              </b>
+              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
             </div>
           </div>
         </div>

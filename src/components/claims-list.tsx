@@ -1,13 +1,13 @@
-import type { NextPage } from "next";
-import styles from "./claims-list.module.css";
+import type { NextPage } from 'next';
+import styles from './claims-list.module.css';
 
 export type ClaimsListType = {
   className?: string;
 };
 
-const ClaimsList: NextPage<ClaimsListType> = ({ className = "" }) => {
+const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
   return (
-    <div className={[styles.claimsList, className].join(" ")}>
+    <div className={[styles.claimsList, className].join(' ')}>
       <div className={styles.claimsListChild} />
       <h1 className={styles.claims}>claims</h1>
       <div className={styles.claimItems}>
@@ -43,9 +43,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = "" }) => {
                         <div className={styles.bearcatCardParent}>
                           <h1 className={styles.bearcatCard}>Bearcat Card</h1>
                           <div className={styles.baldwinHallMay2Wrapper}>
-                            <h3 className={styles.baldwinHall}>
-                              Baldwin Hall | May 2
-                            </h3>
+                            <h3 className={styles.baldwinHall}>Baldwin Hall | May 2</h3>
                           </div>
                         </div>
                       </div>
@@ -68,9 +66,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = "" }) => {
                       <h1 className={styles.airpods2}>
                         <p className={styles.airpods3}>AirPods</p>
                       </h1>
-                      <h3 className={styles.smithHall1}>
-                        Smith Hall | Apr. 27
-                      </h3>
+                      <h3 className={styles.smithHall1}>Smith Hall | Apr. 27</h3>
                     </div>
                     <div className={styles.duplicateReporter}>
                       <b className={styles.bearnardB}>bearnard b.</b>
@@ -90,9 +86,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = "" }) => {
                       <h1 className={styles.airpods4}>
                         <p className={styles.airpods5}>AirPods</p>
                       </h1>
-                      <h3 className={styles.smithHall2}>
-                        Smith Hall | Apr. 27
-                      </h3>
+                      <h3 className={styles.smithHall2}>Smith Hall | Apr. 27</h3>
                     </div>
                     <div className={styles.frankParent}>
                       <b className={styles.frank}>frank</b>

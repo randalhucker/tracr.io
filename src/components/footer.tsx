@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import { useMemo, type CSSProperties } from "react";
-import styles from "./footer.module.css";
+import type { NextPage } from 'next';
+import { useMemo, type CSSProperties } from 'react';
+import styles from './footer.module.css';
 
 export type FooterType = {
   className?: string;
@@ -8,32 +8,28 @@ export type FooterType = {
   saveAndExit?: string;
 
   /** Style props */
-  propWidth?: CSSProperties["width"];
-  propAlignSelf?: CSSProperties["alignSelf"];
+  propWidth?: CSSProperties['width'];
+  propAlignSelf?: CSSProperties['alignSelf'];
 };
 
 const Footer: NextPage<FooterType> = ({
-  className = "",
+  className = '',
   vuesaxlinearcircle,
   saveAndExit,
   propWidth,
-  propAlignSelf,
+  propAlignSelf
 }) => {
   const footerStyle: CSSProperties = useMemo(() => {
     return {
       width: propWidth,
-      alignSelf: propAlignSelf,
+      alignSelf: propAlignSelf
     };
   }, [propWidth, propAlignSelf]);
 
   return (
-    <div className={[styles.footer, className].join(" ")} style={footerStyle}>
+    <div className={[styles.footer, className].join(' ')} style={footerStyle}>
       <button className={styles.button}>
-        <img
-          className={styles.vuesaxlinearcircleIcon}
-          alt=""
-          src={vuesaxlinearcircle}
-        />
+        <img className={styles.vuesaxlinearcircleIcon} alt="" src={vuesaxlinearcircle} />
         <b className={styles.saveAndExit}>{saveAndExit}</b>
       </button>
     </div>

@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import FrameComponent from "../../components/frame-component2";
-import Footer from "../../components/footer";
-import styles from "./admin-system-config.module.css";
+import type { NextPage } from 'next';
+import FrameComponent from '../../components/frame-component2';
+import Footer from '../../components/footer';
+import styles from './admin-system-config.module.css';
 
 const AdminSystemConfig: NextPage = () => {
   return (
@@ -100,9 +100,7 @@ const AdminSystemConfig: NextPage = () => {
           <div className={styles.copyrightContainerWrapper}>
             <div className={styles.copyrightContainer}>
               <div className={styles.separator} />
-              <b className={styles.coreDumpersLimited}>
-                © Core Dumpers Limited 2024
-              </b>
+              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
             </div>
           </div>
         </div>

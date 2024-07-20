@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import FrameComponent1 from "../../components/frame-component1";
-import styles from "./admin-home.module.css";
+import type { NextPage } from 'next';
+import FrameComponent1 from '../../components/frame-component1';
+import styles from './admin-home.module.css';
 
 const AdminHome: NextPage = () => {
   return (
@@ -51,9 +51,7 @@ const AdminHome: NextPage = () => {
           <footer className={styles.footer}>
             <div className={styles.copyright}>
               <div className={styles.separator} />
-              <b className={styles.coreDumpersLimited}>
-                © Core Dumpers Limited 2024
-              </b>
+              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
             </div>
           </footer>
         </div>

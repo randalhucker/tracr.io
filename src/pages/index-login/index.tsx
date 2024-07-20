@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import GroupComponent from "../../components/group-component";
-import styles from "./index.module.css";
+import type { NextPage } from 'next';
+import GroupComponent from '../../components/group-component';
+import styles from './index.module.css';
 
 const Login: NextPage = () => {
   return (
@@ -27,17 +27,9 @@ const Login: NextPage = () => {
         </div>
       </div>
       <div className={styles.button}>
-        <img
-          className={styles.vuesaxlinearcircleIcon}
-          alt=""
-          src="/vuesaxlinearcircle.svg"
-        />
+        <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>log in</div>
-        <img
-          className={styles.vuesaxlinearcircleIcon1}
-          alt=""
-          src="/vuesaxlinearcircle.svg"
-        />
+        <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />
       </div>
     </div>
   );
