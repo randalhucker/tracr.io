@@ -15,16 +15,20 @@ datasource db {
 // Type definitions for the schema below
 //
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 enum ItemStatus {
-  FOUND
   LOST
+  FOUND
   RETURNED
 }
 
 enum NotificationType {
-  ITEM_FOUND
-  NEW_REPORT
-  GENERAL
+  EMAIL
+  IN_APP
 }
 
 //
@@ -32,42 +36,119 @@ enum NotificationType {
 //
 
 model User {
-  id             Int     @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   firstName      String
   lastName       String
-  email          String  @unique
+  email          String   @unique
   password       String
   profilePicture String?
+  role           UserRole @default(USER)
 
   createdAt DateTime @default(now()) @updatedAt
   updatedAt DateTime @default(now())
 
   // Relationships
-  lostItems        LostItem[]
-  foundRequests    FoundRequest[]
-  notifications    Notification[]
+  reports          Report[]
+  claims           Claim[]
   sentMessages     Message[]      @relation("UserSentMessages")
   receivedMessages Message[]      @relation("UserReceivedMessages")
+  notifications    Notification[]
+  admin            Admin?
   auditLogs        AuditLog[]
 }
 
-model Staff {
-  id             Int     @id @default(autoincrement())
-  firstName      String
-  lastName       String
-  email          String  @unique
-  password       String
-  profilePicture String?
+model Admin {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now()) @updatedAt
   updatedAt DateTime @default(now())
 
   // Relationships
-  foundItems       FoundItem[]
-  notifications    Notification[]
-  sentMessages     Message[]      @relation("StaffSentMessages")
-  receivedMessages Message[]      @relation("StaffReceivedMessages")
+  sentMessages     Message[]  @relation("AdminSentMessages")
+  receivedMessages Message[]  @relation("AdminReceivedMessages")
   auditLogs        AuditLog[]
+}
+
+model Report {
+  id          Int        @id @default(autoincrement())
+  description String
+  image       String?
+  status      ItemStatus @default(LOST)
+  userId      Int
+  itemId      Int?
+
+  createdAt DateTime @default(now()) @updatedAt
+  updatedAt DateTime @default(now())
+
+  // Relationships
+  user User  @relation(fields: [userId], references: [id])
+  item Item? @relation(fields: [itemId], references: [id])
+}
+
+model Claim {
+  id          Int        @id @default(autoincrement())
+  userId      Int
+  itemId      Int
+  description String?
+  status      ItemStatus @default(LOST)
+
+  createdAt DateTime @default(now()) @updatedAt
+  updatedAt DateTime @default(now())
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
+}
+
+model Item {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String
+  location    String
+  status      ItemStatus @default(FOUND)
+  image       String?
+  category    String
+  buildingId  Int?
+
+  createdAt DateTime @default(now()) @updatedAt
+  updatedAt DateTime @default(now())
+
+  // Relationships
+  reports  Report[]
+  claims   Claim[]
+  building Building? @relation(fields: [buildingId], references: [id])
+}
+
+model Message {
+  id              Int      @id @default(autoincrement())
+  content         String
+  senderUserId    Int?
+  receiverUserId  Int?
+  senderAdminId   Int?
+  receiverAdminId Int?
+  sentAt          DateTime @default(now())
+
+  // Relationships
+  senderUser    User?  @relation("UserSentMessages", fields: [senderUserId], references: [id])
+  receiverUser  User?  @relation("UserReceivedMessages", fields: [receiverUserId], references: [id])
+  senderAdmin   Admin? @relation("AdminSentMessages", fields: [senderAdminId], references: [id])
+  receiverAdmin Admin? @relation("AdminReceivedMessages", fields: [receiverAdminId], references: [id])
+}
+
+model Notification {
+  id      Int              @id @default(autoincrement())
+  message String
+  type    NotificationType
+  read    Boolean          @default(false)
+  userId  Int
+
+  createdAt DateTime @default(now()) @updatedAt
+  updatedAt DateTime @default(now())
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Building {
@@ -78,103 +159,7 @@ model Building {
   updatedAt DateTime @default(now())
 
   // Relationships
-  foundItems FoundItem[]
-}
-
-model FoundItem {
-  id          Int        @id @default(autoincrement())
-  description String
-  image       String
-  status      ItemStatus @default(FOUND)
-  location    String
-
-  createdAt DateTime @default(now()) @updatedAt
-  updatedAt DateTime @default(now())
-
-  // Relationships
-  staffId    Int
-  buildingId Int
-
-  staff    Staff    @relation(fields: [staffId], references: [id])
-  building Building @relation(fields: [buildingId], references: [id])
-  tags     Tag[]
-}
-
-model LostItem {
-  id          Int        @id @default(autoincrement())
-  description String
-  status      ItemStatus @default(LOST)
-
-  createdAt DateTime @default(now()) @updatedAt
-  updatedAt DateTime @default(now())
-
-  // Relationships
-  userId Int
-
-  user User  @relation(fields: [userId], references: [id])
-  tags Tag[]
-}
-
-model FoundRequest {
-  id          Int    @id @default(autoincrement())
-  description String
-  image       String
-  location    String
-
-  createdAt DateTime @default(now()) @updatedAt
-  updatedAt DateTime @default(now())
-
-  // Relationships
-  userId Int
-
-  user User @relation(fields: [userId], references: [id])
-}
-
-model Notification {
-  id      Int              @id @default(autoincrement())
-  message String
-  type    NotificationType
-  read    Boolean          @default(false)
-
-  createdAt DateTime @default(now()) @updatedAt
-  updatedAt DateTime @default(now())
-
-  // Relationships
-  userId  Int?
-  staffId Int?
-
-  user  User?  @relation(fields: [userId], references: [id])
-  staff Staff? @relation(fields: [staffId], references: [id])
-}
-
-model Message {
-  id              Int    @id @default(autoincrement())
-  content         String
-  senderUserId    Int?
-  receiverUserId  Int?
-  senderStaffId   Int?
-  receiverStaffId Int?
-
-  createdAt DateTime @default(now()) @updatedAt
-  updatedAt DateTime @default(now())
-
-  // Relationships
-  senderUser    User?  @relation("UserSentMessages", fields: [senderUserId], references: [id])
-  receiverUser  User?  @relation("UserReceivedMessages", fields: [receiverUserId], references: [id])
-  senderStaff   Staff? @relation("StaffSentMessages", fields: [senderStaffId], references: [id])
-  receiverStaff Staff? @relation("StaffReceivedMessages", fields: [receiverStaffId], references: [id])
-}
-
-model Tag {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-
-  createdAt DateTime @default(now()) @updatedAt
-  updatedAt DateTime @default(now())
-
-  // Relationships
-  foundItems FoundItem[]
-  lostItems  LostItem[]
+  items Item[]
 }
 
 model AuditLog {
@@ -182,9 +167,9 @@ model AuditLog {
   action      String
   performedAt DateTime @default(now())
   userId      Int?
-  staffId     Int?
+  adminId     Int?
 
   // Relationships
   user  User?  @relation(fields: [userId], references: [id])
-  staff Staff? @relation(fields: [staffId], references: [id])
+  admin Admin? @relation(fields: [adminId], references: [id])
 }

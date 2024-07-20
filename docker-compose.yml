@@ -29,6 +29,18 @@ services:
     networks:
       - tracrio-network
 
+  # Comment out client for local build (npm run dev)
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - tracrio-network
+
 volumes:
   postgres_data:
 

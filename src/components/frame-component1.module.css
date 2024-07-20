@@ -1,0 +1,72 @@
+.frameChild {
+  height: 97px;
+  width: 1920px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 var(--br-mini) var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  display: none;
+  max-width: 100%;
+}
+.tracrioAdmin {
+  position: relative;
+  white-space: nowrap;
+  z-index: 2;
+}
+.buttonIcon,
+.frameItem {
+  height: 48px;
+  width: 48px;
+  position: relative;
+  z-index: 2;
+}
+.buttonIcon {
+  border-radius: var(--br-xs);
+}
+.buttonWrapper,
+.frameParent {
+  display: flex;
+  align-items: flex-start;
+}
+.buttonWrapper {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-12xs) 0 0;
+}
+.frameParent {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.frameWrapper,
+.rectangleParent {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+.frameWrapper {
+  width: 136px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-sm) 0 0;
+}
+.rectangleParent {
+  align-self: stretch;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 var(--br-mini) var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--padding-3xs) var(--padding-45xl) var(--padding-xs)
+    var(--padding-16xl);
+  top: 0;
+  z-index: 99;
+  position: sticky;
+  max-width: 100%;
+  gap: var(--gap-xl);
+  text-align: left;
+  font-size: var(--font-size-43xl);
+  color: var(--color-red-200);
+  font-family: var(--text-base-leading-6-font-medium);
+}

@@ -1,0 +1,193 @@
+.frameChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.email {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 36px;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger);
+  text-align: left;
+  display: inline-block;
+  min-width: 35px;
+}
+.input,
+.label {
+  position: absolute;
+}
+.label {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input {
+  top: 309px;
+  left: 99px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 2;
+}
+.email1 {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 36px;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger);
+  text-align: left;
+  display: inline-block;
+  min-width: 65px;
+}
+.input1,
+.label1 {
+  position: absolute;
+}
+.label1 {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  max-width: 280px;
+}
+.input1 {
+  top: 431px;
+  left: 99px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 2;
+}
+.input2,
+.letsMakeAn {
+  position: absolute;
+  font-family: var(--text-base-leading-6-font-medium);
+  z-index: 2;
+}
+.input2 {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background-color: var(--colors-base-danger-50);
+  top: 508px;
+  left: 99px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  height: 64px;
+  padding: var(--padding-sm) var(--padding-xs);
+  box-sizing: border-box;
+  font-size: var(--font-size-sm);
+  color: var(--colors-base-danger);
+}
+.letsMakeAn {
+  margin: 0;
+  top: 150px;
+  left: 204px;
+  font-size: var(--font-size-13xl);
+  font-weight: 700;
+  color: var(--color-black);
+  text-align: left;
+}
+.vuesaxlinearcircleIcon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button1 {
+  width: 100px;
+  position: relative;
+  font-size: var(--text-base-leading-6-font-medium-size);
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: var(--padding-xl);
+  padding-right: var(--padding-xl);
+}
+.vuesaxlinearcircleIcon1 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: 0 var(--padding-base);
+  background-color: var(--colors-base-danger);
+  position: absolute;
+  top: 630px;
+  left: 104px;
+  border-radius: var(--br-mini);
+  width: 539px;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--gap-xs);
+  z-index: 2;
+}
+.affiliatedInstitution {
+  text-decoration: underline;
+}
+.mustBeAContainer {
+  position: absolute;
+  top: 381px;
+  left: 103px;
+  font-size: var(--font-size-lg);
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--color-black);
+  text-align: left;
+  z-index: 2;
+}
+.rectangleParent {
+  margin: 0;
+  position: absolute;
+  top: 146px;
+  left: 589px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  width: 746px;
+  height: 788px;
+  z-index: 1;
+}
+@media screen and (max-width: 767px) {
+  .letsMakeAn {
+    font-size: var(--font-size-7xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .letsMakeAn {
+    font-size: var(--font-size-lgi);
+  }
+}
