@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as auditLogController from '../controllers/auditLogController.ts';
+import * as auditLogController from '../controllers/auditLogController';
 
 const router = Router();
 

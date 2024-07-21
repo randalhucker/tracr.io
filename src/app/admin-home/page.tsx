@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import FrameComponent1 from '../../components/frame-component1';
 import styles from './admin-home.module.scss';

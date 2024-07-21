@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import Footer from '../../components/footer';

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import { useMemo, type CSSProperties } from 'react';
 import styles from './footer.module.css';

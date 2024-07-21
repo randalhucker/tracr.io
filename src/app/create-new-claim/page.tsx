@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
-import styles from './index.module.scss';
+import styles from './create-new-claim.module.scss';
 
 const CreateNewClaim: NextPage = () => {
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);

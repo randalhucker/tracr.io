@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import GroupComponent from '../components/group-component';
 import styles from './login.module.scss';

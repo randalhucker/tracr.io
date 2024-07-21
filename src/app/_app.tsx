@@ -1,6 +1,8 @@
 'use client';
 
 import type { AppProps } from 'next/app';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useClientSide from '../hooks/useClientSide';
@@ -28,5 +30,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [router, isClient]);
 
-  return <Component {...pageProps} />;
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Component {...pageProps} />
+    </LocalizationProvider>
+  );
 }

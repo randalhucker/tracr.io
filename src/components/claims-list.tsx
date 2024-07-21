@@ -1,3 +1,4 @@
+'use client';
 import type { NextPage } from 'next';
 import styles from './claims-list.module.css';
 

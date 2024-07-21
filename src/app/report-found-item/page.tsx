@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import { TextField, Icon } from '@mui/material';
-import { LocalizationProvider, DatePicker, DateBuilderReturnType } from '@mui/x-date-pickers';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
 import styles from './report-found-item.module.scss';
@@ -45,28 +46,32 @@ const ReportFoundItem: NextPage = () => {
               <input className={styles.label1} placeholder="long" type="text" />
             </div>
             <div className={styles.input2}>
-              <DatePicker
-                value={inputDateTimePickerValue}
-                onChange={(newValue: Date | null) => {
-                  setInputDateTimePickerValue(newValue);
-                }}
-                sx={{}}
-                slotProps={{
-                  textField: {
-                    name: '',
-                    id: '',
-                    size: 'medium',
-                    fullWidth: false,
-                    required: false,
-                    autoFocus: false,
-                    error: false,
-                    color: 'primary'
-                  },
-                  openPickerIcon: {
-                    component: () => <></>
-                  }
-                }}
-              />
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  value={inputDateTimePickerValue}
+                  onChange={(newValue: Date | null) => {
+                    setInputDateTimePickerValue(newValue);
+                  }}
+                  slots={{
+                    textField: (params) => <TextField {...params} />
+                  }}
+                  slotProps={{
+                    textField: {
+                      name: '',
+                      id: '',
+                      size: 'medium',
+                      fullWidth: false,
+                      required: false,
+                      autoFocus: false,
+                      error: false,
+                      color: 'primary'
+                    },
+                    openPickerIcon: {
+                      component: () => <></>
+                    }
+                  }}
+                />
+              </LocalizationProvider>
             </div>
             <textarea className={styles.input3} rows={11} cols={27} />
             <div className={styles.image1Parent}>
