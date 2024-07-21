@@ -1,9 +1,20 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import Footer from '../../components/footer';
 import styles from './admin-system-config.module.scss';
 
 const AdminSystemConfig: NextPage = () => {
+  const handleGenerateReport = () => {
+    // Placeholder function for generating a report
+    console.log('Generate report clicked');
+  };
+
+  const handleOtherButtonClick = () => {
+    // Placeholder function for other button actions
+    console.log('Other button clicked');
+  };
+
   return (
     <div className={styles.adminSystemConfig}>
       <div className={styles.wrapperGroup9}>
@@ -56,6 +67,7 @@ const AdminSystemConfig: NextPage = () => {
                 saveAndExit="generate report"
                 propWidth="unset"
                 propAlignSelf="stretch"
+                onSaveAndExit={handleGenerateReport}
               />
             </div>
             <div className={styles.otherStatPair}>

@@ -1,13 +1,24 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { TextField, Icon } from '@mui/material';
-import { LocalizationProvider, DatePicker, DateBuilderReturnType } from '@mui/x-date-pickers';
+import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
 import styles from './index.module.scss';
 
 const CreateNewClaim: NextPage = () => {
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
+
+  const handleUploadImageClick = () => {
+    // Placeholder function for upload image button click
+    console.log('Upload Image button clicked');
+  };
+
+  const handleSubmitClick = () => {
+    // Placeholder function for submit button click
+    console.log('Submit button clicked');
+  };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <div className={styles.createNewClaim}>
@@ -59,7 +70,7 @@ const CreateNewClaim: NextPage = () => {
               </div>
               <textarea className={styles.input3} rows={11} cols={27} />
               <iframe className={styles.frameItem} />
-              <button className={styles.button}>
+              <button className={styles.button} onClick={handleUploadImageClick}>
                 <img
                   className={styles.vuesaxlinearcircleIcon}
                   alt=""
@@ -68,7 +79,7 @@ const CreateNewClaim: NextPage = () => {
                 <b className={styles.uploadImage}>upload image</b>
               </button>
               <div className={styles.lostItemClaim}>lost item claim</div>
-              <button className={styles.button1}>
+              <button className={styles.button1} onClick={handleSubmitClick}>
                 <img
                   className={styles.vuesaxlinearcircleIcon1}
                   alt=""

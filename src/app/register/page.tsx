@@ -1,8 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import GroupComponent1 from '../../components/group-component1';
 import styles from './register.module.scss';
 
 const Register: NextPage = () => {
+  const handleRegisterClick = () => {
+    // Placeholder function for handling register button click
+    console.log('Register button clicked');
+  };
+
   return (
     <div className={styles.register}>
       <div className={styles.rectangleParent}>
@@ -11,7 +17,7 @@ const Register: NextPage = () => {
       </div>
       <div className={styles.frameParent}>
         <img className={styles.frameItem} alt="" src="/group-22.svg" />
-        <GroupComponent1 />
+        <GroupComponent1 onRegisterClick={handleRegisterClick} />
       </div>
     </div>
   );

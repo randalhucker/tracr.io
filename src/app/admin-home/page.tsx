@@ -1,8 +1,24 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import FrameComponent1 from '../../components/frame-component1';
 import styles from './admin-home.module.scss';
 
 const AdminHome: NextPage = () => {
+  const handleManageLostItemsClick = () => {
+    console.log('Manage Lost Items button clicked');
+    // Placeholder function for manage lost items action
+  };
+
+  const handleManageDeploymentClick = () => {
+    console.log('Manage Deployment button clicked');
+    // Placeholder function for manage deployment action
+  };
+
+  const handleSystemReportClick = () => {
+    console.log('System Report button clicked');
+    // Placeholder function for system report action
+  };
+
   return (
     <div className={styles.adminHome}>
       <div className={styles.wrapperGroup9}>
@@ -20,7 +36,7 @@ const AdminHome: NextPage = () => {
               </p>
             </div>
             <div className={styles.managementButtons}>
-              <button className={styles.button}>
+              <button className={styles.button} onClick={handleManageLostItemsClick}>
                 <img
                   className={styles.vuesaxlinearcircleIcon}
                   alt=""
@@ -29,7 +45,7 @@ const AdminHome: NextPage = () => {
                 <b className={styles.manageLostItems}>manage lost items</b>
               </button>
               <div className={styles.deploymentReportsButtons}>
-                <button className={styles.button1}>
+                <button className={styles.button1} onClick={handleManageDeploymentClick}>
                   <img
                     className={styles.vuesaxlinearcircleIcon1}
                     alt=""
@@ -37,7 +53,7 @@ const AdminHome: NextPage = () => {
                   />
                   <b className={styles.manageDeployment}>manage deployment</b>
                 </button>
-                <button className={styles.button2}>
+                <button className={styles.button2} onClick={handleSystemReportClick}>
                   <img
                     className={styles.vuesaxlinearcircleIcon2}
                     alt=""

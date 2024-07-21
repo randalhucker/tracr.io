@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import { useMemo, type CSSProperties } from 'react';
 import styles from './footer.module.css';
@@ -6,10 +7,9 @@ export type FooterType = {
   className?: string;
   vuesaxlinearcircle?: string;
   saveAndExit?: string;
-
-  /** Style props */
   propWidth?: CSSProperties['width'];
   propAlignSelf?: CSSProperties['alignSelf'];
+  onSaveAndExit?: () => void; // Add this prop
 };
 
 const Footer: NextPage<FooterType> = ({
@@ -17,7 +17,8 @@ const Footer: NextPage<FooterType> = ({
   vuesaxlinearcircle,
   saveAndExit,
   propWidth,
-  propAlignSelf
+  propAlignSelf,
+  onSaveAndExit // Add this prop
 }) => {
   const footerStyle: CSSProperties = useMemo(() => {
     return {
@@ -28,7 +29,7 @@ const Footer: NextPage<FooterType> = ({
 
   return (
     <div className={[styles.footer, className].join(' ')} style={footerStyle}>
-      <button className={styles.button}>
+      <button className={styles.button} onClick={onSaveAndExit}>
         <img className={styles.vuesaxlinearcircleIcon} alt="" src={vuesaxlinearcircle} />
         <b className={styles.saveAndExit}>{saveAndExit}</b>
       </button>

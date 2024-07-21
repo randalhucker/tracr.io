@@ -1,8 +1,29 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
-import Main from '../components/main';
+import Main from '../../components/main';
 import styles from './settings.module.scss';
 
 const Settings: NextPage = () => {
+  const handleDeleteAccount = () => {
+    // Placeholder function for delete account button
+    console.log('Delete account clicked');
+  };
+
+  const handleLogOut = () => {
+    // Placeholder function for log out button
+    console.log('Log out clicked');
+  };
+
+  const handleSubmit = () => {
+    // Placeholder function for submit button
+    console.log('Submit clicked');
+  };
+
+  const handleResetPassword = () => {
+    // Placeholder function for reset password button
+    console.log('Reset password clicked');
+  };
+
   return (
     <div className={styles.settings}>
       <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
@@ -17,12 +38,14 @@ const Settings: NextPage = () => {
           </div>
           <form className={styles.rectangleGroup}>
             <div className={styles.frameItem} />
-            <b className={styles.deleteAccount}>delete account</b>
-            <button className={styles.button}>
+            <b className={styles.deleteAccount} onClick={handleDeleteAccount}>
+              delete account
+            </b>
+            <button className={styles.button} onClick={handleLogOut}>
               <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
               <b className={styles.logOut}>log out</b>
             </button>
-            <button className={styles.button1}>
+            <button className={styles.button1} onClick={handleSubmit}>
               <img
                 className={styles.vuesaxlinearcircleIcon1}
                 alt=""
@@ -30,7 +53,9 @@ const Settings: NextPage = () => {
               />
               <b className={styles.submit}>submit</b>
             </button>
-            <b className={styles.resetPassword}>reset password</b>
+            <b className={styles.resetPassword} onClick={handleResetPassword}>
+              reset password
+            </b>
             <div className={styles.input}>
               <div className={styles.label}>
                 <div className={styles.email}>old password</div>

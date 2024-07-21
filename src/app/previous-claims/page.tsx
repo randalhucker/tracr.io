@@ -1,8 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import Main from '../../components/main';
 import styles from './previous-claims.module.scss';
 
 const PreviousClaims: NextPage = () => {
+  const handleInProgressClick = () => {
+    console.log('In Progress clicked');
+  };
+
+  const handlePendingClick = () => {
+    console.log('Pending clicked');
+  };
+
+  const handleResolvedClick = () => {
+    console.log('Resolved clicked');
+  };
+
   return (
     <div className={styles.previousClaims}>
       <div className={styles.wrapperGroup9}>
@@ -18,7 +31,9 @@ const PreviousClaims: NextPage = () => {
               <div className={styles.inProgressClaimDetails}>
                 <div className={styles.inProgressClaimItems}>
                   <div className={styles.inProgressClaimItem}>
-                    <h1 className={styles.inProgress}>in progress</h1>
+                    <h1 className={styles.inProgress} onClick={handleInProgressClick}>
+                      in progress
+                    </h1>
                   </div>
                   <div className={styles.itemDetailsContainer}>
                     <div className={styles.itemDetails}>
@@ -48,7 +63,9 @@ const PreviousClaims: NextPage = () => {
                           <div className={styles.bearcatCardStatus}>
                             <div className={styles.statusPending}>
                               <span>{`status: `}</span>
-                              <span className={styles.pending}>pending</span>
+                              <span className={styles.pending} onClick={handlePendingClick}>
+                                pending
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -61,7 +78,9 @@ const PreviousClaims: NextPage = () => {
                 </div>
                 <div className={styles.resolvedClaimDetails}>
                   <div className={styles.resolvedClaimItem}>
-                    <h1 className={styles.resolved}>resolved</h1>
+                    <h1 className={styles.resolved} onClick={handleResolvedClick}>
+                      resolved
+                    </h1>
                   </div>
                   <div className={styles.shoesDetailsContainer}>
                     <h1 className={styles.shoes}>Shoes</h1>

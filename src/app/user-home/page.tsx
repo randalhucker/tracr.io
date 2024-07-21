@@ -1,9 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component';
 import Button from '../../components/button';
 import styles from './user-home.module.scss';
 
 const UserHome: NextPage = () => {
+  // Placeholder functions for button clicks
+  const handleCreateNewClaimClick = () => {
+    console.log('Create New Claim button clicked');
+  };
+
+  const handleReportLostItemClick = () => {
+    console.log('Report Lost Item button clicked');
+  };
+
   return (
     <div className={styles.userHome}>
       <div className={styles.wrapperGroup9}>
@@ -26,11 +36,13 @@ const UserHome: NextPage = () => {
                   vuesaxlinearcircle="/vuesaxlinearcircle.svg"
                   createNewClaim="create new claim"
                   page1="/page1.svg"
+                  onClick={handleCreateNewClaimClick} // Pass the function as a prop
                 />
                 <Button
                   vuesaxlinearcircle="/vuesaxlinearcircle.svg"
                   createNewClaim="report lost item"
                   page1="/magnifyingglasssvgrepocom-2-1.svg"
+                  onClick={handleReportLostItemClick} // Pass the function as a prop
                 />
               </div>
             </div>

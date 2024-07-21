@@ -1,9 +1,18 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import Main from '../../components/main';
 import Button from '../../components/button';
 import styles from './message.module.scss';
 
 const Message: NextPage = () => {
+  const handleCreateNewClaim = () => {
+    console.log('Create New Claim button clicked');
+  };
+
+  const handleReportLostItem = () => {
+    console.log('Report Lost Item button clicked');
+  };
+
   return (
     <div className={styles.message}>
       <div className={styles.wrapperGroup9}>
@@ -27,11 +36,13 @@ const Message: NextPage = () => {
                     vuesaxlinearcircle="/vuesaxlinearcircle.svg"
                     createNewClaim="create new claim"
                     page1="/page1.svg"
+                    onClick={handleCreateNewClaim}
                   />
                   <Button
                     vuesaxlinearcircle="/vuesaxlinearcircle.svg"
                     createNewClaim="report lost item"
                     page1="/magnifyingglasssvgrepocom-2-1.svg"
+                    onClick={handleReportLostItem}
                   />
                 </div>
               </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import { TextField, Icon } from '@mui/material';
@@ -8,6 +9,17 @@ import styles from './report-found-item.module.scss';
 
 const ReportFoundItem: NextPage = () => {
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
+
+  const handleUploadImageClick = () => {
+    // Placeholder function for upload image button click
+    console.log('Upload Image button clicked');
+  };
+
+  const handleSubmitClick = () => {
+    // Placeholder function for submit button click
+    console.log('Submit button clicked');
+  };
+
   return (
     <div className={styles.reportFoundItem}>
       <Main group7="/group-7.svg" group8="/group-8.svg" button="/button.svg" />
@@ -62,12 +74,12 @@ const ReportFoundItem: NextPage = () => {
               <img className={styles.frameItem} loading="lazy" alt="" src="/line-4.svg" />
               <img className={styles.frameInner} alt="" src="/line-5.svg" />
             </div>
-            <button className={styles.button}>
+            <button className={styles.button} onClick={handleUploadImageClick}>
               <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
               <b className={styles.uploadImage}>upload image</b>
             </button>
             <div className={styles.foundItemReport}>found item report</div>
-            <button className={styles.button1}>
+            <button className={styles.button1} onClick={handleSubmitClick}>
               <img
                 className={styles.vuesaxlinearcircleIcon1}
                 alt=""

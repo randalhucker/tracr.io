@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import styles from './main.module.css';
 

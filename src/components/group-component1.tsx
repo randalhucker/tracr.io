@@ -1,11 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import styles from './group-component1.module.css';
 
 export type GroupComponent1Type = {
   className?: string;
+  onRegisterClick?: () => void;
 };
 
-const GroupComponent1: NextPage<GroupComponent1Type> = ({ className = '' }) => {
+const GroupComponent1: NextPage<GroupComponent1Type> = ({ className = '', onRegisterClick }) => {
   return (
     <form className={[styles.rectangleParent, className].join(' ')}>
       <div className={styles.frameChild} />
@@ -21,7 +23,7 @@ const GroupComponent1: NextPage<GroupComponent1Type> = ({ className = '' }) => {
       </div>
       <input className={styles.input2} placeholder="confirm password" type="text" />
       <h1 className={styles.letsMakeAn}>let’s make an account</h1>
-      <button className={styles.button}>
+      <button type="button" className={styles.button} onClick={onRegisterClick}>
         <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>register</div>
         <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />

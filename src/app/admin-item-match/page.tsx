@@ -1,8 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import styles from './admin-item-match.module.scss';
 
 const AdminItemMatch: NextPage = () => {
+  const handleMatchClick = (matchNumber: number) => {
+    console.log(`Match button ${matchNumber} clicked`);
+    // Placeholder function for match action
+  };
+
   return (
     <div className={styles.adminItemMatch}>
       <div className={styles.wrapperGroup9}>
@@ -104,15 +110,24 @@ const AdminItemMatch: NextPage = () => {
                           </div>
                         </div>
                         <div className={styles.matchActionButtons}>
-                          <div className={styles.matchActionButtonContainer}>
+                          <div
+                            className={styles.matchActionButtonContainer}
+                            onClick={() => handleMatchClick(1)}
+                          >
                             <img className={styles.buttonIcon} alt="" src="/button-1.svg" />
                             <b className={styles.match}>match</b>
                           </div>
-                          <div className={styles.matchActionButtonContainer1}>
+                          <div
+                            className={styles.matchActionButtonContainer1}
+                            onClick={() => handleMatchClick(2)}
+                          >
                             <img className={styles.buttonIcon1} alt="" src="/button-1.svg" />
                             <b className={styles.match1}>match</b>
                           </div>
-                          <div className={styles.matchActionButtonContainer2}>
+                          <div
+                            className={styles.matchActionButtonContainer2}
+                            onClick={() => handleMatchClick(3)}
+                          >
                             <img className={styles.buttonIcon2} alt="" src="/button-1.svg" />
                             <b className={styles.match2}>match</b>
                           </div>

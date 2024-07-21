@@ -1,14 +1,25 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import Footer from '../../components/footer';
 import styles from './admin-deployment.module.scss';
-// import { useRouter } from 'next/navigation';
-// import { useEffect } from 'react';
-// import useClientSide from '@/hooks/useClientSide';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminDeployment: NextPage = () => {
-  // const router = useRouter();
-  // const isClient = useClientSide();
+  const router = useRouter();
+  const isClient = useClientSide();
+
+  const handleSaveClick = () => {
+    console.log('Save button clicked');
+    // Placeholder function for save action
+  };
+
+  const handleExitClick = () => {
+    console.log('Exit button clicked');
+    // Placeholder function for exit action
+  };
 
   return (
     <div className={styles.adminDeployment}>
@@ -59,13 +70,13 @@ const AdminDeployment: NextPage = () => {
               </div>
               <div className={styles.actions}>
                 <div className={styles.actionButtons}>
-                  <div className={styles.saveAction}>
+                  <div className={styles.saveAction} onClick={handleSaveClick}>
                     <div className={styles.buttonParent}>
                       <img className={styles.buttonIcon} alt="" src="/button-11.svg" />
                       <b className={styles.saveLabel}>+</b>
                     </div>
                   </div>
-                  <div className={styles.exitAction}>
+                  <div className={styles.exitAction} onClick={handleExitClick}>
                     <img className={styles.buttonIcon1} alt="" src="/button-11.svg" />
                     <b className={styles.exitLabel}>+</b>
                   </div>

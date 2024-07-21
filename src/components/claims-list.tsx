@@ -3,9 +3,10 @@ import styles from './claims-list.module.css';
 
 export type ClaimsListType = {
   className?: string;
+  onClaimClick?: () => void; // Added callback prop for handling claim click events
 };
 
-const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
+const ClaimsList: NextPage<ClaimsListType> = ({ className = '', onClaimClick }) => {
   return (
     <div className={[styles.claimsList, className].join(' ')}>
       <div className={styles.claimsListChild} />
@@ -17,7 +18,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
               <h1 className={styles.inProgress}>in progress</h1>
             </div>
             <div className={styles.frameGroup}>
-              <div className={styles.frameContainer}>
+              <div className={styles.frameContainer} onClick={onClaimClick}>
                 <div className={styles.airpodsParent}>
                   <h1 className={styles.airpods}>
                     <p className={styles.airpods1}>AirPods</p>
@@ -36,7 +37,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
                 <div className={styles.duplicateItems}>
                   <div className={styles.duplicateItemDetails} />
                 </div>
-                <div className={styles.frameWrapper}>
+                <div className={styles.frameWrapper} onClick={onClaimClick}>
                   <div className={styles.pendingStatusContainerParent}>
                     <div className={styles.pendingStatusContainer}>
                       <div className={styles.pendingStatusContainerInner}>
@@ -61,7 +62,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
                   </div>
                 </div>
                 <div className={styles.duplicateItems1}>
-                  <div className={styles.frameDiv}>
+                  <div className={styles.frameDiv} onClick={onClaimClick}>
                     <div className={styles.airpodsGroup}>
                       <h1 className={styles.airpods2}>
                         <p className={styles.airpods3}>AirPods</p>
@@ -81,7 +82,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
                   <div className={styles.duplicateItemsChild} />
                 </div>
                 <div className={styles.duplicateItems3}>
-                  <div className={styles.frameParent1}>
+                  <div className={styles.frameParent1} onClick={onClaimClick}>
                     <div className={styles.airpodsContainer}>
                       <h1 className={styles.airpods4}>
                         <p className={styles.airpods5}>AirPods</p>
@@ -100,7 +101,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
                 <div className={styles.duplicateItems4}>
                   <div className={styles.duplicateItemsItem} />
                 </div>
-                <div className={styles.frameParent2}>
+                <div className={styles.frameParent2} onClick={onClaimClick}>
                   <div className={styles.airpodsParent1}>
                     <h1 className={styles.airpods6}>
                       <p className={styles.airpods7}>AirPods</p>
@@ -118,7 +119,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
                 <div className={styles.duplicateItems5}>
                   <div className={styles.duplicateItemsInner} />
                 </div>
-                <div className={styles.unknownItem}>
+                <div className={styles.unknownItem} onClick={onClaimClick}>
                   <b className={styles.what}>what</b>
                 </div>
               </div>
@@ -131,7 +132,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({ className = '' }) => {
             <div className={styles.resolvedTitle}>
               <h1 className={styles.resolved}>resolved</h1>
             </div>
-            <div className={styles.resolvedItems}>
+            <div className={styles.resolvedItems} onClick={onClaimClick}>
               <div className={styles.resolvedItemsInner}>
                 <div className={styles.shoesParent}>
                   <h1 className={styles.shoes}>Shoes</h1>

@@ -1,9 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import ClaimsList from '../../components/claims-list';
 import styles from './index.module.scss';
 
 const AdminLostItems: NextPage = () => {
+  const handleClaimClick = () => {
+    console.log('Claim button clicked');
+    // Placeholder function for claim action
+  };
+
   return (
     <div className={styles.adminLostItems}>
       <div className={styles.wrapperGroup9}>
@@ -17,7 +23,7 @@ const AdminLostItems: NextPage = () => {
       </h1>
       <div className={styles.claimsContentWrapper}>
         <div className={styles.claimsContent}>
-          <ClaimsList />
+          <ClaimsList onClaimClick={handleClaimClick} />
           <div className={styles.footer}>
             <div className={styles.footerContent}>
               <div className={styles.footerDivider} />
