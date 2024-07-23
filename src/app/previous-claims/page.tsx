@@ -6,18 +6,10 @@ import styles from './previous-claims.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 
+
+// Need to either convert to dynamically grabbing the claims and loading them, or account for static claim entries in the demo
+
 const PreviousClaims: NextPage = () => {
-  const handleInProgressClick = () => {
-    console.log('In Progress clicked');
-  };
-
-  const handlePendingClick = () => {
-    console.log('Pending clicked');
-  };
-
-  const handleResolvedClick = () => {
-    console.log('Resolved clicked');
-  };
 
   return (
     <div className={styles.previousClaims}>
@@ -34,7 +26,7 @@ const PreviousClaims: NextPage = () => {
               <div className={styles.inProgressClaimDetails}>
                 <div className={styles.inProgressClaimItems}>
                   <div className={styles.inProgressClaimItem}>
-                    <h1 className={styles.inProgress} onClick={handleInProgressClick}>
+                    <h1 className={styles.inProgress}>
                       in progress
                     </h1>
                   </div>
@@ -66,7 +58,7 @@ const PreviousClaims: NextPage = () => {
                           <div className={styles.bearcatCardStatus}>
                             <div className={styles.statusPending}>
                               <span>{`status: `}</span>
-                              <span className={styles.pending} onClick={handlePendingClick}>
+                              <span className={styles.pending}>
                                 pending
                               </span>
                             </div>
@@ -81,7 +73,7 @@ const PreviousClaims: NextPage = () => {
                 </div>
                 <div className={styles.resolvedClaimDetails}>
                   <div className={styles.resolvedClaimItem}>
-                    <h1 className={styles.resolved} onClick={handleResolvedClick}>
+                    <h1 className={styles.resolved}>
                       resolved
                     </h1>
                   </div>
