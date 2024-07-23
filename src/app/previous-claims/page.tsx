@@ -6,11 +6,9 @@ import styles from './previous-claims.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 
-
 // Need to either convert to dynamically grabbing the claims and loading them, or account for static claim entries in the demo
 
 const PreviousClaims: NextPage = () => {
-
   return (
     <div className={styles.previousClaims}>
       <div className={styles.wrapperGroup9}>
@@ -26,9 +24,7 @@ const PreviousClaims: NextPage = () => {
               <div className={styles.inProgressClaimDetails}>
                 <div className={styles.inProgressClaimItems}>
                   <div className={styles.inProgressClaimItem}>
-                    <h1 className={styles.inProgress}>
-                      in progress
-                    </h1>
+                    <h1 className={styles.inProgress}>in progress</h1>
                   </div>
                   <div className={styles.itemDetailsContainer}>
                     <div className={styles.itemDetails}>
@@ -58,9 +54,7 @@ const PreviousClaims: NextPage = () => {
                           <div className={styles.bearcatCardStatus}>
                             <div className={styles.statusPending}>
                               <span>{`status: `}</span>
-                              <span className={styles.pending}>
-                                pending
-                              </span>
+                              <span className={styles.pending}>pending</span>
                             </div>
                           </div>
                         </div>
@@ -73,9 +67,7 @@ const PreviousClaims: NextPage = () => {
                 </div>
                 <div className={styles.resolvedClaimDetails}>
                   <div className={styles.resolvedClaimItem}>
-                    <h1 className={styles.resolved}>
-                      resolved
-                    </h1>
+                    <h1 className={styles.resolved}>resolved</h1>
                   </div>
                   <div className={styles.shoesDetailsContainer}>
                     <h1 className={styles.shoes}>Shoes</h1>

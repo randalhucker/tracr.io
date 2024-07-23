@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import ClaimsList from '../../components/claims-list';
 import styles from './admin-lost-items.module.scss';
 import { useRouter } from 'next/navigation';
@@ -18,7 +18,7 @@ const AdminLostItems: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
       </div>
-      <FrameComponent group8="/group-8.svg" button="/button.svg" />
+      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
       <h1 className={styles.airpods}>
         <span className={styles.airpodsTxt}>
           <p className={styles.airpods1}>AirPods</p>

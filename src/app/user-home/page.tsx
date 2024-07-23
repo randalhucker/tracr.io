@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component';
+import Main from '../../components/main';
 import Button from '../../components/button';
 import styles from './user-home.module.scss';
 import { useRouter } from 'next/navigation';
@@ -20,12 +20,14 @@ const UserHome: NextPage = () => {
     router.push('/report-lost-item');
   };
 
+  // TODO - Need to fix current claims display once we create the component and dynamically load the claims
+
   return (
     <div className={styles.userHome}>
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/group-22.svg" />
       </div>
-      <FrameComponent />
+      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
       <div className={styles.sidebar}>
         <div className={styles.frameParent}>
           <div className={styles.rectangleParent}>

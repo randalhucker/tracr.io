@@ -49,16 +49,16 @@ const Settings: NextPage = () => {
 
   const handleDeleteAccount = () => {
     // API call to delete account
-    router.push('/login');
+    router.push('/');
   };
 
   const handleLogOut = () => {
-    router.push('/login');
+    router.push('/');
   };
 
   const handleResetPassword = () => {
     // API call to reset password
-    router.push('/login');
+    router.push('/');
   };
 
   const useEffect = () => {

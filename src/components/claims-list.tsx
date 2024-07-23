@@ -1,6 +1,6 @@
 'use client';
 import type { NextPage } from 'next';
-import styles from './claims-list.module.css';
+import styles from './claims-list.module.scss';
 
 export type ClaimsListType = {
   className?: string;

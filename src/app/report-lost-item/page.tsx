@@ -6,12 +6,12 @@ import { TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
-import styles from './report-found-item.module.scss';
+import styles from './report-lost-item.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import MessageBox from '@/components/message-box';
 
-const ReportFoundItem: NextPage = () => {
+const ReportLostItem: NextPage = () => {
   const router = useRouter();
 
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
@@ -25,7 +25,7 @@ const ReportFoundItem: NextPage = () => {
   };
 
   const handleSubmitClick = () => {
-    // API call to submit found item report
+    // API call to submit lost item report
     setShowMessageBox(true); // Show message box on submit
   };
 
@@ -126,4 +126,4 @@ const ReportFoundItem: NextPage = () => {
   );
 };
 
-export default ReportFoundItem;
+export default ReportLostItem;

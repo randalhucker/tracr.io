@@ -6,15 +6,38 @@ import Button from '../../components/button';
 import styles from './message.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
+import { useState } from 'react';
+
+const initialMessages = [
+  { type: 'user', text: 'User message 1' },
+  { type: 'admin', text: 'Admin message 1' },
+  { type: 'user', text: 'User message 2' },
+  { type: 'admin', text: 'Admin message 2' }
+];
 
 const Message: NextPage = () => {
+  const router = useRouter();
+  const isClientSide = useClientSide();
+  const [messages, setMessages] = useState(initialMessages);
+  const [newMessage, setNewMessage] = useState('');
+
   const handleCreateNewClaim = () => {
-    console.log('Create New Claim button clicked');
+    router.push('/create-new-claim');
   };
 
   const handleReportLostItem = () => {
-    console.log('Report Lost Item button clicked');
+    router.push('/report-lost-item');
   };
+
+  const handleSendMessage = () => {
+    if (newMessage.trim() !== '') {
+      // API call to send message
+      setMessages([...messages, { type: 'user', text: newMessage }]);
+      setNewMessage('');
+    }
+  };
+
+  // TODO:: add USE EFFECT to fetch messages from API
 
   return (
     <div className={styles.message}>
@@ -89,35 +112,27 @@ const Message: NextPage = () => {
               </div>
               <div className={styles.messageContainerParent}>
                 <div className={styles.messageContainer}>
-                  <b className={styles.pm}>2:42 PM</b>
-                  <div className={styles.rectangleContainer}>
-                    <div className={styles.frameInner} />
-                    <h3 className={styles.thisIsAn}>this is an automated message</h3>
-                  </div>
-                  <div className={styles.pmWrapper}>
-                    <b className={styles.pm1}>2:45 PM</b>
-                  </div>
-                  <div className={styles.messageElements}>
-                    <textarea
-                      className={styles.messageContent}
-                      placeholder="this is an automated message"
-                      rows={4}
-                      cols={11}
-                    />
-                  </div>
-                  <b className={styles.pm2}>2:50 PM</b>
-                  <div className={styles.messageElements1}>
-                    <div className={styles.frameDiv}>
-                      <div className={styles.rectangleDiv} />
-                      <h3 className={styles.thisIsAn1}>this is an automated message</h3>
+                  {messages.map((message, index) => (
+                    <div
+                      key={index}
+                      className={`${styles.messageWrapper} ${message.type === 'admin' ? styles.adminMessage : styles.userMessage}`}
+                    >
+                      <div className={styles.messageText}>{message.text}</div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-                <div className={styles.rectangleParent1}>
-                  <div className={styles.frameChild1} />
-                  <div className={styles.wrapperButton}>
-                    <img className={styles.buttonIcon} alt="" src="/button-1.svg" />
-                  </div>
+                <div className={styles.inputContainer}>
+                  <textarea
+                    className={styles.textBox}
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    placeholder="Type your message..."
+                    rows={4}
+                    cols={50}
+                  />
+                  <button className={styles.sendButton} onClick={handleSendMessage}>
+                    Send
+                  </button>
                 </div>
               </div>
             </div>

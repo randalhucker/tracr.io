@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import type { NextPage } from 'next';
-import styles from './group-component.module.css';
+import styles from './group-component.module.scss';
 
 export type GroupComponentType = {
   className?: string;

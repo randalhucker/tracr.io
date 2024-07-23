@@ -2,7 +2,7 @@
 'use client';
 import type { NextPage } from 'next';
 import { useMemo, type CSSProperties } from 'react';
-import styles from './footer.module.css';
+import styles from './footer.module.scss';
 
 export type FooterType = {
   className?: string;

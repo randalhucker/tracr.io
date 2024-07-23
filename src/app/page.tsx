@@ -27,6 +27,11 @@ const Login: NextPage = () => {
     setPasswordInput(e.target.value);
   };
 
+  const tempLogin = () => {
+    // Temporarily log in to the user home page
+    router.push('/user-home');
+  }
+
   const attemptLogin = async () => {
     try {
       // Send login request to API (common Login URL now)
@@ -61,7 +66,7 @@ const Login: NextPage = () => {
             }
           } catch (error) {
             window.localStorage.removeItem('token');
-            router.push('/login');
+            router.push('/');
           }
         }
       }
@@ -97,7 +102,7 @@ const Login: NextPage = () => {
           <input type="password" onChange={handlePasswordChange} />
         </label>
       </div>
-      <button className={styles.button} onClick={attemptLogin}>
+      <button className={styles.button} onClick={tempLogin}>
         <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>log in</div>
         <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />

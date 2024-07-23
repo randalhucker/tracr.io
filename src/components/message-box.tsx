@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import React from 'react';
-import styles from './MessageBox.module.scss';
+import styles from './message-box.module.scss';
 
 type MessageBoxProps = {
   message: string;

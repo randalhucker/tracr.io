@@ -9,7 +9,7 @@ import useClientSide from '../hooks/useClientSide';
 
 import './globals.css';
 
-const publicPaths = ['/login', '/signup', '/supplier-auth']; // Add public paths here
+const publicPaths = ['/', '/register']; // Add public paths here
 let userId: number | null = null;
 
 export function setUserId(id: number) {
@@ -26,7 +26,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (isClient) {
-      router.push('/login');
+      router.push('/');
     }
   }, [router, isClient]);
 

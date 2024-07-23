@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import styles from './admin-item-match.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
@@ -17,7 +17,7 @@ const AdminItemMatch: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
       </div>
-      <FrameComponent group8="/group-81.svg" button="/button1.svg" />
+      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
       <div className={styles.lostItemDetailsWrapper}>
         <div className={styles.lostItemDetails}>
           <div className={styles.rectangleParent}>

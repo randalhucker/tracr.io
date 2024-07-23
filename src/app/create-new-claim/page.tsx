@@ -8,18 +8,32 @@ import Main from '../../components/main';
 import styles from './create-new-claim.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
+import MessageBox from '@/components/message-box';
 
 const CreateNewClaim: NextPage = () => {
+  const router = useRouter();
+
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
+  const [description, setDescription] = useState('');
+  const [showMessageBox, setShowMessageBox] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleUploadImageClick = () => {
-    // Placeholder function for upload image button click
     console.log('Upload Image button clicked');
+    // API call to upload image
   };
 
   const handleSubmitClick = () => {
-    // Placeholder function for submit button click
-    console.log('Submit button clicked');
+    // API call to submit lost item claim
+    setShowMessageBox(true); // Show message box on submit
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+  };
+
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(event.target.value);
   };
 
   return (

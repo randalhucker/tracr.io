@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import type { NextPage } from 'next';
-import FrameComponent1 from '../../components/frame-component1';
+import Main from '../../components/main';
 import styles from './admin-home.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
@@ -27,7 +27,7 @@ const AdminHome: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/group-22.svg" />
       </div>
-      <FrameComponent1 />
+      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
       <div className={styles.welcomeContentWrapper}>
         <div className={styles.welcomeContent}>
           <div className={styles.rectangleParent}>
