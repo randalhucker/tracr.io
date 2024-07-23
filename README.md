@@ -1,6 +1,6 @@
-# SillyStuffs API
+# Tracr.io API
 
-This project is an API for an application that manages art, clothing, toys, and other items. It is built using TypeScript leveraging Express.js for REST API calls and PostgreSQL for database storage. The application is containerized using Docker and Docker Compose.
+This project is an API for an application that manages lost and found items. It is built using TypeScript leveraging Express.js for REST API calls and PostgreSQL for database storage. The application is containerized using Docker and Docker Compose.
 
 ## Table of Contents
 
@@ -71,7 +71,7 @@ Before you begin, ensure you have met the following requirements:
 
 For easy testing and integration, we have created a Postman collection that includes all the API endpoints available in this service. You can access the collection using the following public link:
 
-[View the SuperShoppingService Postman Collection](https://www.postman.com/lunar-module-pilot-51980864/workspace/super-shopping-service)
+[View the Tracr.io Postman Collection](https://www.postman.com/database-project-team/workspace/tracr-io)
 
 ## Development
 

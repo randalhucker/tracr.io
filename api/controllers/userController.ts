@@ -1,16 +1,14 @@
 import { Request, Response } from 'express';
 import { prisma } from '../index';
+import { registerUser } from './authController';
 
 /**
  * Create a new user.
  */
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { firstName, lastName, email, password, profilePicture, role } = req.body;
-    const newUser = await prisma.user.create({
-      data: { firstName, lastName, email, password, profilePicture, role }
-    });
-    res.status(201).json(newUser);
+    const user_token = await registerUser(req);
+    res.status(201).json(user_token);
   } catch (error) {
     console.error('Error creating user:', (error as Error).message);
     res.status(500).json({ error: (error as Error).message });
