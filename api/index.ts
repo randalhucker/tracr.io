@@ -9,6 +9,8 @@ import messageRoutes from './routes/messageRoutes';
 import notificationRoutes from './routes/notificationRoutes';
 import buildingRoutes from './routes/buildingRoutes';
 import auditLogRoutes from './routes/auditLogRoutes';
+import authRoutes from './routes/authRoutes';
+import adminRoutes from './routes/adminRoutes';
 
 export const prisma = new PrismaClient();
 const port = 5431;
@@ -16,6 +18,8 @@ const app = express();
 
 app.use(express.json());
 
+app.use('/auth', authRoutes);
+app.use('/admins', adminRoutes);
 app.use('/users', userRoutes);
 app.use('/reports', reportRoutes);
 app.use('/claims', claimRoutes);
