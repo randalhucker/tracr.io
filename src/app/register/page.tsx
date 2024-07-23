@@ -3,6 +3,8 @@
 import type { NextPage } from 'next';
 import GroupComponent1 from '../../components/group-component1';
 import styles from './register.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const Register: NextPage = () => {
   const handleRegisterClick = () => {

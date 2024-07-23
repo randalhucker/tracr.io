@@ -4,6 +4,8 @@ import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import Footer from '../../components/footer';
 import styles from './admin-system-config.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminSystemConfig: NextPage = () => {
   const handleGenerateReport = () => {

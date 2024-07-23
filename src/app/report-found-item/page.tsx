@@ -2,23 +2,39 @@
 'use client';
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { TextField, Icon } from '@mui/material';
+import { TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
 import styles from './report-found-item.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
+import MessageBox from '@/components/message-box';
 
 const ReportFoundItem: NextPage = () => {
+  const router = useRouter();
+
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
+  const [description, setDescription] = useState('');
+  const [showMessageBox, setShowMessageBox] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleUploadImageClick = () => {
-    // Placeholder function for upload image button click
     console.log('Upload Image button clicked');
+    // API call to upload image
   };
 
   const handleSubmitClick = () => {
-    // Placeholder function for submit button click
-    console.log('Submit button clicked');
+    // API call to submit found item report
+    setShowMessageBox(true); // Show message box on submit
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+  };
+
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(event.target.value);
   };
 
   return (
@@ -73,7 +89,14 @@ const ReportFoundItem: NextPage = () => {
                 />
               </LocalizationProvider>
             </div>
-            <textarea className={styles.input3} rows={11} cols={27} />
+            <textarea
+              className={styles.input3}
+              rows={11}
+              cols={27}
+              value={description}
+              onChange={handleDescriptionChange}
+              placeholder="Enter description here"
+            />
             <div className={styles.image1Parent}>
               <img className={styles.image1Icon} alt="" src="/frame-3@3x.png" />
               <img className={styles.frameItem} loading="lazy" alt="" src="/line-4.svg" />
@@ -96,6 +119,9 @@ const ReportFoundItem: NextPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Show MessageBox when claim is filed */}
+      {showMessageBox && <MessageBox message={message} onClose={handleCloseMessageBox} />}
     </div>
   );
 };

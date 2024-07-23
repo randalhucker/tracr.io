@@ -4,15 +4,20 @@ import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component';
 import Button from '../../components/button';
 import styles from './user-home.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const UserHome: NextPage = () => {
+  const router = useRouter();
+  const isClient = useClientSide();
+
   // Placeholder functions for button clicks
   const handleCreateNewClaimClick = () => {
-    console.log('Create New Claim button clicked');
+    router.push('/create-new-claim');
   };
 
   const handleReportLostItemClick = () => {
-    console.log('Report Lost Item button clicked');
+    router.push('/report-lost-item');
   };
 
   return (

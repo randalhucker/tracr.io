@@ -3,20 +3,73 @@
 import type { NextPage } from 'next';
 import GroupComponent from '../components/group-component';
 import styles from './login.module.scss';
-
-// Given the following page and scss file, can you please fix up the code and enter placeholder functions to handle buttons being clicked? There's no need to reprint the scss unless something is changed.
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import { LOGIN_URL } from '@/helpers/api';
+import { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 
 const Login: NextPage = () => {
+  const router = useRouter();
+  const isClient = useClientSide();
+
+  const [email_input, setEmailInput] = useState('');
+  const [password_input, setPasswordInput] = useState('');
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('Email:', e.target.value);
+    // Set form value to given email
+    setEmailInput(e.target.value);
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('Password:', e.target.value);
+    // Set form value to given password
+    setPasswordInput(e.target.value);
   };
 
-  const handleLoginClick = () => {
-    console.log('Log in button clicked');
+  const attemptLogin = async () => {
+    try {
+      // Send login request to API (common Login URL now)
+      const response = await fetch(LOGIN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email_input,
+          password: password_input
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Handle successful API call, push to correct home page (same as useEffect code above)
+      if (isClient) {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+          try {
+            // TODO: add basic token stuff so we can easily get the role of the user/admin
+            const decoded = jwtDecode<DecodedToken>(token);
+            if (decoded.role === 'user') {
+              router.push('/user-home');
+            } else if (decoded.role === 'admin') {
+              router.push('/admin-home');
+            } else {
+              throw new Error('Invalid role');
+            }
+          } catch (error) {
+            window.localStorage.removeItem('token');
+            router.push('/login');
+          }
+        }
+      }
+
+      console.log('API call successful');
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
   };
 
   return (
@@ -44,7 +97,7 @@ const Login: NextPage = () => {
           <input type="password" onChange={handlePasswordChange} />
         </label>
       </div>
-      <button className={styles.button} onClick={handleLoginClick}>
+      <button className={styles.button} onClick={attemptLogin}>
         <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>log in</div>
         <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />

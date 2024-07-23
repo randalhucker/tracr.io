@@ -4,6 +4,8 @@ import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import ClaimsList from '../../components/claims-list';
 import styles from './admin-lost-items.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminLostItems: NextPage = () => {
   const handleClaimClick = () => {

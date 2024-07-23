@@ -3,6 +3,8 @@
 import type { NextPage } from 'next';
 import Main from '../../components/main';
 import styles from './previous-claims.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const PreviousClaims: NextPage = () => {
   const handleInProgressClick = () => {

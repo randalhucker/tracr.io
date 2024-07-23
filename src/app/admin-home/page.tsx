@@ -3,6 +3,8 @@
 import type { NextPage } from 'next';
 import FrameComponent1 from '../../components/frame-component1';
 import styles from './admin-home.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminHome: NextPage = () => {
   const handleManageLostItemsClick = () => {

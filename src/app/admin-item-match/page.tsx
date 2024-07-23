@@ -3,6 +3,8 @@
 import type { NextPage } from 'next';
 import FrameComponent from '../../components/frame-component2';
 import styles from './admin-item-match.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminItemMatch: NextPage = () => {
   const handleMatchClick = (matchNumber: number) => {

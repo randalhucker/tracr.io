@@ -4,6 +4,8 @@ import type { NextPage } from 'next';
 import Main from '../../components/main';
 import Button from '../../components/button';
 import styles from './message.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const Message: NextPage = () => {
   const handleCreateNewClaim = () => {
