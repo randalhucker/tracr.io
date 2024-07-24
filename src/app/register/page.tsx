@@ -78,7 +78,7 @@ const Register: NextPage = () => {
               />
             </div>
           </div>
-          <h1 className={styles.letsMakeAn}>let’s make an account</h1>
+          <h1 className={styles.letsMakeAn}>Let’s make an account</h1>
           <button type="button" className={styles.button} onClick={handleRegisterClick}>
             <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
             <div className={styles.button1}>register</div>

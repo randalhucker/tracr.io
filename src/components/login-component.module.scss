@@ -46,16 +46,6 @@
   height: 100%;
   display: none;
 }
-.email {
-  position: relative;
-  font-size: var(--font-size-sm);
-  line-height: 36px;
-  font-family: var(--text-base-leading-6-font-medium);
-  color: var(--colors-base-danger);
-  text-align: left;
-  display: inline-block;
-  min-width: 35px;
-}
 .input,
 .label {
   position: absolute;
@@ -82,12 +72,18 @@
   height: 64px;
   z-index: 4;
 }
-.email1 {
+.textInput {
   position: relative;
-  font-size: var(--font-size-sm);
+  width: 100%;
   line-height: 36px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: var(--font-size-sm);
   font-family: var(--text-base-leading-6-font-medium);
   color: var(--colors-base-danger);
+  background-color: var(--colors-base-danger-50);
+  user-select: none;
   text-align: left;
   display: inline-block;
   min-width: 65px;
