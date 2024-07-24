@@ -91,8 +91,8 @@ const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
 
   return (
     <form className={[styles.tracrioParent, className].join(' ')}>
-      <div className={styles.tracrio}>tracr.io</div>
-      <b className={styles.findYourStuff}>find your stuff</b>
+      <h1 className={styles.tracrio1}>tracr.io</h1>
+      <h1 className={styles.findYourStuff1}>find your stuff</h1>
       <b className={styles.forgotYourPassword}>forgot your password?</b>
       <b className={styles.dontHaveAnContainer}>
         don’t have an account?
@@ -121,18 +121,16 @@ const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
           />
         </div>
       </div>
-      <h1 className={styles.tracrio1}>tracr.io</h1>
-      <h1 className={styles.findYourStuff1}>find your stuff</h1>
       <b className={styles.forgotYourPassword1}>forgot your password?</b>
-      <b className={styles.dontHaveAnContainer1}>
-        don’t have an account?
-        <span className={styles.makeOne1} onClick={handleMakeOneClick}> make one</span>
-      </b>
       <button className={styles.button} type="button" onClick={tempLogin}>
         <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>log in</div>
         <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />
       </button>
+      <b className={styles.dontHaveAnContainer1}>
+        don’t have an account?
+        <span className={styles.makeOne1} onClick={handleMakeOneClick}> make one</span>
+      </b>
     </form>
   );
 };

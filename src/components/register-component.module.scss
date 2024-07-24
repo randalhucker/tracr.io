@@ -1,3 +1,17 @@
+.tracrio {
+  position: absolute;
+  font-family: var(--text-base-leading-6-font-medium);
+  text-align: left;
+  z-index: 4;
+}
+.tracrio {
+  margin: 0;
+  top: 106px;
+  left: 215px;
+  font-size: var(--font-size-77xl);
+  font-weight: 400;
+  color: var(--color-red-200);
+}
 .frameChild {
   position: absolute;
   top: 0;
@@ -8,15 +22,47 @@
   height: 100%;
   display: none;
 }
-.email {
+.textInput {
   position: relative;
-  font-size: var(--font-size-sm);
+  width: 100%;
   line-height: 36px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: var(--font-size-sm);
   font-family: var(--text-base-leading-6-font-medium);
   color: var(--colors-base-danger);
+  background-color: var(--colors-base-danger-50);
+  user-select: none;
   text-align: left;
   display: inline-block;
-  min-width: 35px;
+  min-width: 65px;
+}
+.input3,
+.label3 {
+  position: absolute;
+}
+.label3 {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  width: 514px;
+}
+.input3 {
+  top: 232px;
+  left: 99px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
+  height: 64px;
+  z-index: 2;
 }
 .input,
 .label {
@@ -32,7 +78,7 @@
   justify-content: flex-start;
   padding: 0 var(--padding-5xs) 0 0;
   box-sizing: border-box;
-  max-width: 280px;
+  width: 514px;
 }
 .input {
   top: 309px;
@@ -43,16 +89,6 @@
   width: 544px;
   height: 64px;
   z-index: 2;
-}
-.email1 {
-  position: relative;
-  font-size: var(--font-size-sm);
-  line-height: 36px;
-  font-family: var(--text-base-leading-6-font-medium);
-  color: var(--colors-base-danger);
-  text-align: left;
-  display: inline-block;
-  min-width: 65px;
 }
 .input1,
 .label1 {
@@ -68,7 +104,7 @@
   justify-content: flex-start;
   padding: 0 var(--padding-5xs) 0 0;
   box-sizing: border-box;
-  max-width: 280px;
+  width: 514px;
 }
 .input1 {
   top: 431px;
@@ -81,34 +117,30 @@
   z-index: 2;
 }
 .input2,
-.letsMakeAn {
+.label2 {
   position: absolute;
-  font-family: var(--text-base-leading-6-font-medium);
-  z-index: 2;
+}
+.label2 {
+  top: 14px;
+  left: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  width: 514px;
 }
 .input2 {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  background-color: var(--colors-base-danger-50);
   top: 508px;
   left: 99px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-50);
+  width: 544px;
   height: 64px;
-  padding: var(--padding-sm) var(--padding-xs);
-  box-sizing: border-box;
-  font-size: var(--font-size-sm);
-  color: var(--colors-base-danger);
-}
-.letsMakeAn {
-  margin: 0;
-  top: 150px;
-  left: 204px;
-  font-size: var(--font-size-13xl);
-  font-weight: 700;
-  color: var(--color-black);
-  text-align: left;
+  z-index: 2;
 }
 .vuesaxlinearcircleIcon {
   height: 24px;
@@ -116,45 +148,11 @@
   position: relative;
   display: none;
 }
-.button1 {
-  width: 100px;
-  position: relative;
-  font-size: var(--text-base-leading-6-font-medium-size);
-  line-height: 24px;
-  font-weight: 500;
-  font-family: var(--text-base-leading-6-font-medium);
-  color: var(--colors-base-danger-foreground);
-  text-align: left;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  padding-left: var(--padding-xl);
-  padding-right: var(--padding-xl);
-}
 .vuesaxlinearcircleIcon1 {
   height: 24px;
   width: 24px;
   position: relative;
   display: none;
-}
-.button {
-  cursor: pointer;
-  border: 0;
-  padding: 0 var(--padding-base);
-  background-color: var(--colors-base-danger);
-  position: absolute;
-  top: 630px;
-  left: 104px;
-  border-radius: var(--br-mini);
-  width: 539px;
-  height: 55px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  gap: var(--gap-xs);
-  z-index: 2;
 }
 .affiliatedInstitution {
   text-decoration: underline;
@@ -181,12 +179,62 @@
   height: 788px;
   z-index: 1;
 }
+.button1 {
+  width: 82px;
+  position: relative;
+  font-size: var(--text-base-leading-6-font-medium-size);
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--text-base-leading-6-font-medium);
+  color: var(--colors-base-danger-foreground);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding-left: var(--padding-xl);
+  padding-right: var(--padding-xl);
+}
+.vuesaxlinearcircleIcon1 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  display: none;
+}
+.button,
+.tracrioParent {
+  position: absolute;
+  border-radius: var(--br-mini);
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: 0 var(--padding-base);
+  background-color: var(--colors-base-danger);
+  top: 593px;
+  left: 99px;
+  width: 544px;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--gap-xs);
+  z-index: 4;
+}
 @media screen and (max-width: 767px) {
+  .tracrio {
+    font-size: var(--font-size-29xl);
+  }
   .letsMakeAn {
     font-size: var(--font-size-7xl);
   }
 }
 @media screen and (max-width: 450px) {
+  .tracrio {
+    font-size: var(--font-size-10xl);
+  }
   .letsMakeAn {
     font-size: var(--font-size-lgi);
   }

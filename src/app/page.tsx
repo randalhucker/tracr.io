@@ -3,12 +3,6 @@
 import type { NextPage } from 'next';
 import LoginComponent from '../components/login-component';
 import styles from './login.module.scss';
-import { useRouter } from 'next/navigation';
-import useClientSide from '@/hooks/useClientSide';
-import { DecodedToken } from '@/hooks/useRoleAuth';
-import { LOGIN_URL } from '@/helpers/api';
-import { useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
 
 const Login: NextPage = () => {
   return (
@@ -23,29 +17,6 @@ const Login: NextPage = () => {
           <div className={styles.frameInner} />
           <LoginComponent />
         </div>
-      </div>
-      <div className={styles.input}>
-        <div className={styles.label}>
-          <div className={styles.email}>email</div>
-        </div>
-      </div>
-      <div className={styles.input1}>
-        <div className={styles.label1}>
-          <div className={styles.email1}>password</div>
-        </div>
-      </div>
-      <div className={styles.button}>
-        <img
-          className={styles.vuesaxlinearcircleIcon}
-          alt=""
-          src="/vuesaxlinearcircle.svg"
-        />
-        <div className={styles.button1}>log in</div>
-        <img
-          className={styles.vuesaxlinearcircleIcon1}
-          alt=""
-          src="/vuesaxlinearcircle.svg"
-        />
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-.findYourStuff,
 .forgotYourPassword,
 .tracrio {
   position: absolute;
@@ -10,7 +9,6 @@
   text-align: left;
   display: none;
 }
-.findYourStuff,
 .forgotYourPassword {
   top: 230px;
   left: 262px;
@@ -60,7 +58,7 @@
   justify-content: flex-start;
   padding: 0 var(--padding-5xs) 0 0;
   box-sizing: border-box;
-  max-width: 280px;
+  width: 514px;
 }
 .input {
   top: 378px;
@@ -102,7 +100,7 @@
   justify-content: flex-start;
   padding: 0 var(--padding-5xs) 0 0;
   box-sizing: border-box;
-  max-width: 280px;
+  width: 514px;
 }
 .input1 {
   top: 474px;
@@ -199,8 +197,8 @@
   padding: 0 var(--padding-base);
   background-color: var(--colors-base-danger);
   top: 593px;
-  left: 106px;
-  width: 539px;
+  left: 99px;
+  width: 544px;
   height: 55px;
   display: flex;
   flex-direction: row;
@@ -224,9 +222,6 @@
   .tracrio {
     font-size: var(--font-size-29xl);
   }
-  .findYourStuff {
-    font-size: var(--font-size-7xl);
-  }
   .tracrio1 {
     font-size: var(--font-size-29xl);
   }
@@ -237,9 +232,6 @@
 @media screen and (max-width: 450px) {
   .tracrio {
     font-size: var(--font-size-10xl);
-  }
-  .findYourStuff {
-    font-size: var(--font-size-lgi);
   }
   .tracrio1 {
     font-size: var(--font-size-10xl);

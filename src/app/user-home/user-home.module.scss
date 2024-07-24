@@ -42,7 +42,14 @@
   z-index: 1;
   font-family: inherit;
 }
-.actionButtons,
+.actionButtons {
+  color: var(--colors-base-danger-foreground, #FFF);
+  font-family: --font-inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 75% */
+}
 .welcomeBackUserParent {
   display: flex;
   flex-direction: column;
