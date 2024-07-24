@@ -7,10 +7,6 @@ import styles from './login.module.scss';
 const Login: NextPage = () => {
   return (
     <div className={styles.login}>
-      <div className={styles.rectangleParent}>
-        <div className={styles.frameChild} />
-        <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-      </div>
       <div className={styles.frameParent}>
         <img className={styles.frameItem} alt="" src="/group-22.svg" />
         <div className={styles.rectangleGroup}>

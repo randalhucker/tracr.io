@@ -123,9 +123,7 @@ const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
       </div>
       <b className={styles.forgotYourPassword1}>forgot your password?</b>
       <button className={styles.button} type="button" onClick={tempLogin}>
-        <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>log in</div>
-        <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />
       </button>
       <b className={styles.dontHaveAnContainer1}>
         don’t have an account?

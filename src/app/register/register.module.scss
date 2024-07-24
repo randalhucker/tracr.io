@@ -1,3 +1,41 @@
+.register {
+  width: 100%;
+  height: 1080px;
+  position: relative;
+  background-color: var(--colors-base-danger-foreground);
+  overflow: hidden;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--colors-base-danger);
+  font-family: var(--text-base-leading-6-font-medium);
+}
+.frameParent {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  margin: 0 !important;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  background-image: url('/group-22.svg'); // Specify the path to your SVG image
+  background-size: cover; // Ensure the image covers the entire window
+  background-position: center; // Center the background image
+  background-repeat: no-repeat; // Prevent the background image from repeating
+}
+.frameItem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
 .frameChild {
   position: absolute;
   top: 0;

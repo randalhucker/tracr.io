@@ -1,23 +1,43 @@
-.wrapperGroup9Child {
+.userHome {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  position: absolute;
-  left: 0;
-  top: 15px;
-  transform: scale(1.025);
+  height: 1080px;
+  position: relative;
+  background-color: var(--colors-base-danger-foreground);
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-64xl);
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--font-size-43xl);
+  color: var(--color-black);
+  font-family: var(--text-base-leading-6-font-medium);
 }
 .wrapperGroup9 {
-  width: 2037px;
-  height: 1326px;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   margin: 0 !important;
-  bottom: -157px;
-  left: -84px;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 0;
+  background-image: url('/group-22.svg'); // Specify the path to your SVG image
+  background-size: cover; // Ensure the image covers the entire window
+  background-position: center; // Center the background image
+  background-repeat: no-repeat; // Prevent the background image from repeating
+}
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .frameChild {
   height: 788px;
@@ -43,23 +63,18 @@
   font-family: inherit;
 }
 .actionButtons {
-  color: var(--colors-base-danger-foreground, #FFF);
-  font-family: --font-inter;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 24px; /* 75% */
+  display: flex;
+  flex-direction: column;
+  gap: 60px; // Adjust this value to increase the gap between buttons 
 }
-.welcomeBackUserParent {
+  .welcomeBackUserParent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 63px;
+  gap: 60px;
   max-width: 100%;
-}
-.welcomeBackUserParent {
-  gap: 137px;
+  height: 100%;
 }
 .currentClaims1 {
   margin: 0;
@@ -219,9 +234,10 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding: var(--padding-69xl) 68px 202px var(--padding-62xl);
+  padding: var(--padding-62xl);
   box-sizing: border-box;
   max-width: 100%;
+  max-height: 100%;
   gap: var(--gap-xl);
 }
 .copyrightChild {
@@ -262,6 +278,7 @@
 }
 .frameParent {
   width: 1164px;
+  height: 600px;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
@@ -282,6 +299,7 @@
 }
 .userHome {
   width: 100%;
+  height: 1080px;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;

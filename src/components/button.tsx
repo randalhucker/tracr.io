@@ -4,18 +4,16 @@ import React from 'react';
 import styles from './button.module.scss';
 
 interface ButtonProps {
-  vuesaxlinearcircle: string;
-  createNewClaim: string;
-  page1: string;
+  text: string;
+  icon: string;
   onClick?: () => void; // Add onClick prop
 }
 
-const Button: React.FC<ButtonProps> = ({ vuesaxlinearcircle, createNewClaim, page1, onClick }) => {
+const Button: React.FC<ButtonProps> = ({text, icon, onClick }) => {
   return (
     <button className={styles.button} onClick={onClick}>
-      <img className={styles.vuesaxlinearcircleIcon} alt="" src={vuesaxlinearcircle} />
-      <div className={styles.buttonText}>{createNewClaim}</div>
-      <img className={styles.page1Icon} alt="" src={page1} />
+      <div className={styles.text}>{text}</div>
+      <img className={styles.icon} alt="" src={icon} />
     </button>
   );
 };
