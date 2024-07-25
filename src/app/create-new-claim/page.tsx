@@ -20,7 +20,8 @@ const CreateNewClaim: NextPage = () => {
     lat: '',
     long: '',
     date: null,
-    description: ''
+    description: '',
+    location: '',
   };
 
   const handleUploadImageClick = () => {

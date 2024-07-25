@@ -1,3 +1,8 @@
+.dropdownParent {
+  position: absolute;
+  top: 157px;
+  left: 42px;
+}
 .footerContentChild {
   position: absolute;
   top: 0;
@@ -74,10 +79,10 @@
 }
 .dateFound,
 .image {
-  top: 611px;
+  top: 651px;
 }
 .dateFound {
-  top: 467px;
+  top: 487px;
 }
 .label {
   width: 100%;
@@ -99,7 +104,7 @@
   max-width: 280px;
 }
 .input {
-  top: 670px;
+  top: 710px;
   left: 55px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
   border-radius: var(--br-sm);
@@ -133,7 +138,7 @@
   max-width: 280px;
 }
 .input1 {
-  top: 670px;
+  top: 710px;
   left: 281px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
   border-radius: var(--br-sm);
@@ -175,7 +180,7 @@
   z-index: 2;
 }
 .input2 {
-  top: 519px;
+  top: 539px;
   width: 200px;
   height: 48px;
   font-size: var(--font-size-sm);
@@ -218,7 +223,7 @@
   z-index: 4;
 }
 .image1Parent {
-  top: 192px;
+  top: 232px;
   left: 42px;
   border-radius: var(--br-mini);
   width: 451px;
@@ -259,7 +264,7 @@
   border: 0;
   padding: 0;
   background-color: var(--colors-base-danger);
-  top: 670px;
+  top: 710px;
   left: 586px;
   box-shadow: var(--shadow-danger-lg);
   border-radius: var(--br-xs);
@@ -314,7 +319,7 @@
   border: 0;
   padding: 0;
   background-color: var(--colors-base-danger);
-  top: 670px;
+  top: 710px;
   left: 923px;
   box-shadow: var(--shadow-danger-lg);
   border-radius: var(--br-xs);
@@ -374,6 +379,10 @@
   font-size: var(--font-size-mini);
   color: var(--color-black);
   font-family: var(--font-inter);
+}
+.dropdown {
+  top: 300;
+  left: 200;
 }
 @media screen and (max-width: 950px) {
   .dateFound,

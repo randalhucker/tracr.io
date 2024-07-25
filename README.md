@@ -111,3 +111,9 @@ The following scripts are available in the package.json:
 - start - Starts the compiled JavaScript application.
 - build - Compiles the TypeScript source code into JavaScript.
 - dev - Starts the application in development mode with ts-node-dev.
+
+
+
+## DEMO Tasks
+
+1. Log in as admin
