@@ -42,7 +42,7 @@ const ReportFoundItem: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
-    router.push('/user-home'); 
+    router.push('/user-home');
   };
 
   return (
@@ -53,7 +53,7 @@ const ReportFoundItem: NextPage = () => {
           <div className={styles.wrapperGroup9}>
             <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
           </div>
-          <ReportComponent formTitle='found item report' onSubmit={handleComponentSubmit} />
+          <ReportComponent formTitle="found item report" onSubmit={handleComponentSubmit} />
         </div>
       </div>
       {/* Show MessageBox when claim is filed */}

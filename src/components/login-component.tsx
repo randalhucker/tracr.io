@@ -43,50 +43,50 @@ const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
     router.push('/register');
   };
 
-  // const attemptLogin = async () => {
-  //   try {
-  //     // Send login request to API (common Login URL now)
-  //     const response = await fetch(LOGIN_URL, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({
-  //         email: email_input,
-  //         password: password_input
-  //       })
-  //     });
+  const attemptLogin = async () => {
+    try {
+      // Send login request to API (common Login URL now)
+      const response = await fetch(LOGIN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email_input,
+          password: password_input
+        })
+      });
 
-  //     if (!response.ok) {
-  //       throw new Error('Network response was not ok');
-  //     }
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-  //     // Handle successful API call, push to correct home page (same as useEffect code above)
-  //     if (isClient) {
-  //       const token = window.localStorage.getItem('token');
-  //       if (token) {
-  //         try {
-  //           // TODO: add basic token stuff so we can easily get the role of the user/admin
-  //           const decoded = jwtDecode<DecodedToken>(token);
-  //           if (decoded.role === 'user') {
-  //             router.push('/user-home');
-  //           } else if (decoded.role === 'admin') {
-  //             router.push('/admin-home');
-  //           } else {
-  //             throw new Error('Invalid role');
-  //           }
-  //         } catch (error) {
-  //           window.localStorage.removeItem('token');
-  //           router.push('/');
-  //         }
-  //       }
-  //     }
+      // Handle successful API call, push to correct home page (same as useEffect code above)
+      if (isClient) {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+          try {
+            // TODO: add basic token stuff so we can easily get the role of the user/admin
+            const decoded = jwtDecode<DecodedToken>(token);
+            if (decoded.role === 'user') {
+              router.push('/user-home');
+            } else if (decoded.role === 'admin') {
+              router.push('/admin-home');
+            } else {
+              throw new Error('Invalid role');
+            }
+          } catch (error) {
+            window.localStorage.removeItem('token');
+            router.push('/');
+          }
+        }
+      }
 
-  //     console.log('API call successful');
-  //   } catch (error) {
-  //     console.error('There has been a problem with your fetch operation:', error);
-  //   }
-  // };
+      console.log('API call successful');
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
+  };
 
   return (
     <form className={[styles.tracrioParent, className].join(' ')}>
@@ -124,7 +124,7 @@ const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
         </div>
       </div>
       <b className={styles.forgotYourPassword1}>forgot your password?</b>
-      <button className={styles.button} type="button" onClick={tempLogin}>
+      <button className={styles.button} type="button" onClick={attemptLogin}>
         <div className={styles.button1}>log in</div>
       </button>
       <b className={styles.dontHaveAnContainer1}>

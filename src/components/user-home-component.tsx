@@ -6,8 +6,8 @@ import styles from '../app/user-home/user-home.module.scss';
 import { useRouter } from 'next/navigation';
 
 export type UserHomeComponentType = {
-    className?: string;
-  };
+  className?: string;
+};
 
 const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) => {
   const router = useRouter();
