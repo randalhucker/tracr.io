@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../index';
 import { registerUser } from './authController';
+import { hashPassword } from '../utils/auth';
 
 /**
  * Create a new user.
@@ -41,7 +42,11 @@ export const getUserDetails = async (req: Request, res: Response): Promise<void>
 export const updateUserDetails = async (req: Request, res: Response): Promise<void> => {
   try {
     const { userId } = req.params;
-    const { firstName, lastName, email, password, profilePicture, role } = req.body;
+    const { firstName, lastName, email, profilePicture, role } = req.body;
+    let { password } = req.body;
+    if (password) {
+      password = await hashPassword(password);
+    }
     const updatedUser = await prisma.user.update({
       where: { id: parseInt(userId) },
       data: { firstName, lastName, email, password, profilePicture, role }
@@ -65,6 +70,22 @@ export const deleteUserAccount = async (req: Request, res: Response): Promise<vo
     res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
     console.error('Error deleting user:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+/**
+ * Getting a users messages.
+ */
+export const getUserMessages = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { userId } = req.params;
+    const messages = await prisma.message.findMany({
+      where: { receiverUserId: parseInt(userId) }
+    });
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error('Error fetching user messages:', (error as Error).message);
     res.status(500).json({ error: (error as Error).message });
   }
 };

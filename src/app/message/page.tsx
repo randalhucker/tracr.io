@@ -6,8 +6,11 @@ import Button from '../../components/button';
 import styles from './message.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserHomeComponent from '@/components/user-home-component';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 
 const initialMessages = [
   { type: 'user', text: 'User message 1' },
@@ -18,7 +21,7 @@ const initialMessages = [
 
 const Message: NextPage = () => {
   const router = useRouter();
-  const isClientSide = useClientSide();
+  const isClient = useClientSide();
   const [messages, setMessages] = useState(initialMessages);
   const [newMessage, setNewMessage] = useState('');
 
@@ -30,15 +33,74 @@ const Message: NextPage = () => {
     router.push('/report-lost-item');
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage.trim() !== '') {
-      // API call to send message
-      setMessages([...messages, { type: 'user', text: newMessage }]);
-      setNewMessage('');
+      console.log('Sending Message...');
+      try {
+        if (isClient) {
+          const token = window.localStorage.getItem('token');
+          if (token) {
+            const decoded = jwtDecode<DecodedToken>(token);
+            const response = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.MESSAGE), {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              // TODO: Update receiverUserId to the actual user id
+              body: JSON.stringify({
+                content: newMessage,
+                senderUserId: decoded.id,
+                receiverUserId: 1,
+                senderAdminId: null,
+                receiverAdminId: null
+              })
+            });
+
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+
+            setMessages([...messages, { type: 'user', text: newMessage }]);
+            setNewMessage('');
+          }
+        }
+      } catch (error) {
+        console.error('Error creating message:', error);
+      }
     }
   };
 
-  // TODO:: add USE EFFECT to fetch messages from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          const token = window.localStorage.getItem('token');
+          if (token) {
+            const decoded = jwtDecode<DecodedToken>(token);
+            const response = await fetch(
+              buildTwoEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id, EntityType.MESSAGE),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+
+            const userData = await response.json();
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [isClient]);
 
   return (
     <div className={styles.message}>

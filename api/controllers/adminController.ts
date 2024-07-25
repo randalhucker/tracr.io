@@ -1,35 +1,16 @@
 import { Request, Response } from 'express';
 import { prisma } from '../index';
+import { registerAdmin } from './authController';
 
 /**
  * Create a new admin.
  */
 export const createAdmin = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { firstName, lastName, email, password, profilePicture } = req.body;
-
-    // Create a new user
-    const newUser = await prisma.user.create({
-      data: {
-        firstName,
-        lastName,
-        email,
-        password,
-        profilePicture,
-        role: 'ADMIN'
-      }
-    });
-
-    // Create an admin and associate with the new user
-    const newAdmin = await prisma.admin.create({
-      data: {
-        userId: newUser.id
-      }
-    });
-
-    res.status(201).json(newAdmin);
+    const user_token = await registerAdmin(req);
+    res.status(201).json(user_token);
   } catch (error) {
-    console.error('Error creating admin:', (error as Error).message);
+    console.error('Error creating user:', (error as Error).message);
     res.status(500).json({ error: (error as Error).message });
   }
 };

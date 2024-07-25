@@ -39,6 +39,13 @@ export const registerAdmin = async (data: Request) => {
       password: await hashPassword(data.body.password)
     }
   });
+
+  await prisma.admin.create({
+    data: {
+      userId: admin.id
+    }
+  });
+
   const token = jwt.sign(
     { id: admin.id, email: admin.email, role: UserRole.ADMIN },
     process.env.ACCESS_TOKEN_SECRET as string,

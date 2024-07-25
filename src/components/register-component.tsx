@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import styles from './register-component.module.scss';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
 
 export type RegisterComponentType = {
   className?: string;
@@ -49,8 +52,57 @@ const RegisterComponent: NextPage<RegisterComponentType> = ({
     router.push('/user-home');
   };
 
-  const attemptRegister = () => {
-    // API call to register user
+  const attemptRegister = async () => {
+    try {
+      const nameParts = name_input.split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ');
+      // Send login request to API (common Login URL now)
+      const response = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.USER), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          email: email_input,
+          password: password_input,
+          role: 'USER'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Handle successful API call, push to correct home page (same as useEffect code above)
+      if (isClient) {
+        const token = await response.text();
+        if (token) {
+          window.localStorage.setItem('token', token);
+          try {
+            const decoded = jwtDecode<DecodedToken>(token);
+            if (decoded.role === 'USER') {
+              // TODO: Change push to customer home page once it is written
+              router.push('/user-home');
+            } else if (decoded.role === 'ADMIN') {
+              // TODO: Change push to staff home page once it is written
+              router.push('/staff-home');
+            } else {
+              throw new Error('Invalid role');
+            }
+          } catch (error) {
+            window.localStorage.removeItem('token');
+            router.push('/register');
+          }
+        }
+      }
+
+      console.log('API call successful');
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
   };
 
   return (
@@ -105,7 +157,7 @@ const RegisterComponent: NextPage<RegisterComponentType> = ({
           />
         </div>
       </div>
-      <button className={styles.button} type="button" onClick={tempRegister}>
+      <button className={styles.button} type="button" onClick={attemptRegister}>
         <div className={styles.button1}>register</div>
       </button>
     </form>

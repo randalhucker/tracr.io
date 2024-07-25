@@ -6,6 +6,9 @@ import styles from './settings.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 
 const Settings: NextPage = () => {
   const router = useRouter();
@@ -38,33 +41,110 @@ const Settings: NextPage = () => {
     setLastName(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('Submitting form...');
-    // API call to update user data
-    router.push('user-home');
+    try {
+      if (isClient) {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+          const decoded = jwtDecode<DecodedToken>(token);
+          const response = await fetch(
+            buildOneEntityUrl(HttpMethod.PUT, EntityType.USER, decoded.id),
+            {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                firstName: firstName_input,
+                lastName: lastName_input,
+                email: email,
+                password: newPassword_input,
+                role: 'USER'
+              })
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+
+          router.push('user-home');
+        }
+      }
+    } catch (error) {
+      console.error('Error updating account:', error);
+    }
   };
 
-  const handleDeleteAccount = () => {
+  const handleDeleteAccount = async () => {
     console.log('Deleting account...');
-    // API call to delete account
-    router.push('/');
+    try {
+      if (isClient) {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+          const decoded = jwtDecode<DecodedToken>(token);
+          const response = await fetch(
+            buildOneEntityUrl(HttpMethod.DELETE, EntityType.USER, decoded.id),
+            {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          router.push('/');
+        }
+      }
+    } catch (error) {
+      console.error('Error deleting account:', error);
+    }
   };
 
   const handleLogOut = () => {
     console.log('Logging out...');
-    // API call to log out
+    window.localStorage.removeItem('token');
     router.push('/');
   };
 
   useEffect(() => {
-    if (isClient) {
-      // API call to get user data (to display name and email)
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          const token = window.localStorage.getItem('token');
+          if (token) {
+            const decoded = jwtDecode<DecodedToken>(token);
+            const response = await fetch(
+              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
 
-      // set user data
-      setFirstName('temp');
-      setLastName('temp');
-      setEmail('temp');
-    }
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+
+            const userData = await response.json();
+            // Assuming userData contains fields for firstName, lastName, and email
+            setFirstName(userData.firstName);
+            setLastName(userData.lastName);
+            setEmail(userData.email);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [isClient]);
 
   return (

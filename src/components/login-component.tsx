@@ -68,9 +68,9 @@ const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
           try {
             // TODO: add basic token stuff so we can easily get the role of the user/admin
             const decoded = jwtDecode<DecodedToken>(token);
-            if (decoded.role === 'user') {
+            if (decoded.role === 'USER') {
               router.push('/user-home');
-            } else if (decoded.role === 'admin') {
+            } else if (decoded.role === 'ADMIN') {
               router.push('/admin-home');
             } else {
               throw new Error('Invalid role');

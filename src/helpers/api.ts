@@ -7,16 +7,15 @@ export enum HttpMethod {
 
 // Entity types for API calls
 export enum EntityType {
-  CUSTOMER = 'customers',
-  ADDRESS = 'address',
-  CREDIT_CARD = 'creditCard',
-  CART = 'cart',
-  ORDER = 'order',
-  PRODUCT = 'products',
-  STAFF = 'staff',
-  STOCK = 'stock',
-  SUPPLIER = 'supplier',
-  WAREHOUSE = 'warehouse'
+  ADMIN = 'admins',
+  AUDIT_LOG = 'auditLogs',
+  BUILDING = 'buildings',
+  CLAIM = 'claims',
+  ITEM = 'items',
+  MESSAGE = 'messages',
+  NOTIFICATION = 'notifications',
+  REPORT = 'reports',
+  USER = 'users'
 }
 
 // API URL
