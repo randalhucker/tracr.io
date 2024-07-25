@@ -11,7 +11,10 @@ export type RegisterComponentType = {
   onRegisterClick?: () => void;
 };
 
-const RegisterComponent: NextPage<RegisterComponentType> = ({ className = '', onRegisterClick }) => {
+const RegisterComponent: NextPage<RegisterComponentType> = ({
+  className = '',
+  onRegisterClick
+}) => {
   const router = useRouter();
   const isClient = useClientSide();
 
@@ -51,56 +54,55 @@ const RegisterComponent: NextPage<RegisterComponentType> = ({ className = '', on
   };
 
   return (
-    <form className={[styles.rectangleParent, className].join(" ")}>
+    <form className={[styles.rectangleParent, className].join(' ')}>
       <h1 className={styles.tracrio}>tracr.io</h1>
       <div className={styles.frameChild} />
       <div className={styles.input3}>
         <div className={styles.label3}>
           <input
-              className={styles.textInput}
-              placeholder="Name"
-              type="name"
-              value={name_input}
-              onChange={handleNameChange}
-            />
+            className={styles.textInput}
+            placeholder="Name"
+            type="name"
+            value={name_input}
+            onChange={handleNameChange}
+          />
         </div>
-      </div><div className={styles.input}>
+      </div>
+      <div className={styles.input}>
         <div className={styles.label}>
           <input
-              className={styles.textInput}
-              placeholder="Email"
-              type="email"
-              value={email_input}
-              onChange={handleEmailChange}
-            />
+            className={styles.textInput}
+            placeholder="Email"
+            type="email"
+            value={email_input}
+            onChange={handleEmailChange}
+          />
         </div>
       </div>
       <div className={styles.mustBeAContainer}>
         {`must be a valid email registered to an `}
-        <span className={styles.affiliatedInstitution}>
-          affiliated institution
-        </span>
+        <span className={styles.affiliatedInstitution}>affiliated institution</span>
       </div>
       <div className={styles.input1}>
         <div className={styles.label1}>
           <input
-              className={styles.textInput}
-              placeholder="Password"
-              type="password"
-              value={password_input}
-              onChange={handlePasswordChange}
-            />
+            className={styles.textInput}
+            placeholder="Password"
+            type="password"
+            value={password_input}
+            onChange={handlePasswordChange}
+          />
         </div>
       </div>
       <div className={styles.input2}>
         <div className={styles.label2}>
           <input
-              className={styles.textInput}
-              placeholder="Confirm Password"
-              type="password"
-              value={confirmPassword_input}
-              onChange={handleConfirmPasswordChange}
-            />
+            className={styles.textInput}
+            placeholder="Confirm Password"
+            type="password"
+            value={confirmPassword_input}
+            onChange={handleConfirmPasswordChange}
+          />
         </div>
       </div>
       <button className={styles.button} type="button" onClick={tempRegister}>

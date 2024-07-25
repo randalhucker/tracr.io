@@ -59,15 +59,13 @@ const Message: NextPage = () => {
                 </h1>
                 <div className={styles.buttonParent}>
                   <Button
-                    vuesaxlinearcircle="/vuesaxlinearcircle.svg"
-                    createNewClaim="create new claim"
-                    page1="/page1.svg"
+                    text="create new claim"
+                    icon="/page1.svg"
                     onClick={handleCreateNewClaim}
                   />
                   <Button
-                    vuesaxlinearcircle="/vuesaxlinearcircle.svg"
-                    createNewClaim="report lost item"
-                    page1="/magnifyingglasssvgrepocom-2-1.svg"
+                    text="report lost item"
+                    icon="/magnifyingglasssvgrepocom-2-1.svg"
                     onClick={handleReportLostItem}
                   />
                 </div>

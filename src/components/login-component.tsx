@@ -13,7 +13,6 @@ export type GroupComponentType = {
   className?: string;
 };
 
-
 const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
   const router = useRouter();
   const isClient = useClientSide();
@@ -37,7 +36,7 @@ const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
     console.log('Email:', email_input);
     console.log('Password', password_input);
     router.push('/user-home');
-  }
+  };
 
   const handleMakeOneClick = () => {
     // Redirect to registration page
@@ -96,7 +95,10 @@ const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
       <b className={styles.forgotYourPassword}>forgot your password?</b>
       <b className={styles.dontHaveAnContainer}>
         don’t have an account?
-        <span className={styles.makeOne} onClick={handleMakeOneClick}> make one</span>
+        <span className={styles.makeOne} onClick={handleMakeOneClick}>
+          {' '}
+          make one
+        </span>
       </b>
       <div className={styles.frameChild} />
       <div className={styles.input}>
@@ -127,7 +129,10 @@ const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
       </button>
       <b className={styles.dontHaveAnContainer1}>
         don’t have an account?
-        <span className={styles.makeOne1} onClick={handleMakeOneClick}> make one</span>
+        <span className={styles.makeOne1} onClick={handleMakeOneClick}>
+          {' '}
+          make one
+        </span>
       </b>
     </form>
   );

@@ -39,7 +39,7 @@ const CreateNewClaim: NextPage = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <div className={styles.createNewClaim}>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+        <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
         <div className={styles.footer}>
           <div className={styles.footerContent}>
             <div className={styles.footerContentChild} />

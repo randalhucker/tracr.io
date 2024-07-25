@@ -260,10 +260,6 @@
   position: relative;
 }
 .footer,
-.frameParent {
-  display: flex;
-  max-width: 100%;
-}
 .footer {
   width: 1118px;
   flex-direction: row;
@@ -277,6 +273,7 @@
   font-family: var(--text-base-leading-6-font-medium);
 }
 .frameParent {
+  display: flex;
   width: 1164px;
   height: 600px;
   flex-direction: column;

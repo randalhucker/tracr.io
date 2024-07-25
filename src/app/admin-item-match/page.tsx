@@ -78,12 +78,7 @@ const AdminItemMatch: NextPage = () => {
                         </div>
                       </div>
                       <div className={styles.image}>image</div>
-                      <img
-                        className={styles.image2Icon}
-                        loading="lazy"
-                        alt=""
-                        src="/airpods.png"
-                      />
+                      <img className={styles.image2Icon} loading="lazy" alt="" src="/airpods.png" />
                     </div>
                   </div>
                   <div className={styles.possibleMatchesParent}>
