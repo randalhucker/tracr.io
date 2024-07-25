@@ -21,7 +21,7 @@ const CreateNewClaim: NextPage = () => {
     long: '',
     date: null,
     description: '',
-    location: '',
+    location: ''
   };
 
   const handleUploadImageClick = () => {

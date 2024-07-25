@@ -6,7 +6,11 @@ type DropdownComponentProps = {
   className?: string;
 };
 
-const DropdownComponent: React.FC<DropdownComponentProps> = ({ locations, onSelectLocation, className = '' }) => {
+const DropdownComponent: React.FC<DropdownComponentProps> = ({
+  locations,
+  onSelectLocation,
+  className = ''
+}) => {
   const [selectedLocation, setSelectedLocation] = useState<string>('');
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -16,19 +20,15 @@ const DropdownComponent: React.FC<DropdownComponentProps> = ({ locations, onSele
   };
 
   return (
-    <select
-    className={className}
-    value={selectedLocation}
-    onChange={handleChange}
-    >
-    <option value="" disabled>
+    <select className={className} value={selectedLocation} onChange={handleChange}>
+      <option value="" disabled>
         -- Please choose an option --
-    </option>
-    {locations.map((location, index) => (
+      </option>
+      {locations.map((location, index) => (
         <option key={index} value={location}>
-        {location}
+          {location}
         </option>
-    ))}
+      ))}
     </select>
   );
 };
