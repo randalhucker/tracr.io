@@ -10,32 +10,39 @@ import styles from './report-found-item.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import MessageBox from '@/components/message-box';
+import ReportComponent, { ReportData } from '@/components/report-component';
 
 const ReportFoundItem: NextPage = () => {
   const router = useRouter();
 
-  const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
-  const [description, setDescription] = useState('');
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [message, setMessage] = useState('Your report has been successfully submitted!');
+  let reportData: ReportData = {
+    lat: '',
+    long: '',
+    date: null,
+    description: ''
+  };
 
   const handleUploadImageClick = () => {
     console.log('Upload Image button clicked');
     // API call to upload image
   };
 
-  const handleSubmitClick = () => {
-    // API call to submit lost item report
+  const handleComponentSubmit = (reportDataInput: ReportData) => {
+    // function to evoke when the report is submitted
+
+    // Set report data
+    reportData = reportDataInput;
+
+    // API call to create report
+    console.log('Report submitted:', reportData);
     setShowMessageBox(true); // Show message box on submit
   };
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
     router.push('/user-home'); 
-  };
-
-  const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setDescription(event.target.value);
   };
 
   return (
@@ -46,71 +53,9 @@ const ReportFoundItem: NextPage = () => {
           <div className={styles.wrapperGroup9}>
             <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
           </div>
-          <div className={styles.rectangleParent}>
-            <div className={styles.frameChild} />
-            <div className={styles.location}>location</div>
-            <div className={styles.description}>description</div>
-            <div className={styles.image}>image</div>
-            <div className={styles.dateFound}>date found</div>
-            <div className={styles.input}>
-              <input className={styles.label} placeholder="lat" type="text" />
-            </div>
-            <div className={styles.input1}>
-              <input className={styles.label1} placeholder="long" type="text" />
-            </div>
-            <div className={styles.input2}>
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker
-                  value={inputDateTimePickerValue}
-                  onChange={(newValue: Date | null) => {
-                    setInputDateTimePickerValue(newValue);
-                  }}
-                  slots={{
-                    textField: (params) => <TextField {...params} />
-                  }}
-                  slotProps={{
-                    textField: {
-                      name: '',
-                      id: '',
-                      size: 'medium',
-                      fullWidth: false,
-                      required: false,
-                      autoFocus: false,
-                      error: false,
-                      color: 'primary'
-                    },
-                    openPickerIcon: {
-                      component: () => <></>
-                    }
-                  }}
-                />
-              </LocalizationProvider>
-            </div>
-            <textarea
-              className={styles.input3}
-              rows={11}
-              cols={27}
-              value={description}
-              onChange={handleDescriptionChange}
-              placeholder="Enter description here"
-            />
-            <div className={styles.image1Parent}>
-              <img className={styles.image1Icon} alt="" src="/map.png" />
-              <img className={styles.frameItem} loading="lazy" alt="" src="/line-4.svg" />
-              <img className={styles.frameInner} alt="" src="/line-5.svg" />
-            </div>
-            <button className={styles.button} onClick={handleUploadImageClick}>
-              <b className={styles.uploadImage}>upload image</b>
-            </button>
-            <div className={styles.foundItemReport}>found item report</div>
-            <button className={styles.button1} onClick={handleSubmitClick}>
-              <b className={styles.submit}>submit</b>
-            </button>
-            <div className={styles.lineDiv} />
-          </div>
+          <ReportComponent formTitle='found item report' onSubmit={handleComponentSubmit} />
         </div>
       </div>
-
       {/* Show MessageBox when claim is filed */}
       {showMessageBox && <MessageBox message={message} onClose={handleCloseMessageBox} />}
     </div>
