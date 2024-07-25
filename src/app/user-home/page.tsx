@@ -17,7 +17,7 @@ const UserHome: NextPage = () => {
   };
 
   const handleReportLostItemClick = () => {
-    router.push('/report-lost-item');
+    router.push('/report-found-item');
   };
 
   return (
@@ -44,7 +44,7 @@ const UserHome: NextPage = () => {
                   onClick={handleCreateNewClaimClick}
                 />
                 <Button
-                  text="report lost item"
+                  text="report found item"
                   icon="/magnifyingglasssvgrepocom-2-1.svg"
                   onClick={handleReportLostItemClick}
                 />

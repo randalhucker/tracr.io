@@ -16,7 +16,7 @@ const CreateNewClaim: NextPage = () => {
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
   const [description, setDescription] = useState('');
   const [showMessageBox, setShowMessageBox] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('Your lost item claim has been successfully submitted!');
 
   const handleUploadImageClick = () => {
     console.log('Upload Image button clicked');
@@ -30,6 +30,7 @@ const CreateNewClaim: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
+    router.push('/user-home');
   };
 
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,10 +42,6 @@ const CreateNewClaim: NextPage = () => {
       <div className={styles.createNewClaim}>
         <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
         <div className={styles.footer}>
-          <div className={styles.footerContent}>
-            <div className={styles.footerContentChild} />
-            <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-          </div>
           <div className={styles.wrapperGroup9Parent}>
             <div className={styles.wrapperGroup9}>
               <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
@@ -88,20 +85,10 @@ const CreateNewClaim: NextPage = () => {
               <textarea className={styles.input3} rows={11} cols={27} />
               <iframe className={styles.frameItem} />
               <button className={styles.button} onClick={handleUploadImageClick}>
-                <img
-                  className={styles.vuesaxlinearcircleIcon}
-                  alt=""
-                  src="/vuesaxlinearcircle.svg"
-                />
                 <b className={styles.uploadImage}>upload image</b>
               </button>
               <div className={styles.lostItemClaim}>lost item claim</div>
               <button className={styles.button1} onClick={handleSubmitClick}>
-                <img
-                  className={styles.vuesaxlinearcircleIcon1}
-                  alt=""
-                  src="/vuesaxlinearcircle.svg"
-                />
                 <b className={styles.submit}>submit</b>
               </button>
               <div className={styles.frameInner} />
@@ -109,7 +96,10 @@ const CreateNewClaim: NextPage = () => {
           </div>
         </div>
       </div>
+      {/* Show MessageBox when claim is filed */}
+      {showMessageBox && <MessageBox message={message} onClose={handleCloseMessageBox} />}
     </LocalizationProvider>
+    
   );
 };
 

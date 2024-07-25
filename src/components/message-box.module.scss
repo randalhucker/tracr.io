@@ -25,7 +25,7 @@
   
   .messageText {
     margin-bottom: 20px;
-    font-size: var(--font-size-mini);
+    font-size: var(--font-size-lg);
     color: var(--color-black);
   }
   
@@ -36,9 +36,5 @@
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-size: var(--font-size-mini);
-  }
-  
-  .closeButton:hover {
-    background-color: var(--colors-base-danger-dark);
+    font-size: var(--font-size-sm);
   }

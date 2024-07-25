@@ -6,18 +6,18 @@ import { TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Main from '../../components/main';
-import styles from './report-lost-item.module.scss';
+import styles from './report-found-item.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import MessageBox from '@/components/message-box';
 
-const ReportLostItem: NextPage = () => {
+const ReportFoundItem: NextPage = () => {
   const router = useRouter();
 
   const [inputDateTimePickerValue, setInputDateTimePickerValue] = useState<Date | null>(null);
   const [description, setDescription] = useState('');
   const [showMessageBox, setShowMessageBox] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('Your report has been successfully submitted!');
 
   const handleUploadImageClick = () => {
     console.log('Upload Image button clicked');
@@ -31,6 +31,7 @@ const ReportLostItem: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
+    router.push('/user-home'); 
   };
 
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,10 +42,6 @@ const ReportLostItem: NextPage = () => {
     <div className={styles.reportFoundItem}>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
       <div className={styles.footer}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerContentChild} />
-          <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-        </div>
         <div className={styles.form}>
           <div className={styles.wrapperGroup9}>
             <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
@@ -103,16 +100,10 @@ const ReportLostItem: NextPage = () => {
               <img className={styles.frameInner} alt="" src="/line-5.svg" />
             </div>
             <button className={styles.button} onClick={handleUploadImageClick}>
-              <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
               <b className={styles.uploadImage}>upload image</b>
             </button>
             <div className={styles.foundItemReport}>found item report</div>
             <button className={styles.button1} onClick={handleSubmitClick}>
-              <img
-                className={styles.vuesaxlinearcircleIcon1}
-                alt=""
-                src="/vuesaxlinearcircle.svg"
-              />
               <b className={styles.submit}>submit</b>
             </button>
             <div className={styles.lineDiv} />
@@ -126,4 +117,4 @@ const ReportLostItem: NextPage = () => {
   );
 };
 
-export default ReportLostItem;
+export default ReportFoundItem;
