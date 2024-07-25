@@ -1,6 +1,6 @@
 .login {
-  width: 100%;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;
@@ -12,8 +12,8 @@
   font-family: var(--text-base-leading-6-font-medium);
 }
 .frameParent {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: absolute;
   margin: 0 !important;
   bottom: 0;

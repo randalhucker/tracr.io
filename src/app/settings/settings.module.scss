@@ -411,11 +411,12 @@
 }
 .frameParent {
   align-self: stretch;
-  height: 983px;
+  height: 100%;
   position: relative;
 }
 .settings {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;

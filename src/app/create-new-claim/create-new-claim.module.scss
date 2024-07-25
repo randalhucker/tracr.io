@@ -22,8 +22,8 @@
   height: 44px;
 }
 .wrapperGroup9 {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: absolute;
   margin: 0 !important;
   bottom: 0;
@@ -304,11 +304,12 @@
 }
 .footer {
   align-self: stretch;
-  height: 983px;
+  height: 100%;
   position: relative;
 }
 .createNewClaim {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;

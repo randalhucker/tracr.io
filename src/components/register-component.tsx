@@ -106,9 +106,7 @@ const RegisterComponent: NextPage<RegisterComponentType> = ({
         </div>
       </div>
       <button className={styles.button} type="button" onClick={tempRegister}>
-        <img className={styles.vuesaxlinearcircleIcon} alt="" src="/vuesaxlinearcircle.svg" />
         <div className={styles.button1}>register</div>
-        <img className={styles.vuesaxlinearcircleIcon1} alt="" src="/vuesaxlinearcircle.svg" />
       </button>
     </form>
   );

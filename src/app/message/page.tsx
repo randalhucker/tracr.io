@@ -76,8 +76,8 @@ const Message: NextPage = () => {
                 rows={4}
                 cols={50}
               />
+              <button className={styles.sendButton} onClick={handleSendMessage}>Send</button>
             </div>
-            <button className={styles.sendButton} onClick={handleSendMessage}>Send</button>
             </div>
           </div>
         </div>
