@@ -9,12 +9,12 @@ import { useEffect, useState } from 'react';
 
 export type MainType = {
   className?: string;
-  group7?: string;
-  group8?: string;
-  button?: string;
+  back?: string;
+  settings?: string;
+  messages?: string;
 };
 
-const Main: NextPage<MainType> = ({ className = '', group7, group8, button }) => {
+const Main: NextPage<MainType> = ({ className = '', back, settings, messages }) => {
   const router = useRouter(); // Initialize useRouter
   const [userRole, setUserRole] = useState<string | null>(null);
 
@@ -75,14 +75,14 @@ const Main: NextPage<MainType> = ({ className = '', group7, group8, button }) =>
             className={styles.frameChild}
             loading="lazy"
             alt=""
-            src={group7}
+            src={back}
             onClick={handleRefreshClick}
           />
           <img
             className={styles.frameItem}
             loading="lazy"
             alt=""
-            src={group8}
+            src={settings}
             onClick={handleSettingsClick}
           />
           <div className={styles.buttonWrapper}>
@@ -90,7 +90,7 @@ const Main: NextPage<MainType> = ({ className = '', group7, group8, button }) =>
               className={styles.buttonIcon}
               loading="lazy"
               alt=""
-              src={button}
+              src={messages}
               onClick={handleMessagesClick}
             />
           </div>

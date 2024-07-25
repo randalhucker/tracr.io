@@ -30,9 +30,9 @@ const AdminMessage: NextPage = () => {
   return (
     <div className={styles.adminMessage}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
       <div className={styles.welcomeContentWrapper}>
         <div className={styles.welcomeContent}>
           <div className={styles.welcomeMessage}>

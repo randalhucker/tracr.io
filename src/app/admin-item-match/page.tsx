@@ -15,9 +15,9 @@ const AdminItemMatch: NextPage = () => {
   return (
     <div className={styles.adminItemMatch}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main group7="/group-71.svg" group8="/group-81.svg" button="/button1.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
       <div className={styles.lostItemDetailsWrapper}>
         <div className={styles.lostItemDetails}>
           <div className={styles.rectangleParent}>
@@ -40,7 +40,7 @@ const AdminItemMatch: NextPage = () => {
             <div className={styles.submissionDetails}>
               <div className={styles.submissionForm}>
                 <div className={styles.contactInformation}>
-                  <img className={styles.image1Icon} alt="" src="/image-1@2x.png" />
+                  <img className={styles.image1Icon} alt="" src="/map.png" />
                   <div className={styles.emailInputContainer}>
                     <img
                       className={styles.emailInputContainerChild}
@@ -82,7 +82,7 @@ const AdminItemMatch: NextPage = () => {
                         className={styles.image2Icon}
                         loading="lazy"
                         alt=""
-                        src="/image-2@2x.png"
+                        src="/airpods.png"
                       />
                     </div>
                   </div>

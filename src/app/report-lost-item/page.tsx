@@ -39,7 +39,7 @@ const ReportLostItem: NextPage = () => {
 
   return (
     <div className={styles.reportFoundItem}>
-      <Main group7="/group-7.svg" group8="/group-8.svg" button="/button.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
       <div className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerContentChild} />
@@ -47,7 +47,7 @@ const ReportLostItem: NextPage = () => {
         </div>
         <div className={styles.form}>
           <div className={styles.wrapperGroup9}>
-            <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+            <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
           </div>
           <div className={styles.rectangleParent}>
             <div className={styles.frameChild} />
@@ -98,7 +98,7 @@ const ReportLostItem: NextPage = () => {
               placeholder="Enter description here"
             />
             <div className={styles.image1Parent}>
-              <img className={styles.image1Icon} alt="" src="/frame-3@3x.png" />
+              <img className={styles.image1Icon} alt="" src="/map.png" />
               <img className={styles.frameItem} loading="lazy" alt="" src="/line-4.svg" />
               <img className={styles.frameInner} alt="" src="/line-5.svg" />
             </div>

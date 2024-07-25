@@ -8,7 +8,7 @@ const Login: NextPage = () => {
   return (
     <div className={styles.login}>
       <div className={styles.frameParent}>
-        <img className={styles.frameItem} alt="" src="/group-22.svg" />
+        <img className={styles.frameItem} alt="" src="/background.svg" />
         <div className={styles.rectangleGroup}>
           <div className={styles.frameInner} />
           <LoginComponent />

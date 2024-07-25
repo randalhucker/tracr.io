@@ -12,9 +12,9 @@ const PreviousClaims: NextPage = () => {
   return (
     <div className={styles.previousClaims}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main group7="/group-72.svg" group8="/group-82.svg" button="/button2.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
       <div className={styles.claimsListContainerWrapper}>
         <div className={styles.claimsListContainer}>
           <div className={styles.rectangleParent}>

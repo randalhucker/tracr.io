@@ -39,7 +39,7 @@ const CreateNewClaim: NextPage = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <div className={styles.createNewClaim}>
-        <Main group7="/group-7.svg" group8="/group-8.svg" button="/button.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
         <div className={styles.footer}>
           <div className={styles.footerContent}>
             <div className={styles.footerContentChild} />
@@ -47,7 +47,7 @@ const CreateNewClaim: NextPage = () => {
           </div>
           <div className={styles.wrapperGroup9Parent}>
             <div className={styles.wrapperGroup9}>
-              <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+              <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
             </div>
             <div className={styles.rectangleParent}>
               <div className={styles.frameChild} />

@@ -8,7 +8,7 @@ const Register: NextPage = () => {
   return (
     <div className={styles.register}>
       <div className={styles.frameParent}>
-        <img className={styles.frameItem} alt="" src="/group-22.svg" />
+        <img className={styles.frameItem} alt="" src="/background.svg" />
           <RegisterComponent />
         </div>
       </div>

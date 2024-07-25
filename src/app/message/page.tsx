@@ -42,9 +42,9 @@ const Message: NextPage = () => {
   return (
     <div className={styles.message}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main group7="/group-71.svg" group8="/group-83.svg" button="/button3.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
       <div className={styles.messageInner}>
         <div className={styles.frameParent}>
           <div className={styles.frameGroup}>
