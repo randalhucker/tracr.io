@@ -9,11 +9,11 @@ import { LOGIN_URL } from '@/helpers/api';
 import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 
-export type GroupComponentType = {
+export type LoginComponentType = {
   className?: string;
 };
 
-const LoginComponent: NextPage<GroupComponentType> = ({ className = '' }) => {
+const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
   const router = useRouter();
   const isClient = useClientSide();
 
