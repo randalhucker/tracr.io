@@ -31,7 +31,6 @@ const Footer: NextPage<FooterType> = ({
   return (
     <div className={[styles.footer, className].join(' ')} style={footerStyle}>
       <button className={styles.button} onClick={onSaveAndExit}>
-        <img className={styles.vuesaxlinearcircleIcon} alt="" src={vuesaxlinearcircle} />
         <b className={styles.saveAndExit}>{saveAndExit}</b>
       </button>
     </div>

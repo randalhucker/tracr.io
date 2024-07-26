@@ -6,17 +6,37 @@ import Footer from '../../components/footer';
 import styles from './admin-system-config.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
+import { useEffect, useState } from 'react';
+import MessageBox from '@/components/message-box';
 
 const AdminSystemConfig: NextPage = () => {
+  const router = useRouter();
+  const clientSide = useClientSide();
+
+  const [uptime, setUptime] = useState(''); // make this a time type?
+  const [num_users, setNumUsers] = useState(0);
+  const [showMessageBox, setShowMessageBox] = useState(false);
+  const [message, setMessage] = useState('Report generated (not really)');
+
+  useEffect(() => {
+    if (clientSide) {
+      // API call to get uptime (if possible) and number of users 
+
+      setNumUsers(2);
+      setUptime('1 day, 14 hours, 25 minutes'); // don't freak out lol
+    }
+  }, [clientSide, router]);
+
   const handleGenerateReport = () => {
     // Placeholder function for generating a report
     console.log('Generate report clicked');
+    setShowMessageBox(true);
   };
 
-  const handleOtherButtonClick = () => {
-    // Placeholder function for other button actions
-    console.log('Other button clicked');
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
   };
+
 
   return (
     <div className={styles.adminSystemConfig}>
@@ -31,95 +51,26 @@ const AdminSystemConfig: NextPage = () => {
             <div className={styles.uptime35Days14Hours25Parent}>
               <div className={styles.uptime35DaysContainer}>
                 <b>{`uptime: `}</b>
-                <span>35 days, 14 hours, 25 minutes</span>
+                <span>{uptime}</span>
               </div>
               <div className={styles.users234}>
                 <b>{`users: `}</b>
-                <span>234</span>
-              </div>
-              <div className={styles.otherStatContainer}>
-                <div className={styles.otherStat234Container}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-              </div>
-              <div className={styles.otherStatList}>
-                <div className={styles.otherStat234Container1}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-                <div className={styles.otherStat234Container2}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-                <div className={styles.otherStat234Container3}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-                <div className={styles.otherStat234Container4}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-                <div className={styles.otherStat234Container5}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-              </div>
-              <Footer
-                vuesaxlinearcircle="/vuesaxlinearcircle.svg"
-                saveAndExit="generate report"
-                propWidth="unset"
-                propAlignSelf="stretch"
-                onSaveAndExit={handleGenerateReport}
-              />
-            </div>
-            <div className={styles.otherStatPair}>
-              <div className={styles.otherStat234Container6}>
-                <b>{`other stat: `}</b>
-                <span>234</span>
-              </div>
-              <div className={styles.otherStat234Container7}>
-                <b>{`other stat: `}</b>
-                <span>234</span>
-              </div>
-              <div className={styles.otherStatSingleContainer}>
-                <div className={styles.otherStat234Container8}>
-                  <b>{`other stat: `}</b>
-                  <span>234</span>
-                </div>
-                <div className={styles.otherStatListExpanded}>
-                  <div className={styles.otherStat234Container9}>
-                    <b>{`other stat: `}</b>
-                    <span>234</span>
-                  </div>
-                  <div className={styles.otherStat234Container10}>
-                    <b>{`other stat: `}</b>
-                    <span>234</span>
-                  </div>
-                  <div className={styles.otherStat234Container11}>
-                    <b>{`other stat: `}</b>
-                    <span>234</span>
-                  </div>
-                  <div className={styles.otherStat234Container12}>
-                    <b>{`other stat: `}</b>
-                    <span>234</span>
-                  </div>
-                  <div className={styles.otherStat234Container13}>
-                    <b>{`other stat: `}</b>
-                    <span>234</span>
-                  </div>
-                </div>
+                <span>{num_users}</span>
               </div>
             </div>
+            <div className={styles.footerContainer}>
+            <Footer
+                  saveAndExit="generate report"
+                  propWidth="unset"
+                  propAlignSelf="stretch"
+                  onSaveAndExit={handleGenerateReport}
+                />
           </div>
-          <div className={styles.copyrightContainerWrapper}>
-            <div className={styles.copyrightContainer}>
-              <div className={styles.separator} />
-              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-            </div>
           </div>
         </div>
       </div>
+      {/* Show MessageBox when claim is filed */}
+      {showMessageBox && <MessageBox message={message} onClose={handleCloseMessageBox} />}
     </div>
   );
 };

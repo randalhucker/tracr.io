@@ -120,7 +120,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
             const inProgress = details.filter((claimDetails) => claimDetails.status !== 'FOUND');
             setInProgressClaims(inProgress);
           } else {
-            router.push('/login');
+            //router.push('/'); // Commented out for testing
           }
         }
       } catch (error) {

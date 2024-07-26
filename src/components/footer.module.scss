@@ -1,10 +1,3 @@
-.vuesaxlinearcircleIcon {
-  height: 24px;
-  width: 24px;
-  position: relative;
-  display: none;
-  min-height: 24px;
-}
 .saveAndExit {
   position: relative;
   font-size: var(--font-size-13xl);
@@ -17,7 +10,7 @@
 .footer {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   max-width: 100%;
 }
