@@ -13,7 +13,6 @@ import ReportComponent, { ReportData } from '@/components/report-component';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
 import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
-import { stat } from 'fs';
 import { Item } from '@prisma/client';
 
 const CreateNewClaim: NextPage = () => {
