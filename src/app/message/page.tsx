@@ -50,7 +50,7 @@ const Message: NextPage = () => {
               body: JSON.stringify({
                 content: newMessage,
                 senderUserId: decoded.id,
-                receiverUserId: 1,
+                receiverUserId: decoded.id === 1 ? 2 : 1,
                 senderAdminId: null,
                 receiverAdminId: null
               })
