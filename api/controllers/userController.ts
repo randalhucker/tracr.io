@@ -89,3 +89,19 @@ export const getUserMessages = async (req: Request, res: Response): Promise<void
     res.status(500).json({ error: (error as Error).message });
   }
 };
+
+/**
+ * Getting a users claims.
+ */
+export const getUserClaims = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { userId } = req.params;
+    const messages = await prisma.claim.findMany({
+      where: { userId: parseInt(userId) }
+    });
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error('Error fetching user messages:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
