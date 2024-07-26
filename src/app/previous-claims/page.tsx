@@ -12,6 +12,7 @@ import { Claim, Item } from '@prisma/client';
 import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
+import ClaimsList from '@/components/claims-list';
 
 // Test Claims
 const airpods: DisplayDetails = {
@@ -34,7 +35,6 @@ const shoes: DisplayDetails = {
 };
 
 const PreviousClaims: NextPage = () => {
-  const router = useRouter();
   const isClient = useClientSide();
 
   const [in_progress_claims, setInProgressClaims] = useState<DisplayDetails[]>([]);
@@ -110,41 +110,7 @@ const PreviousClaims: NextPage = () => {
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
-      <div className={styles.claimsListContainerWrapper}>
-        <div className={styles.claimsListContainer}>
-          <div className={styles.rectangleParent}>
-            <div className={styles.frameChild} />
-            <h1 className={styles.claims}>claims</h1>
-            <div className={styles.inProgressClaimContainer}>
-              <div className={styles.inProgressClaimDetails}>
-                <div className={styles.inProgressClaimItems}>
-                  <div className={styles.inProgressClaimItem}>
-                    <h1 className={styles.inProgress}>in progress</h1>
-                  </div>
-                  <div className={styles.itemDetailsContainer}>
-                    {in_progress_claims.map((claim, index) => (
-                      <ClaimDetails key={index} details={claim} />
-                    ))}
-                  </div>
-                </div>
-                <div className={styles.resolvedSeparator}>
-                  <div className={styles.resolvedSeparatorChild} />
-                </div>
-                <div className={styles.resolvedClaimDetails}>
-                  <div className={styles.resolvedClaimItem}>
-                    <h1 className={styles.resolved}>resolved</h1>
-                  </div>
-                  <div className={styles.itemDetailsContainer}>
-                    {resolved_claims.map((claim, index) => (
-                      <ClaimDetails key={index} details={claim} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ClaimsList title='your claims' left_header='in progress' right_header='resolved' left_claims={in_progress_claims} right_claims={resolved_claims} />
     </div>
   );
 };

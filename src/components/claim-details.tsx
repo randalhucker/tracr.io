@@ -13,6 +13,7 @@ export type DisplayDetails = {
 export type ClaimDetailsComponentType = {
   className?: string;
   details: DisplayDetails;
+  handleClick?: () => void;
 };
 
 export type ClaimStatusStylingType = {
@@ -29,13 +30,14 @@ const emptyDetails: DisplayDetails = {
 
 const ClaimDetails: NextPage<ClaimDetailsComponentType> = ({
   className = '',
-  details = emptyDetails
+  details = emptyDetails,
+  handleClick = () => {}
 }) => {
   return (
     <div className={styles.itemDetails}>
       <div className={styles.itemDescription}>
         <h1 className={styles.item}>
-          <p className={styles.item1}>{details.name}</p>
+          <p className={styles.item1} onClick={handleClick}>{details.name}</p>
         </h1>
         <div className={styles.itemLocation}>
           <h3 className={styles.location}>
