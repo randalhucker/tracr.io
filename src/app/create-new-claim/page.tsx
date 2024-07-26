@@ -36,7 +36,6 @@ const CreateNewClaim: NextPage = () => {
         if (token) {
           const decoded = jwtDecode<DecodedToken>(token);
 
-          // TODO: Update the fetch to use the actual buildingId
           const itemResponse = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.ITEM), {
             method: 'POST',
             headers: {
@@ -45,10 +44,10 @@ const CreateNewClaim: NextPage = () => {
             body: JSON.stringify({
               name: reportDataInput.description,
               description: reportDataInput.description,
-              location: reportDataInput.location,
+              location: reportDataInput.location?.name,
               status: 'LOST',
               category: '',
-              buildingId: 1
+              buildingId: reportDataInput.location?.id
             })
           });
 

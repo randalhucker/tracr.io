@@ -27,7 +27,7 @@ const ReportFoundItem: NextPage = () => {
     long: '',
     date: null,
     description: '',
-    location: ''
+    location: null
   };
 
   const handleUploadImageClick = () => {
@@ -43,7 +43,6 @@ const ReportFoundItem: NextPage = () => {
         const token = window.localStorage.getItem('token');
         if (token) {
           const decoded = jwtDecode<DecodedToken>(token);
-          // TODO: Update the fetch to use the actual buildingId
           const itemResponse = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.ITEM), {
             method: 'POST',
             headers: {
@@ -52,10 +51,10 @@ const ReportFoundItem: NextPage = () => {
             body: JSON.stringify({
               name: reportDataInput.description,
               description: reportDataInput.description,
-              location: reportDataInput.location,
+              location: reportDataInput.location?.name,
               status: 'FOUND',
               category: '',
-              buildingId: 1
+              buildingId: reportDataInput.location?.id
             })
           });
 
