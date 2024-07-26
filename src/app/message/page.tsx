@@ -11,18 +11,12 @@ import UserHomeComponent from '@/components/user-home-component';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
 import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { Message } from '@prisma/client';
 
-const initialMessages = [
-  { type: 'user', text: 'User message 1' },
-  { type: 'admin', text: 'Admin message 1' },
-  { type: 'user', text: 'User message 2' },
-  { type: 'admin', text: 'Admin message 2' }
-];
-
-const Message: NextPage = () => {
+const MessagePage: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
 
   const handleCreateNewClaim = () => {
@@ -51,8 +45,8 @@ const Message: NextPage = () => {
                 content: newMessage,
                 senderUserId: decoded.id,
                 receiverUserId: decoded.id === 1 ? 2 : 1,
-                senderAdminId: null,
-                receiverAdminId: null
+                senderAdminId: decoded.id === 2 ? 2 : null,
+                receiverAdminId: decoded.id === 1 ? 2 : null
               })
             });
 
@@ -60,7 +54,8 @@ const Message: NextPage = () => {
               throw new Error('Network response was not ok');
             }
 
-            setMessages([...messages, { type: 'user', text: newMessage }]);
+            const createdMessage: Message = await response.json();
+            setMessages([...messages, createdMessage]);
             setNewMessage('');
           }
         }
@@ -91,7 +86,8 @@ const Message: NextPage = () => {
               throw new Error('Network response was not ok');
             }
 
-            const userData = await response.json();
+            const fetchedMessages: Message[] = await response.json();
+            setMessages(fetchedMessages);
           }
         }
       } catch (error) {
@@ -123,9 +119,12 @@ const Message: NextPage = () => {
                 {messages.map((message, index) => (
                   <div
                     key={index}
-                    className={`${styles.messageWrapper} ${message.type === 'admin' ? styles.adminMessage : styles.userMessage}`}
+                    className={`${styles.messageWrapper} ${message.senderAdminId ? styles.adminMessage : styles.userMessage}`}
                   >
-                    <div className={styles.messageText}>{message.text}</div>
+                    <div className={styles.messageText}>{message.content}</div>
+                    <div className={styles.messageTimestamp}>
+                      {new Date(message.sentAt).toLocaleString()}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -150,4 +149,4 @@ const Message: NextPage = () => {
   );
 };
 
-export default Message;
+export default MessagePage;
