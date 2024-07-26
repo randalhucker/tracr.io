@@ -12,15 +12,6 @@ const UserHome: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
 
-  // Placeholder functions for button clicks
-  const handleCreateNewClaimClick = () => {
-    router.push('/create-new-claim');
-  };
-
-  const handleReportLostItemClick = () => {
-    router.push('/report-found-item');
-  };
-
   return (
     <div className={styles.userHome}>
       <div className={styles.wrapperGroup9}>
