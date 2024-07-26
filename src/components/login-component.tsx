@@ -63,21 +63,16 @@ const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
 
       // Handle successful API call, push to correct home page (same as useEffect code above)
       if (isClient) {
-        const token = window.localStorage.getItem('token');
+        const token = await response.text();
         if (token) {
-          try {
-            // TODO: add basic token stuff so we can easily get the role of the user/admin
-            const decoded = jwtDecode<DecodedToken>(token);
-            if (decoded.role === 'USER') {
-              router.push('/user-home');
-            } else if (decoded.role === 'ADMIN') {
-              router.push('/admin-home');
-            } else {
-              throw new Error('Invalid role');
-            }
-          } catch (error) {
-            window.localStorage.removeItem('token');
-            router.push('/');
+          window.localStorage.setItem('token', token);
+          const decoded = jwtDecode<DecodedToken>(token);
+          if (decoded.role === 'USER') {
+            router.push('/user-home');
+          } else if (decoded.role === 'ADMIN') {
+            router.push('/admin-home');
+          } else {
+            throw new Error('Invalid role');
           }
         }
       }
@@ -85,6 +80,8 @@ const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
       console.log('API call successful');
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
+      window.localStorage.removeItem('token');
+      router.push('/');
     }
   };
 

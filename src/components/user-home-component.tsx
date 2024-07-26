@@ -4,6 +4,11 @@ import type { NextPage } from 'next';
 import Button from './button';
 import styles from '../app/user-home/user-home.module.scss';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import useClientSide from '@/hooks/useClientSide';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 
 export type UserHomeComponentType = {
   className?: string;
@@ -11,6 +16,8 @@ export type UserHomeComponentType = {
 
 const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) => {
   const router = useRouter();
+  const isClient = useClientSide();
+  const [firstName, setFirstName] = useState('');
 
   const handleCreateNewClaimClick = () => {
     router.push('/create-new-claim');
@@ -19,6 +26,41 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
   const handleReportLostItemClick = () => {
     router.push('/report-found-item');
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          const token = window.localStorage.getItem('token');
+          if (token) {
+            const decoded = jwtDecode<DecodedToken>(token);
+            const response = await fetch(
+              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+
+            const userData = await response.json();
+            setFirstName(userData.firstName);
+          } else {
+            router.push('/login');
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [isClient, router]);
 
   return (
     <div className={styles.sidebar}>
@@ -29,7 +71,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
             <h1 className={styles.welcomeBackUserContainer}>
               <p className={styles.welcomeBack}>welcome back,</p>
               <p className={styles.user}>
-                <b>User</b>
+                <b>{firstName}</b>
               </p>
             </h1>
             <div className={styles.actionButtons}>
