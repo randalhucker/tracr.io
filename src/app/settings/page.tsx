@@ -42,9 +42,11 @@ const Settings: NextPage = () => {
     setLastName(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     // API call to update user data
     setMessage('Your settings have been successfully updated!');
+    setShowMessageBox(true);
   };
 
   const handleDeleteAccount = () => {
@@ -53,7 +55,8 @@ const Settings: NextPage = () => {
     setShowMessageBox(true);
   };
 
-  const handleLogOut = () => {
+  const handleLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     // API call to log out
     setMessage('You have been successfully logged out!');
     setShowMessageBox(true);
