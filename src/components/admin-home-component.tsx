@@ -77,25 +77,16 @@ const AdminHomeComponent: NextPage<AdminHomeComponentType> = ({ className = '' }
         </div>
         <div className={styles.managementButtons}>
           <button className={styles.button} onClick={handleManageLostItemsClick}>
-            <img
-              className={styles.vuesaxlinearcircleIcon}
-              alt=""
-            />
+            <img className={styles.vuesaxlinearcircleIcon} alt="" />
             <b className={styles.manageLostItems}>manage lost items</b>
           </button>
           <div className={styles.deploymentReportsButtons}>
             <button className={styles.button1} onClick={handleManageDeploymentClick}>
-              <img
-                className={styles.vuesaxlinearcircleIcon1}
-                alt=""
-              />
+              <img className={styles.vuesaxlinearcircleIcon1} alt="" />
               <b className={styles.manageDeployment}>manage deployment</b>
             </button>
             <button className={styles.button2} onClick={handleSystemReportClick}>
-              <img
-                className={styles.vuesaxlinearcircleIcon2}
-                alt=""
-              />
+              <img className={styles.vuesaxlinearcircleIcon2} alt="" />
               <b className={styles.systemReport}>system report</b>
             </button>
           </div>

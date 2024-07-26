@@ -1,23 +1,27 @@
-.wrapperGroup9Child {
+.wrapperGroup9 {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  position: absolute;
-  left: 0;
-  top: 15px;
-  transform: scale(1.025);
-}
-.wrapperGroup9 {
-  width: 2037px;
-  height: 1326px;
   position: absolute;
   margin: 0 !important;
-  bottom: -157px;
-  left: -84px;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 0;
+  background-image: url('/background.svg'); // Specify the path to your SVG image
+  background-size: cover; // Ensure the image covers the entire window
+  background-position: center; // Center the background image
+  background-repeat: no-repeat; // Prevent the background image from repeating
+}
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .frameChild {
   width: 1164px;
@@ -491,18 +495,21 @@
   gap: var(--gap-49xl);
   max-width: 100%;
 }
-.welcomeContentWrapper {
-  width: 1884px;
+.frameContainer {
+  align-self: stretch;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 0 var(--padding-xl);
-  box-sizing: border-box;
-  max-width: 100%;
+  gap: var(--gap-mini);
+  height: 100%;
+  width: 100%;
+  position: relative; // Ensure it is positioned relative to its parent
+  top: -60px; // Adjust this value to move the container up
 }
 .adminMessage {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;

@@ -20,7 +20,7 @@ const AdminSystemConfig: NextPage = () => {
 
   useEffect(() => {
     if (clientSide) {
-      // API call to get uptime (if possible) and number of users 
+      // API call to get uptime (if possible) and number of users
 
       setNumUsers(2);
       setUptime('1 day, 14 hours, 25 minutes'); // don't freak out lol
@@ -36,7 +36,6 @@ const AdminSystemConfig: NextPage = () => {
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
   };
-
 
   return (
     <div className={styles.adminSystemConfig}>
@@ -59,13 +58,13 @@ const AdminSystemConfig: NextPage = () => {
               </div>
             </div>
             <div className={styles.footerContainer}>
-            <Footer
-                  saveAndExit="generate report"
-                  propWidth="unset"
-                  propAlignSelf="stretch"
-                  onSaveAndExit={handleGenerateReport}
-                />
-          </div>
+              <Footer
+                saveAndExit="generate report"
+                propWidth="unset"
+                propAlignSelf="stretch"
+                onSaveAndExit={handleGenerateReport}
+              />
+            </div>
           </div>
         </div>
       </div>
