@@ -10,6 +10,9 @@
   font-size: var(--font-size-sm);
   color: var(--colors-base-danger);
   font-family: var(--text-base-leading-6-font-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .frameParent {
   width: 100%;

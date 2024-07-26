@@ -36,13 +36,15 @@ const ReportComponent: NextPage<ReportComponentType> = ({
 
   const [locations, setLocations] = useState<Building[]>([]);
 
-  const [reportData, setReportData] = useState<ReportData>({
+  const initialReportData: ReportData = {
     lat: '',
     long: '',
     date: null,
     description: '',
-    location: null
-  });
+    location: null,
+  };
+
+  const [reportData, setReportData] = useState<ReportData>(initialReportData);
 
   const handleChange = (key: keyof ReportData, value: string | Date | Building | null) => {
     setReportData((prevData) => ({ ...prevData, [key]: value }));
@@ -51,6 +53,8 @@ const ReportComponent: NextPage<ReportComponentType> = ({
   const handleSubmitClick = () => {
     if (onSubmit) {
       onSubmit(reportData);
+      // Clear form values
+      setReportData(initialReportData);
     }
   };
 

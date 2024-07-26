@@ -9,8 +9,8 @@ const Register: NextPage = () => {
     <div className={styles.register}>
       <div className={styles.frameParent}>
         <img className={styles.frameItem} alt="" src="/background.svg" />
-        <RegisterComponent />
       </div>
+      <RegisterComponent />
     </div>
   );
 };

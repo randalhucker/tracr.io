@@ -81,6 +81,7 @@ const ReportFoundItem: NextPage = () => {
             throw new Error('Network response was not ok');
           }
           console.log('Report submitted:', reportData);
+
           setShowMessageBox(true); // Show message box on submit
         }
       }

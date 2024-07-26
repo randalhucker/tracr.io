@@ -206,6 +206,14 @@
   height: 100%;
   z-index: 3;
 }
+.rectangleGroup {
+  position: relative;
+  border-radius: var(--br-mini);
+  background-color: var(--colors-base-danger-foreground);
+  width: 746px;
+  height: 788px;
+  z-index: 1;
+}
 @media screen and (max-width: 767px) {
   .tracrio {
     font-size: var(--font-size-29xl);

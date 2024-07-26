@@ -86,52 +86,54 @@ const LoginComponent: NextPage<LoginComponentType> = ({ className = '' }) => {
   };
 
   return (
-    <form className={[styles.tracrioParent, className].join(' ')}>
-      <h1 className={styles.tracrio1}>tracr.io</h1>
-      <h1 className={styles.findYourStuff1}>find your stuff</h1>
-      <b className={styles.forgotYourPassword}>forgot your password?</b>
-      <b className={styles.dontHaveAnContainer}>
-        don’t have an account?
-        <span className={styles.makeOne} onClick={handleMakeOneClick}>
-          {' '}
-          make one
-        </span>
-      </b>
-      <div className={styles.frameChild} />
-      <div className={styles.input}>
-        <div className={styles.label}>
-          <input
-            className={styles.textInput}
-            placeholder="Email"
-            type="email"
-            value={email_input}
-            onChange={handleEmailChange}
-          />
+    <div className={styles.rectangleGroup}>
+      <form className={[styles.tracrioParent, className].join(' ')}>
+        <h1 className={styles.tracrio1}>tracr.io</h1>
+        <h1 className={styles.findYourStuff1}>find your stuff</h1>
+        <b className={styles.forgotYourPassword}>forgot your password?</b>
+        <b className={styles.dontHaveAnContainer}>
+          don’t have an account?
+          <span className={styles.makeOne} onClick={handleMakeOneClick}>
+            {' '}
+            make one
+          </span>
+        </b>
+        <div className={styles.frameChild} />
+        <div className={styles.input}>
+          <div className={styles.label}>
+            <input
+              className={styles.textInput}
+              placeholder="Email"
+              type="email"
+              value={email_input}
+              onChange={handleEmailChange}
+            />
+          </div>
         </div>
-      </div>
-      <div className={styles.input1}>
-        <div className={styles.label1}>
-          <input
-            className={styles.textInput}
-            placeholder="Password"
-            type="password"
-            value={password_input}
-            onChange={handlePasswordChange}
-          />
+        <div className={styles.input1}>
+          <div className={styles.label1}>
+            <input
+              className={styles.textInput}
+              placeholder="Password"
+              type="password"
+              value={password_input}
+              onChange={handlePasswordChange}
+            />
+          </div>
         </div>
-      </div>
-      <b className={styles.forgotYourPassword1}>forgot your password?</b>
-      <button className={styles.button} type="button" onClick={attemptLogin}>
-        <div className={styles.button1}>log in</div>
-      </button>
-      <b className={styles.dontHaveAnContainer1}>
-        don’t have an account?
-        <span className={styles.makeOne1} onClick={handleMakeOneClick}>
-          {' '}
-          make one
-        </span>
-      </b>
-    </form>
+        <b className={styles.forgotYourPassword1}>forgot your password?</b>
+        <button className={styles.button} type="button" onClick={attemptLogin}>
+          <div className={styles.button1}>log in</div>
+        </button>
+        <b className={styles.dontHaveAnContainer1}>
+          don’t have an account?
+          <span className={styles.makeOne1} onClick={handleMakeOneClick}>
+            {' '}
+            make one
+          </span>
+        </b>
+      </form>
+    </div>
   );
 };
 
