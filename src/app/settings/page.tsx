@@ -45,7 +45,8 @@ const Settings: NextPage = () => {
     setLastName(e.target.value);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     console.log('Submitting form...');
     try {
       if (isClient) {
@@ -110,9 +111,11 @@ const Settings: NextPage = () => {
     }
   };
 
-  const handleLogOut = () => {
+  const handleLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     console.log('Logging out...');
     window.localStorage.removeItem('token');
+    // API call to log out
     setMessage('You have been successfully logged out!');
     setShowMessageBox(true);
   };

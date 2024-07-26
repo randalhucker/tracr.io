@@ -79,3 +79,11 @@
     box-sizing: border-box;
   }
 }
+
+.frameChild:hover,
+.homeIcon:hover,
+.buttonIcon:hover,
+.frameItem:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
