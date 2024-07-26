@@ -10,9 +10,24 @@ import { DisplayDetails } from '@/components/claim-details';
 import ClaimDetails from '@/components/claim-details';
 
 // Test Claims
-const airpods: DisplayDetails = {name: 'AirPods', location: 'Smith Hall', date: 'Apr. 27', status: 'not found'};
-const bearcatCard: DisplayDetails = {name: 'Bearcat Card', location: 'Baldwin Hall', date: 'May 2', status: 'pending'};
-const shoes: DisplayDetails = {name: 'Shoes', location: 'Rec Center', date: 'Mar. 27', status: 'found'};
+const airpods: DisplayDetails = {
+  name: 'AirPods',
+  location: 'Smith Hall',
+  date: 'Apr. 27',
+  status: 'not found'
+};
+const bearcatCard: DisplayDetails = {
+  name: 'Bearcat Card',
+  location: 'Baldwin Hall',
+  date: 'May 2',
+  status: 'pending'
+};
+const shoes: DisplayDetails = {
+  name: 'Shoes',
+  location: 'Rec Center',
+  date: 'Mar. 27',
+  status: 'found'
+};
 
 const PreviousClaims: NextPage = () => {
   const router = useRouter();
@@ -22,7 +37,7 @@ const PreviousClaims: NextPage = () => {
   const [resolved_claims, setResolvedClaims] = useState<DisplayDetails[]>([]);
 
   useEffect(() => {
-    if (isClient) { 
+    if (isClient) {
       // API call to get all previous claims for a given user
 
       // Transform response into array of DisplayDetails objects (may involve some weirdness with the dates)
@@ -31,20 +46,20 @@ const PreviousClaims: NextPage = () => {
       const fetchedClaims = [airpods, bearcatCard, shoes];
 
       // Sort claims into inProgressClaims and resolvedClaims
-      const inProgress = fetchedClaims.filter(claim => claim.status !== 'found');
-      const resolved = fetchedClaims.filter(claim => claim.status === 'found');
+      const inProgress = fetchedClaims.filter((claim) => claim.status !== 'found');
+      const resolved = fetchedClaims.filter((claim) => claim.status === 'found');
 
       setInProgressClaims(inProgress);
       setResolvedClaims(resolved);
     }
-  } , [isClient]);
-  
+  }, [isClient]);
+
   return (
     <div className={styles.previousClaims}>
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.claimsListContainerWrapper}>
         <div className={styles.claimsListContainer}>
           <div className={styles.rectangleParent}>

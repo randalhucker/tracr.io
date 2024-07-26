@@ -45,7 +45,7 @@ const Message: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.frameContainer}>
         <UserHomeComponent />
         <div className={styles.rectangleParent}>
@@ -54,30 +54,32 @@ const Message: NextPage = () => {
               <div className={styles.adminTitle}>
                 <h2 className={styles.admin}>admin</h2>
               </div>
-            <div className={styles.adminDivider} />
-          </div>
-          <div className={styles.messageContainerParent}>
-            <div className={styles.messageContainer}>
-              {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`${styles.messageWrapper} ${message.type === 'admin' ? styles.adminMessage : styles.userMessage}`}
-                >
-                  <div className={styles.messageText}>{message.text}</div>
-                </div>
-              ))}
+              <div className={styles.adminDivider} />
             </div>
-            <div className={styles.inputContainer}>
-              <textarea
-                className={styles.textBox}
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Type your message..."
-                rows={4}
-                cols={50}
-              />
-              <button className={styles.sendButton} onClick={handleSendMessage}>Send</button>
-            </div>
+            <div className={styles.messageContainerParent}>
+              <div className={styles.messageContainer}>
+                {messages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.messageWrapper} ${message.type === 'admin' ? styles.adminMessage : styles.userMessage}`}
+                  >
+                    <div className={styles.messageText}>{message.text}</div>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.inputContainer}>
+                <textarea
+                  className={styles.textBox}
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  placeholder="Type your message..."
+                  rows={4}
+                  cols={50}
+                />
+                <button className={styles.sendButton} onClick={handleSendMessage}>
+                  Send
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -12,9 +12,10 @@ export type MainType = {
   back?: string;
   settings?: string;
   messages?: string;
+  home?: string;
 };
 
-const Main: NextPage<MainType> = ({ className = '', back, settings, messages }) => {
+const Main: NextPage<MainType> = ({ className = '', back, settings, messages, home }) => {
   const router = useRouter(); // Initialize useRouter
   const [userRole, setUserRole] = useState<string | null>(null);
 
@@ -34,10 +35,9 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages }) 
   }, []);
 
   const handleTracrClick = () => {
-    // get role from token
-    const token = localStorage.getItem('token'); // Get token from local storage
+    const token = localStorage.getItem('token');
     if (token) {
-      const decoded = jwtDecode<DecodedToken>(token); // Decode token
+      const decoded = jwtDecode<DecodedToken>(token);
       if (decoded.role === 'admin') {
         router.push('/admin-home');
       } else if (decoded.role === 'user') {
@@ -51,7 +51,7 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages }) 
   };
 
   const handleRefreshClick = () => {
-    router.back();
+    router.refresh();
   };
 
   const handleSettingsClick = () => {
@@ -59,8 +59,26 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages }) 
   };
 
   const handleMessagesClick = () => {
-    // If user is an admin, don't allow them to access messages?
     router.push('/message');
+  };
+
+  const handleHomeClick = () => {
+    // Uncomment once tokens are implemented
+
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   const decoded = jwtDecode<DecodedToken>(token);
+    //   if (decoded.role === 'admin') {
+    //     router.push('/admin-home');
+    //   } else if (decoded.role === 'user') {
+    //     router.push('/user-home');
+    //   } else {
+    //     router.push('/');
+    //   }
+    // } else {
+    //   router.push('/');
+    // }
+    router.push('/user-home');
   };
 
   return (
@@ -77,6 +95,13 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages }) 
             alt=""
             src={back}
             onClick={handleRefreshClick}
+          />
+          <img
+            className={styles.homeIcon}
+            loading="lazy"
+            alt="Home"
+            src={home}
+            onClick={handleHomeClick}
           />
           <img
             className={styles.frameItem}

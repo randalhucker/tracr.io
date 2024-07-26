@@ -23,14 +23,14 @@ export type ReportComponentType = {
 const ReportComponent: NextPage<ReportComponentType> = ({
   className = '',
   formTitle = '',
-  onSubmit = null,
+  onSubmit = null
 }) => {
   const [reportData, setReportData] = useState<ReportData>({
     lat: '',
     long: '',
     date: null,
     description: '',
-    location: '',
+    location: ''
   });
   const locations = ['Location 1', 'Location 2', 'Location 3', 'Location 4', 'Location 5'];
 
@@ -70,7 +70,9 @@ const ReportComponent: NextPage<ReportComponentType> = ({
           placeholder="long"
           type="text"
           value={reportData.long}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('long', e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange('long', e.target.value)
+          }
         />
       </div>
       <div className={styles.input2}>
@@ -79,7 +81,7 @@ const ReportComponent: NextPage<ReportComponentType> = ({
             value={reportData.date}
             onChange={(newValue: Date | null) => handleChange('date', newValue)}
             slots={{
-              textField: (params) => <TextField {...params} />,
+              textField: (params) => <TextField {...params} />
             }}
             slotProps={{
               textField: {
@@ -90,11 +92,11 @@ const ReportComponent: NextPage<ReportComponentType> = ({
                 required: false,
                 autoFocus: false,
                 error: false,
-                color: 'primary',
+                color: 'primary'
               },
               openPickerIcon: {
-                component: () => <></>,
-              },
+                component: () => <></>
+              }
             }}
           />
         </LocalizationProvider>
@@ -104,7 +106,9 @@ const ReportComponent: NextPage<ReportComponentType> = ({
         rows={8} // Reduced the number of rows to make space for the dropdown
         cols={27}
         value={reportData.description}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleChange('description', e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          handleChange('description', e.target.value)
+        }
         placeholder="Enter description here"
       />
       <div className={styles.image1Parent}>

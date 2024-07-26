@@ -21,7 +21,7 @@ const CreateNewClaim: NextPage = () => {
     long: '',
     date: null,
     description: '',
-    location: '',
+    location: ''
   };
 
   const handleUploadImageClick = () => {
@@ -42,18 +42,17 @@ const CreateNewClaim: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
-    router.push('/user-home'); 
   };
 
   return (
     <div className={styles.createNewClaim}>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.footer}>
         <div className={styles.wrapperGroup9Parent}>
           <div className={styles.wrapperGroup9}>
             <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
           </div>
-          <ReportComponent formTitle='lost item claim' onSubmit={handleComponentSubmit} />
+          <ReportComponent formTitle="lost item claim" onSubmit={handleComponentSubmit} />
         </div>
       </div>
       {/* Show MessageBox when claim is filed */}

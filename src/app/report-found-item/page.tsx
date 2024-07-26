@@ -21,7 +21,8 @@ const ReportFoundItem: NextPage = () => {
     lat: '',
     long: '',
     date: null,
-    description: ''
+    description: '',
+    location: ''
   };
 
   const handleUploadImageClick = () => {
@@ -42,18 +43,17 @@ const ReportFoundItem: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
-    router.push('/user-home'); 
   };
 
   return (
     <div className={styles.reportFoundItem}>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.footer}>
         <div className={styles.form}>
           <div className={styles.wrapperGroup9}>
             <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
           </div>
-          <ReportComponent formTitle='found item report' onSubmit={handleComponentSubmit} />
+          <ReportComponent formTitle="found item report" onSubmit={handleComponentSubmit} />
         </div>
       </div>
       {/* Show MessageBox when claim is filed */}

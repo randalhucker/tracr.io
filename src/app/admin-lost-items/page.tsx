@@ -18,7 +18,7 @@ const AdminLostItems: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <h1 className={styles.airpods}>
         <span className={styles.airpodsTxt}>
           <p className={styles.airpods1}>AirPods</p>

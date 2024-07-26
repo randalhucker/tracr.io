@@ -6,10 +6,14 @@ import styles from './settings.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import { useEffect, useState } from 'react';
+import MessageBox from '@/components/message-box';
 
 const Settings: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
+
+  const [showMessageBox, setShowMessageBox] = useState(false);
+  const [message, setMessage] = useState('Your report has been successfully submitted!');
 
   const [oldPassword_input, setOldPassword] = useState('');
   const [newPassword_input, setNewPassword] = useState('');
@@ -39,20 +43,27 @@ const Settings: NextPage = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Submitting form...');
     // API call to update user data
-    router.push('user-home');
+    setMessage('Your settings have been successfully updated!');
   };
 
   const handleDeleteAccount = () => {
-    console.log('Deleting account...');
     // API call to delete account
-    router.push('/');
+    setMessage('Your account has been permanently deleted.');
+    setShowMessageBox(true);
   };
 
   const handleLogOut = () => {
-    console.log('Logging out...');
     // API call to log out
+    setMessage('You have been successfully logged out!');
+    setShowMessageBox(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBox(false);
+    if (message === 'Your settings have been successfully updated!') {
+      return;
+    }
     router.push('/');
   };
 
@@ -69,7 +80,7 @@ const Settings: NextPage = () => {
 
   return (
     <div className={styles.settings}>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.frameParent}>
         <div className={styles.wrapperGroup9Parent}>
           <div className={styles.wrapperGroup9}>
@@ -147,6 +158,8 @@ const Settings: NextPage = () => {
           </form>
         </div>
       </div>
+      {/* Show MessageBox when claim is filed */}
+      {showMessageBox && <MessageBox message={message} onClose={handleCloseMessageBox} />}
     </div>
   );
 };
