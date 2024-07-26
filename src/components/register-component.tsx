@@ -84,10 +84,8 @@ const RegisterComponent: NextPage<RegisterComponentType> = ({
           try {
             const decoded = jwtDecode<DecodedToken>(token);
             if (decoded.role === 'USER') {
-              // TODO: Change push to customer home page once it is written
               router.push('/user-home');
             } else if (decoded.role === 'ADMIN') {
-              // TODO: Change push to staff home page once it is written
               router.push('/staff-home');
             } else {
               throw new Error('Invalid role');
