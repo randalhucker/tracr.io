@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
 import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
-import { Message } from '@prisma/client';
+import { Message, User } from '@prisma/client';
 
 export type MessageComponentType = {
   className?: string;
@@ -79,13 +79,38 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
               throw new Error('Network response was not ok');
             }
 
+            const messages: Message[] = await response.json();
+
             // TODO Maybe change to use actual admin/user name (would be easy since we're only using 2 users)
+            const senderResponse = await fetch(
+              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, messages[0].senderUserId ?? 1),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+
+            const receiverResponse = await fetch(
+              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, messages[0].receiverUserId ?? 1),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+
+            const sender: User = await senderResponse.json();
+            const receiver: User = await receiverResponse.json();
+
             const user_name = 'user';
             const admin_name = 'admin';
-            if (decoded.role === 'admin') {
+            if (decoded.role === 'ADMIN') {
               setName(user_name);
             }
-            if (decoded.role === 'user') {
+            if (decoded.role === 'USER') {
               setName(admin_name);
             }
 

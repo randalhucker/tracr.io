@@ -21,6 +21,7 @@ export enum EntityType {
 // API URL
 export const API_URL: string = 'http://localhost:3000/api/';
 export const LOGIN_URL: string = `${API_URL}auth/login`;
+export const SERVER_URL: string = `${API_URL}server/`;
 
 // Build URL for API calls
 // Can build URLs of form: API_URL/entity, API_URL/entity/id
