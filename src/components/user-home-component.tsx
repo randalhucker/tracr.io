@@ -43,21 +43,6 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
 
   const [in_progress_claims, setInProgressClaims] = useState<DisplayDetails[]>([]);
 
-  useEffect(() => {
-    if (isClient) {
-      // API call to get all previous claims for a given user
-
-      // Transform response into array of DisplayDetails objects (may involve some weirdness with the dates)
-
-      // Test data
-      const fetchedClaims = [airpods, bearcatCard, shoes];
-
-      // Sort claims into inProgressClaims
-      const inProgress = fetchedClaims.filter((claim) => claim.status !== 'found');
-      setInProgressClaims(inProgress);
-    }
-  }, [isClient]);
-
   const handleCreateNewClaimClick = () => {
     router.push('/create-new-claim');
   };

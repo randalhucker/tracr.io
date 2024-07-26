@@ -10,34 +10,54 @@ import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import MessageBox from '@/components/message-box';
 import ReportComponent, { ReportData } from '@/components/report-component';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 
 const CreateNewClaim: NextPage = () => {
   const router = useRouter();
+  const isClient = useClientSide();
 
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [message, setMessage] = useState('Your claim has been successfully submitted!');
-  let reportData: ReportData = {
-    lat: '',
-    long: '',
-    date: null,
-    description: '',
-    location: ''
-  };
 
   const handleUploadImageClick = () => {
     console.log('Upload Image button clicked');
     // API call to upload image
   };
 
-  const handleComponentSubmit = (reportDataInput: ReportData) => {
+  const handleComponentSubmit = async (reportDataInput: ReportData) => {
     // function to evoke when the report is submitted
+    console.log('Creating claim...');
+    try {
+      if (isClient) {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+          const decoded = jwtDecode<DecodedToken>(token);
+          const response = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.CLAIM), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            // TODO: Update itemId to the actual item id
+            body: JSON.stringify({
+              description: reportDataInput.description,
+              status: 'LOST',
+              itemId: 1,
+              userId: decoded.id
+            })
+          });
 
-    // Set report data
-    reportData = reportDataInput;
-
-    // API call to create report
-    console.log('Report submitted:', reportData);
-    setShowMessageBox(true); // Show message box on submit
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          console.log('Report submitted successfully');
+          setShowMessageBox(true); // Show message box on submit
+        }
+      }
+    } catch (error) {
+      console.error('Error deleting account:', error);
+    }
   };
 
   const handleCloseMessageBox = () => {
