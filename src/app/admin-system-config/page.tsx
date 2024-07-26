@@ -8,10 +8,11 @@ import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import { useEffect, useState } from 'react';
 import MessageBox from '@/components/message-box';
+import { SERVER_URL } from '@/helpers/api';
 
 const AdminSystemConfig: NextPage = () => {
   const router = useRouter();
-  const clientSide = useClientSide();
+  const isClient = useClientSide();
 
   const [uptime, setUptime] = useState(''); // make this a time type?
   const [num_users, setNumUsers] = useState(0);
@@ -19,13 +20,29 @@ const AdminSystemConfig: NextPage = () => {
   const [message, setMessage] = useState('Report generated (not really)');
 
   useEffect(() => {
-    if (clientSide) {
-      // API call to get uptime (if possible) and number of users
+    const fetchData = async () => {
+      if (isClient) {
+        try {
+          const uptimeResponse = await fetch(SERVER_URL + 'uptime', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const uptimeData = await uptimeResponse.json();
+          setUptime(uptimeData.uptime);
 
-      setNumUsers(2);
-      setUptime('1 day, 14 hours, 25 minutes'); // don't freak out lol
-    }
-  }, [clientSide, router]);
+          const usersResponse = await fetch(SERVER_URL + 'count');
+          const usersData = await usersResponse.json();
+          setNumUsers(usersData.count);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [isClient]);
 
   const handleGenerateReport = () => {
     // Placeholder function for generating a report
