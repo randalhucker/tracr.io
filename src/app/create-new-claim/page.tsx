@@ -42,12 +42,11 @@ const CreateNewClaim: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
-    router.push('/user-home');
   };
 
   return (
     <div className={styles.createNewClaim}>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.footer}>
         <div className={styles.wrapperGroup9Parent}>
           <div className={styles.wrapperGroup9}>

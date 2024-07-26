@@ -4,11 +4,33 @@ import type { NextPage } from 'next';
 import Button from './button';
 import styles from '../app/user-home/user-home.module.scss';
 import { useRouter } from 'next/navigation';
+import ClaimDetails, { DisplayDetails } from './claim-details';
 import { useEffect, useState } from 'react';
 import useClientSide from '@/hooks/useClientSide';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
-import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { Prisma, Claim, Item } from '@prisma/client';
+
+// Test Claims
+const airpods: DisplayDetails = {
+  name: 'AirPods',
+  location: 'Smith Hall',
+  date: 'Apr. 27',
+  status: 'not found'
+};
+const bearcatCard: DisplayDetails = {
+  name: 'Bearcat Card',
+  location: 'Baldwin Hall',
+  date: 'May 2',
+  status: 'pending'
+};
+const shoes: DisplayDetails = {
+  name: 'Shoes',
+  location: 'Rec Center',
+  date: 'Mar. 27',
+  status: 'found'
+};
 
 export type UserHomeComponentType = {
   className?: string;
@@ -18,6 +40,23 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
   const router = useRouter();
   const isClient = useClientSide();
   const [firstName, setFirstName] = useState('');
+
+  const [in_progress_claims, setInProgressClaims] = useState<DisplayDetails[]>([]);
+
+  useEffect(() => {
+    if (isClient) {
+      // API call to get all previous claims for a given user
+
+      // Transform response into array of DisplayDetails objects (may involve some weirdness with the dates)
+
+      // Test data
+      const fetchedClaims = [airpods, bearcatCard, shoes];
+
+      // Sort claims into inProgressClaims
+      const inProgress = fetchedClaims.filter((claim) => claim.status !== 'found');
+      setInProgressClaims(inProgress);
+    }
+  }, [isClient]);
 
   const handleCreateNewClaimClick = () => {
     router.push('/create-new-claim');
@@ -50,6 +89,51 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
 
             const userData = await response.json();
             setFirstName(userData.firstName);
+
+            const claimsResponse = await fetch(
+              buildTwoEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id, EntityType.CLAIM),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+
+            claimsResponse.ok
+              ? console.log('Claims fetched successfully')
+              : console.log('Claims fetch failed');
+
+            const fetchedClaims: Claim[] = await claimsResponse.json();
+            const details: DisplayDetails[] = await Promise.all(
+              fetchedClaims.map(async (claim) => {
+                const itemResponse = await fetch(
+                  buildOneEntityUrl(HttpMethod.GET, EntityType.ITEM, claim.itemId),
+                  {
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  }
+                );
+
+                if (!itemResponse.ok) {
+                  throw new Error('Network response was not ok');
+                }
+
+                const itemData: Item = await itemResponse.json();
+
+                return {
+                  name: itemData.name,
+                  location: itemData.location,
+                  date: claim.createdAt.toISOString(),
+                  status: claim.status
+                };
+              })
+            );
+
+            const inProgress = details.filter((claimDetails) => claimDetails.status !== 'FOUND');
+            setInProgressClaims(inProgress);
           } else {
             router.push('/login');
           }
@@ -96,21 +180,9 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
                 <div className={styles.headerDivider} />
               </div>
               <div className={styles.claimItems}>
-                <div className={styles.airpodsParent}>
-                  <h1 className={styles.airpods}>
-                    <p className={styles.airpods1}>AirPods</p>
-                  </h1>
-                  <h3 className={styles.smithHall}>Smith Hall | Apr. 27</h3>
-                  <div className={styles.fbf474d5f22}>4fbf474d5f22</div>
-                </div>
-                <div className={styles.itemDivider}>
-                  <div className={styles.itemDividerChild} />
-                </div>
-                <h1 className={styles.bearcatCard}>Bearcat Card</h1>
-                <div className={styles.baldwinHallMay2Parent}>
-                  <h3 className={styles.baldwinHall}>Baldwin Hall | May 2</h3>
-                  <div className={styles.cfb807629ad6}>cfb807629ad6</div>
-                </div>
+                {in_progress_claims.map((claim, index) => (
+                  <ClaimDetails key={index} details={claim} />
+                ))}
               </div>
             </div>
           </div>

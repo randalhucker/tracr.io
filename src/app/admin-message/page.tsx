@@ -32,7 +32,7 @@ const AdminMessage: NextPage = () => {
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.welcomeContentWrapper}>
         <div className={styles.welcomeContent}>
           <div className={styles.welcomeMessage}>

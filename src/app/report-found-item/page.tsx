@@ -70,12 +70,11 @@ const ReportFoundItem: NextPage = () => {
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
-    router.push('/user-home');
   };
 
   return (
     <div className={styles.reportFoundItem}>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.footer}>
         <div className={styles.form}>
           <div className={styles.wrapperGroup9}>

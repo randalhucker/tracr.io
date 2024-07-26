@@ -12,21 +12,12 @@ const UserHome: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
 
-  // Placeholder functions for button clicks
-  const handleCreateNewClaimClick = () => {
-    router.push('/create-new-claim');
-  };
-
-  const handleReportLostItemClick = () => {
-    router.push('/report-found-item');
-  };
-
   return (
     <div className={styles.userHome}>
       <div className={styles.wrapperGroup9}>
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <UserHomeComponent />
     </div>
   );
