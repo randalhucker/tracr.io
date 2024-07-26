@@ -1,14 +1,23 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import styles from './admin-item-match.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminItemMatch: NextPage = () => {
+  const handleMatchClick = (matchNumber: number) => {
+    console.log(`Match button ${matchNumber} clicked`);
+    // Placeholder function for match action
+  };
+
   return (
     <div className={styles.adminItemMatch}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <FrameComponent group8="/group-81.svg" button="/button1.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.lostItemDetailsWrapper}>
         <div className={styles.lostItemDetails}>
           <div className={styles.rectangleParent}>
@@ -31,7 +40,7 @@ const AdminItemMatch: NextPage = () => {
             <div className={styles.submissionDetails}>
               <div className={styles.submissionForm}>
                 <div className={styles.contactInformation}>
-                  <img className={styles.image1Icon} alt="" src="/image-1@2x.png" />
+                  <img className={styles.image1Icon} alt="" src="/map.png" />
                   <div className={styles.emailInputContainer}>
                     <img
                       className={styles.emailInputContainerChild}
@@ -69,12 +78,7 @@ const AdminItemMatch: NextPage = () => {
                         </div>
                       </div>
                       <div className={styles.image}>image</div>
-                      <img
-                        className={styles.image2Icon}
-                        loading="lazy"
-                        alt=""
-                        src="/image-2@2x.png"
-                      />
+                      <img className={styles.image2Icon} loading="lazy" alt="" src="/airpods.png" />
                     </div>
                   </div>
                   <div className={styles.possibleMatchesParent}>
@@ -104,15 +108,24 @@ const AdminItemMatch: NextPage = () => {
                           </div>
                         </div>
                         <div className={styles.matchActionButtons}>
-                          <div className={styles.matchActionButtonContainer}>
+                          <div
+                            className={styles.matchActionButtonContainer}
+                            onClick={() => handleMatchClick(1)}
+                          >
                             <img className={styles.buttonIcon} alt="" src="/button-1.svg" />
                             <b className={styles.match}>match</b>
                           </div>
-                          <div className={styles.matchActionButtonContainer1}>
+                          <div
+                            className={styles.matchActionButtonContainer1}
+                            onClick={() => handleMatchClick(2)}
+                          >
                             <img className={styles.buttonIcon1} alt="" src="/button-1.svg" />
                             <b className={styles.match1}>match</b>
                           </div>
-                          <div className={styles.matchActionButtonContainer2}>
+                          <div
+                            className={styles.matchActionButtonContainer2}
+                            onClick={() => handleMatchClick(3)}
+                          >
                             <img className={styles.buttonIcon2} alt="" src="/button-1.svg" />
                             <b className={styles.match2}>match</b>
                           </div>

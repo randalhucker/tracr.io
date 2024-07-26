@@ -1,23 +1,27 @@
-.wrapperGroup9Child {
+.wrapperGroup9 {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  position: absolute;
-  left: 0;
-  top: 15px;
-  transform: scale(1.025);
-}
-.wrapperGroup9 {
-  width: 2037px;
-  height: 1326px;
   position: absolute;
   margin: 0 !important;
-  bottom: -157px;
-  left: -84px;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 0;
+  background-image: url('/background.svg'); // Specify the path to your SVG image
+  background-size: cover; // Ensure the image covers the entire window
+  background-position: center; // Center the background image
+  background-repeat: no-repeat; // Prevent the background image from repeating
+}
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .frameChild {
   width: 1164px;
@@ -43,17 +47,17 @@
 .inProgressClaimItem {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 0 48px;
   box-sizing: border-box;
   max-width: 100%;
 }
-.airpods1 {
+.item1 {
   margin: 0;
 }
-.airpods,
-.smithHall {
+.item,
+.location {
   margin: 0;
   position: relative;
   font-size: inherit;
@@ -62,52 +66,55 @@
   font-family: inherit;
   z-index: 1;
 }
-.smithHall {
+.location {
   font-weight: 400;
 }
 .notFound {
   color: var(--color-red-100);
 }
-.statusNotFoundContainer {
+.notFoundContainer {
   position: relative;
   line-height: 24px;
   display: inline-block;
   min-width: 97px;
   z-index: 1;
 }
-.airpodsLocation,
-.airpodsStatus {
+.itemLocation,
+.itemStatus {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
-.airpodsStatus {
+.itemStatus {
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   padding: var(--padding-10xs) 0 0;
   font-size: var(--font-size-xs);
 }
-.airpodsLocation {
+.itemLocation {
   align-self: stretch;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: var(--gap-xl);
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  gap: 0px;
   font-size: var(--font-size-lg);
 }
 .itemDescription,
 .itemDetails {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .itemDescription {
   flex: 1;
   flex-direction: column;
-  gap: 1px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
 }
 .itemDetails {
   align-self: stretch;
-  flex-direction: row;
+  flex-direction: column;
   padding: 0 0 var(--padding-7xs) var(--padding-12xs);
   box-sizing: border-box;
 }
@@ -125,7 +132,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 0 63px 0 66px;
+  padding: 5px 63px 5px 66px;
 }
 .baldwinHall,
 .bearcatCard {
@@ -148,7 +155,7 @@
 .pending {
   color: #dc8400;
 }
-.statusPending {
+.pendingContainer {
   position: relative;
   line-height: 24px;
   display: inline-block;
@@ -203,7 +210,7 @@
 .inProgressClaimItems {
   flex: 1;
   gap: 48px;
-  min-width: 234px;
+  width: 100%;
 }
 .resolvedSeparatorChild {
   width: 2px;
@@ -234,8 +241,8 @@
   align-self: stretch;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 0 60px;
 }
 .recCenter,
@@ -259,7 +266,7 @@
 .found {
   color: #00ba29;
 }
-.statusFound {
+.foundContainer {
   position: relative;
   line-height: 24px;
   display: inline-block;
@@ -392,7 +399,8 @@
   max-width: 100%;
 }
 .previousClaims {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;
@@ -425,7 +433,7 @@
   .inProgress {
     font-size: var(--font-size-15xl);
   }
-  .airpods,
+  .item,
   .bearcatCard {
     font-size: var(--font-size-6xl);
     line-height: 19px;
@@ -473,11 +481,11 @@
     padding-right: var(--padding-xl);
     box-sizing: border-box;
   }
-  .airpods {
+  .item {
     font-size: var(--font-size-lgi);
     line-height: 14px;
   }
-  .airpodsLocation {
+  .itemLocation {
     flex-wrap: wrap;
   }
   .itemSeparator {

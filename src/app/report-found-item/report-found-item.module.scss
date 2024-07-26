@@ -1,3 +1,8 @@
+.dropdownParent {
+  position: absolute;
+  top: 157px;
+  left: 42px;
+}
 .footerContentChild {
   position: absolute;
   top: 0;
@@ -21,24 +26,30 @@
   width: 318px;
   height: 44px;
 }
-.wrapperGroup9Child {
+.wrapperGroup9 {
   width: 100%;
   height: 100%;
-  object-fit: contain;
   position: absolute;
+  margin: 0 !important;
+  bottom: 0;
   left: 0;
-  top: 15px;
-  transform: scale(1.025);
-}
-.wrapperGroup9 {
-  position: absolute;
-  top: 0;
-  left: -84px;
-  width: 2037px;
-  height: 1326px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 0;
+  background-image: url('/background.svg'); // Specify the path to your SVG image
+  background-size: cover; // Ensure the image covers the entire window
+  background-position: center; // Center the background image
+  background-repeat: no-repeat; // Prevent the background image from repeating
+}
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .frameChild {
   position: absolute;
@@ -68,10 +79,10 @@
 }
 .dateFound,
 .image {
-  top: 611px;
+  top: 651px;
 }
 .dateFound {
-  top: 467px;
+  top: 487px;
 }
 .label {
   width: 100%;
@@ -93,7 +104,7 @@
   max-width: 280px;
 }
 .input {
-  top: 656px;
+  top: 710px;
   left: 55px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
   border-radius: var(--br-sm);
@@ -127,7 +138,7 @@
   max-width: 280px;
 }
 .input1 {
-  top: 656px;
+  top: 710px;
   left: 281px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
   border-radius: var(--br-sm);
@@ -169,11 +180,12 @@
   z-index: 2;
 }
 .input2 {
-  top: 519px;
+  top: 539px;
   width: 200px;
   height: 48px;
   font-size: var(--font-size-sm);
   color: var(--colors-base-danger);
+  border: none;
 }
 .input3 {
   background-color: transparent;
@@ -211,12 +223,12 @@
   z-index: 4;
 }
 .image1Parent {
-  top: 192px;
+  top: 232px;
   left: 42px;
   border-radius: var(--br-mini);
   width: 451px;
   height: 452px;
-  background-image: url(/frame-3@3x.png);
+  background-image: url(/map.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -231,7 +243,7 @@
 .uploadImage {
   width: 172px;
   position: relative;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   line-height: 24px;
   display: flex;
   font-family: var(--font-inter);
@@ -252,7 +264,7 @@
   border: 0;
   padding: 0;
   background-color: var(--colors-base-danger);
-  top: 658px;
+  top: 710px;
   left: 586px;
   box-shadow: var(--shadow-danger-lg);
   border-radius: var(--br-xs);
@@ -286,7 +298,7 @@
 .submit {
   width: 108px;
   position: relative;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   line-height: 24px;
   display: flex;
   font-family: var(--font-inter);
@@ -307,7 +319,7 @@
   border: 0;
   padding: 0;
   background-color: var(--colors-base-danger);
-  top: 707px;
+  top: 710px;
   left: 923px;
   box-shadow: var(--shadow-danger-lg);
   border-radius: var(--br-xs);
@@ -348,11 +360,12 @@
 }
 .footer {
   align-self: stretch;
-  height: 983px;
+  height: 100%;
   position: relative;
 }
 .reportFoundItem {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;
@@ -366,6 +379,10 @@
   font-size: var(--font-size-mini);
   color: var(--color-black);
   font-family: var(--font-inter);
+}
+.dropdown {
+  top: 300;
+  left: 200;
 }
 @media screen and (max-width: 950px) {
   .dateFound,

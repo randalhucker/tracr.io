@@ -1,10 +1,4 @@
-.vuesaxlinearcircleIcon {
-  height: 24px;
-  width: 24px;
-  position: relative;
-  display: none;
-}
-.createNewClaim {
+.text {
   position: relative;
   font-size: var(--font-size-13xl);
   line-height: 24px;
@@ -19,7 +13,7 @@
   justify-content: flex-start;
   padding: var(--padding-7xs-5) 0 0;
 }
-.page1Icon {
+.icon {
   height: 35px;
   width: 35px;
   position: relative;
@@ -40,13 +34,13 @@
   z-index: 1;
 }
 @media screen and (max-width: 975px) {
-  .createNewClaim {
+  .text {
     font-size: var(--font-size-lgi);
     line-height: 14px;
   }
 }
 @media screen and (max-width: 450px) {
-  .createNewClaim {
+  .text {
     font-size: var(--font-size-7xl);
     line-height: 19px;
   }

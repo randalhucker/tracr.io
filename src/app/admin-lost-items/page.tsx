@@ -1,15 +1,24 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import ClaimsList from '../../components/claims-list';
-import styles from './index.module.scss';
+import styles from './admin-lost-items.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminLostItems: NextPage = () => {
+  const handleClaimClick = () => {
+    console.log('Claim button clicked');
+    // Placeholder function for claim action
+  };
+
   return (
     <div className={styles.adminLostItems}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <FrameComponent group8="/group-8.svg" button="/button.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <h1 className={styles.airpods}>
         <span className={styles.airpodsTxt}>
           <p className={styles.airpods1}>AirPods</p>
@@ -17,7 +26,7 @@ const AdminLostItems: NextPage = () => {
       </h1>
       <div className={styles.claimsContentWrapper}>
         <div className={styles.claimsContent}>
-          <ClaimsList />
+          <ClaimsList onClaimClick={handleClaimClick} />
           <div className={styles.footer}>
             <div className={styles.footerContent}>
               <div className={styles.footerDivider} />

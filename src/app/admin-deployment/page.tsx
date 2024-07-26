@@ -1,21 +1,33 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import Footer from '../../components/footer';
 import styles from './admin-deployment.module.scss';
-// import { useRouter } from 'next/navigation';
-// import { useEffect } from 'react';
-// import useClientSide from '@/hooks/useClientSide';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminDeployment: NextPage = () => {
-  // const router = useRouter();
-  // const isClient = useClientSide();
+  const router = useRouter();
+  const isClient = useClientSide();
+
+  const handleSaveClick = () => {
+    console.log('Save button clicked');
+    // Placeholder function for save action
+  };
+
+  const handleExitClick = () => {
+    console.log('Exit button clicked');
+    // Placeholder function for exit action
+  };
 
   return (
     <div className={styles.adminDeployment}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <FrameComponent group8="/group-82.svg" button="/button2.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.itemContentWrapper}>
         <div className={styles.itemContent}>
           <div className={styles.rectangleParent}>
@@ -59,13 +71,13 @@ const AdminDeployment: NextPage = () => {
               </div>
               <div className={styles.actions}>
                 <div className={styles.actionButtons}>
-                  <div className={styles.saveAction}>
+                  <div className={styles.saveAction} onClick={handleSaveClick}>
                     <div className={styles.buttonParent}>
                       <img className={styles.buttonIcon} alt="" src="/button-11.svg" />
                       <b className={styles.saveLabel}>+</b>
                     </div>
                   </div>
-                  <div className={styles.exitAction}>
+                  <div className={styles.exitAction} onClick={handleExitClick}>
                     <img className={styles.buttonIcon1} alt="" src="/button-11.svg" />
                     <b className={styles.exitLabel}>+</b>
                   </div>

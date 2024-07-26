@@ -24,7 +24,7 @@ const useRoleAuth = (allowedRoles: string[], redirectTo: string) => {
     if (isClient) {
       const token = window.localStorage.getItem('token');
       if (!token) {
-        router.push('/login');
+        router.push('/');
         return;
       }
 
@@ -35,7 +35,7 @@ const useRoleAuth = (allowedRoles: string[], redirectTo: string) => {
         }
       } catch (error) {
         window.localStorage.removeItem('token');
-        router.push('/login');
+        router.push('/');
       }
     }
   }, [router, isClient, allowedRoles, redirectTo]);

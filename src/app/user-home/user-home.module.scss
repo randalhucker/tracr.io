@@ -1,23 +1,27 @@
-.wrapperGroup9Child {
+.wrapperGroup9 {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  position: absolute;
-  left: 0;
-  top: 15px;
-  transform: scale(1.025);
-}
-.wrapperGroup9 {
-  width: 2037px;
-  height: 1326px;
   position: absolute;
   margin: 0 !important;
-  bottom: -157px;
-  left: -84px;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 0;
+  background-image: url('/background.svg'); // Specify the path to your SVG image
+  background-size: cover; // Ensure the image covers the entire window
+  background-position: center; // Center the background image
+  background-repeat: no-repeat; // Prevent the background image from repeating
+}
+.wrapperGroup9Child {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .frameChild {
   height: 788px;
@@ -42,17 +46,19 @@
   z-index: 1;
   font-family: inherit;
 }
-.actionButtons,
-.welcomeBackUserParent {
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; // Adjust this value to increase the gap between buttons 
+}
+  .welcomeBackUserParent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 63px;
+  gap: 60px;
   max-width: 100%;
-}
-.welcomeBackUserParent {
-  gap: 137px;
+  height: 100%;
 }
 .currentClaims1 {
   margin: 0;
@@ -212,9 +218,10 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding: var(--padding-69xl) 68px 202px var(--padding-62xl);
+  padding: var(--padding-62xl);
   box-sizing: border-box;
   max-width: 100%;
+  max-height: 100%;
   gap: var(--gap-xl);
 }
 .copyrightChild {
@@ -237,10 +244,6 @@
   position: relative;
 }
 .footer,
-.frameParent {
-  display: flex;
-  max-width: 100%;
-}
 .footer {
   width: 1118px;
   flex-direction: row;
@@ -254,7 +257,9 @@
   font-family: var(--text-base-leading-6-font-medium);
 }
 .frameParent {
+  display: flex;
   width: 1164px;
+  height: 600px;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
@@ -274,7 +279,8 @@
   max-width: 100%;
 }
 .userHome {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--colors-base-danger-foreground);
   overflow: hidden;

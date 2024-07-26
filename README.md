@@ -1,6 +1,6 @@
-# SillyStuffs API
+# Tracr.io API
 
-This project is an API for an application that manages art, clothing, toys, and other items. It is built using TypeScript leveraging Express.js for REST API calls and PostgreSQL for database storage. The application is containerized using Docker and Docker Compose.
+This project is an API for an application that manages lost and found items. It is built using TypeScript leveraging Express.js for REST API calls and PostgreSQL for database storage. The application is containerized using Docker and Docker Compose.
 
 ## Table of Contents
 
@@ -24,8 +24,8 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/2024-DBase-Design/Super-Shopping-Service.git
-   cd Super-Shopping-Service
+   git clone https://github.com/randalhucker/tracr.io.git
+   cd tracr.io
    ```
 
 2. **Set up environment variables**:
@@ -37,9 +37,9 @@ Before you begin, ensure you have met the following requirements:
 
      # Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
      # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
-     DATABASE_URL="postgresql://sssadmin:ssspassword@postgres:5432/supershoppingservice?schema=public"
+     DATABASE_URL="postgresql://tracradmin:tracrpassword@postgres:5432/tracrio?schema=public"
 
-     # DATABASE_URL="postgresql://sssadmin:ssspassword@localhost:5432/supershoppingservice?schema=public" # DATABASE_URL_DEV
+     # DATABASE_URL="postgresql://tracradmin:tracrpassword@localhost:5432/tracrio?schema=public" # DATABASE_URL_DEV
 
      ACCESS_TOKEN_SECRET="supersecret"
      ```
@@ -71,7 +71,7 @@ Before you begin, ensure you have met the following requirements:
 
 For easy testing and integration, we have created a Postman collection that includes all the API endpoints available in this service. You can access the collection using the following public link:
 
-[View the SuperShoppingService Postman Collection](https://www.postman.com/lunar-module-pilot-51980864/workspace/super-shopping-service)
+[View the Tracr.io Postman Collection](https://www.postman.com/database-project-team/workspace/tracr-io)
 
 ## Development
 
@@ -111,3 +111,9 @@ The following scripts are available in the package.json:
 - start - Starts the compiled JavaScript application.
 - build - Compiles the TypeScript source code into JavaScript.
 - dev - Starts the application in development mode with ts-node-dev.
+
+
+
+## DEMO Tasks
+
+1. Log in as admin

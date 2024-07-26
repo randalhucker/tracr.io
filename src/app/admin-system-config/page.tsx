@@ -1,15 +1,29 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import Footer from '../../components/footer';
 import styles from './admin-system-config.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminSystemConfig: NextPage = () => {
+  const handleGenerateReport = () => {
+    // Placeholder function for generating a report
+    console.log('Generate report clicked');
+  };
+
+  const handleOtherButtonClick = () => {
+    // Placeholder function for other button actions
+    console.log('Other button clicked');
+  };
+
   return (
     <div className={styles.adminSystemConfig}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <FrameComponent group8="/group-82.svg" button="/button2.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.statsContainerWrapper}>
         <div className={styles.statsContainer}>
           <div className={styles.rectangleParent}>
@@ -56,6 +70,7 @@ const AdminSystemConfig: NextPage = () => {
                 saveAndExit="generate report"
                 propWidth="unset"
                 propAlignSelf="stretch"
+                onSaveAndExit={handleGenerateReport}
               />
             </div>
             <div className={styles.otherStatPair}>

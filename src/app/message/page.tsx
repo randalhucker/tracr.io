@@ -1,117 +1,147 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
 import Main from '../../components/main';
 import Button from '../../components/button';
 import styles from './message.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
+import { useEffect, useState } from 'react';
+import UserHomeComponent from '@/components/user-home-component';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+
+const initialMessages = [
+  { type: 'user', text: 'User message 1' },
+  { type: 'admin', text: 'Admin message 1' },
+  { type: 'user', text: 'User message 2' },
+  { type: 'admin', text: 'Admin message 2' }
+];
 
 const Message: NextPage = () => {
+  const router = useRouter();
+  const isClient = useClientSide();
+  const [messages, setMessages] = useState(initialMessages);
+  const [newMessage, setNewMessage] = useState('');
+
+  const handleCreateNewClaim = () => {
+    router.push('/create-new-claim');
+  };
+
+  const handleReportLostItem = () => {
+    router.push('/report-lost-item');
+  };
+
+  const handleSendMessage = async () => {
+    if (newMessage.trim() !== '') {
+      console.log('Sending Message...');
+      try {
+        if (isClient) {
+          const token = window.localStorage.getItem('token');
+          if (token) {
+            const decoded = jwtDecode<DecodedToken>(token);
+            const response = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.MESSAGE), {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              // TODO: Update receiverUserId to the actual user id
+              body: JSON.stringify({
+                content: newMessage,
+                senderUserId: decoded.id,
+                receiverUserId: 1,
+                senderAdminId: null,
+                receiverAdminId: null
+              })
+            });
+
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+
+            setMessages([...messages, { type: 'user', text: newMessage }]);
+            setNewMessage('');
+          }
+        }
+      } catch (error) {
+        console.error('Error creating message:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          const token = window.localStorage.getItem('token');
+          if (token) {
+            const decoded = jwtDecode<DecodedToken>(token);
+            const response = await fetch(
+              buildTwoEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id, EntityType.MESSAGE),
+              {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+
+            const userData = await response.json();
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [isClient]);
+
   return (
     <div className={styles.message}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <Main group7="/group-71.svg" group8="/group-83.svg" button="/button3.svg" />
-      <div className={styles.messageInner}>
-        <div className={styles.frameParent}>
-          <div className={styles.frameGroup}>
-            <div className={styles.rectangleParent}>
-              <div className={styles.frameChild} />
-              <div className={styles.welcomeBackUserParent}>
-                <h1 className={styles.welcomeBackUserContainer}>
-                  <p className={styles.welcomeBack}>welcome back,</p>
-                  <p className={styles.user}>
-                    <b>User</b>
-                  </p>
-                </h1>
-                <div className={styles.buttonParent}>
-                  <Button
-                    vuesaxlinearcircle="/vuesaxlinearcircle.svg"
-                    createNewClaim="create new claim"
-                    page1="/page1.svg"
-                  />
-                  <Button
-                    vuesaxlinearcircle="/vuesaxlinearcircle.svg"
-                    createNewClaim="report lost item"
-                    page1="/magnifyingglasssvgrepocom-2-1.svg"
-                  />
-                </div>
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
+      <div className={styles.frameContainer}>
+        <UserHomeComponent />
+        <div className={styles.rectangleParent}>
+          <div className={styles.adminContainer}>
+            <div className={styles.adminHeader}>
+              <div className={styles.adminTitle}>
+                <h2 className={styles.admin}>admin</h2>
               </div>
-              <div className={styles.claimListContainerWrapper}>
-                <div className={styles.claimListContainer}>
-                  <div className={styles.frameContainer}>
-                    <div className={styles.currentClaimsWrapper}>
-                      <h1 className={styles.currentClaims}>current claims</h1>
-                    </div>
-                    <div className={styles.claimsDivider} />
-                  </div>
-                  <div className={styles.claimDetailsContainerParent}>
-                    <div className={styles.claimDetailsContainer}>
-                      <h1 className={styles.airpods}>
-                        <p className={styles.airpods1}>AirPods</p>
-                      </h1>
-                      <h3 className={styles.smithHall}>Smith Hall | Apr. 27</h3>
-                      <div className={styles.fbf474d5f22}>4fbf474d5f22</div>
-                    </div>
-                    <div className={styles.claimDivider}>
-                      <div className={styles.itemDivider} />
-                    </div>
-                    <h1 className={styles.bearcatCard}>Bearcat Card</h1>
-                    <div className={styles.itemDetails}>
-                      <h3 className={styles.baldwinHall}>Baldwin Hall | May 2</h3>
-                      <div className={styles.cfb807629ad6}>cfb807629ad6</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className={styles.adminDivider} />
             </div>
-            <div className={styles.rectangleGroup}>
-              <div className={styles.frameItem} />
-              <div className={styles.adminContainer}>
-                <div className={styles.adminHeader}>
-                  <div className={styles.adminTitle}>
-                    <h2 className={styles.admin}>admin</h2>
+            <div className={styles.messageContainerParent}>
+              <div className={styles.messageContainer}>
+                {messages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.messageWrapper} ${message.type === 'admin' ? styles.adminMessage : styles.userMessage}`}
+                  >
+                    <div className={styles.messageText}>{message.text}</div>
                   </div>
-                  <div className={styles.adminDivider} />
-                </div>
+                ))}
               </div>
-              <div className={styles.messageContainerParent}>
-                <div className={styles.messageContainer}>
-                  <b className={styles.pm}>2:42 PM</b>
-                  <div className={styles.rectangleContainer}>
-                    <div className={styles.frameInner} />
-                    <h3 className={styles.thisIsAn}>this is an automated message</h3>
-                  </div>
-                  <div className={styles.pmWrapper}>
-                    <b className={styles.pm1}>2:45 PM</b>
-                  </div>
-                  <div className={styles.messageElements}>
-                    <textarea
-                      className={styles.messageContent}
-                      placeholder="this is an automated message"
-                      rows={4}
-                      cols={11}
-                    />
-                  </div>
-                  <b className={styles.pm2}>2:50 PM</b>
-                  <div className={styles.messageElements1}>
-                    <div className={styles.frameDiv}>
-                      <div className={styles.rectangleDiv} />
-                      <h3 className={styles.thisIsAn1}>this is an automated message</h3>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.rectangleParent1}>
-                  <div className={styles.frameChild1} />
-                  <div className={styles.wrapperButton}>
-                    <img className={styles.buttonIcon} alt="" src="/button-1.svg" />
-                  </div>
-                </div>
+              <div className={styles.inputContainer}>
+                <textarea
+                  className={styles.textBox}
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  placeholder="Type your message..."
+                  rows={4}
+                  cols={50}
+                />
+                <button className={styles.sendButton} onClick={handleSendMessage}>
+                  Send
+                </button>
               </div>
-            </div>
-          </div>
-          <div className={styles.footer}>
-            <div className={styles.footerContainer}>
-              <div className={styles.footerContainerChild} />
-              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
             </div>
           </div>
         </div>

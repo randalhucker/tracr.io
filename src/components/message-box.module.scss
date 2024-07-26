@@ -1,0 +1,40 @@
+.messageBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--br-mini);
+    background-color: var(--colors-base-danger-foreground);
+    width: 318px;
+    height: 150px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .messageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .messageText {
+    margin-bottom: 20px;
+    font-size: var(--font-size-lg);
+    color: var(--color-black);
+  }
+  
+  .closeButton {
+    border-radius: var(--br-mini);
+    background-color: var(--colors-base-danger);
+    color: var(--colors-base-danger-foreground);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+  }

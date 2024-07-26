@@ -1,13 +1,15 @@
 'use client';
 
 import type { AppProps } from 'next/app';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useClientSide from '../hooks/useClientSide';
 
 import './globals.css';
 
-const publicPaths = ['/login', '/signup', '/supplier-auth']; // Add public paths here
+const publicPaths = ['/', '/register']; // Add public paths here
 let userId: number | null = null;
 
 export function setUserId(id: number) {
@@ -24,9 +26,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (isClient) {
-      router.push('/login');
+      router.push('/');
     }
   }, [router, isClient]);
 
-  return <Component {...pageProps} />;
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Component {...pageProps} />
+    </LocalizationProvider>
+  );
 }

@@ -1,6 +1,6 @@
 .mainChild {
   height: 97px;
-  width: 1920px;
+  width: 100vw;
   position: relative;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
   border-radius: 0 0 var(--br-mini) var(--br-mini);
@@ -16,6 +16,7 @@
 }
 .buttonIcon,
 .frameChild,
+.homeIcon,
 .frameItem {
   height: 48px;
   width: 48px;
@@ -77,4 +78,12 @@
     padding-right: var(--padding-13xl);
     box-sizing: border-box;
   }
+}
+
+.frameChild:hover,
+.homeIcon:hover,
+.buttonIcon:hover,
+.frameItem:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }

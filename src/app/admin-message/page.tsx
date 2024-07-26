@@ -1,14 +1,38 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import type { NextPage } from 'next';
-import FrameComponent from '../../components/frame-component2';
+import Main from '../../components/main';
 import styles from './admin-message.module.scss';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
 
 const AdminMessage: NextPage = () => {
+  const handleManageLostItemsClick = () => {
+    console.log('Manage Lost Items button clicked');
+    // Placeholder function for manage lost items action
+  };
+
+  const handleManageDeploymentClick = () => {
+    console.log('Manage Deployment button clicked');
+    // Placeholder function for manage deployment action
+  };
+
+  const handleSystemReportClick = () => {
+    console.log('System Report button clicked');
+    // Placeholder function for system report action
+  };
+
+  const handleSendMessageClick = () => {
+    console.log('Send Message button clicked');
+    // Placeholder function for sending a message action
+  };
+
   return (
     <div className={styles.adminMessage}>
       <div className={styles.wrapperGroup9}>
-        <img className={styles.wrapperGroup9Child} alt="" src="/group-9.svg" />
+        <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
-      <FrameComponent group8="/group-83.svg" button="/button3.svg" />
+      <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.welcomeContentWrapper}>
         <div className={styles.welcomeContent}>
           <div className={styles.welcomeMessage}>
@@ -21,7 +45,7 @@ const AdminMessage: NextPage = () => {
                 </p>
               </h1>
               <div className={styles.managementButtons}>
-                <button className={styles.button}>
+                <button className={styles.button} onClick={handleManageLostItemsClick}>
                   <img
                     className={styles.vuesaxlinearcircleIcon}
                     alt=""
@@ -30,7 +54,7 @@ const AdminMessage: NextPage = () => {
                   <b className={styles.manageLostItems}>manage lost items</b>
                 </button>
                 <div className={styles.systemButtons}>
-                  <button className={styles.button1}>
+                  <button className={styles.button1} onClick={handleManageDeploymentClick}>
                     <img
                       className={styles.vuesaxlinearcircleIcon1}
                       alt=""
@@ -38,7 +62,7 @@ const AdminMessage: NextPage = () => {
                     />
                     <b className={styles.manageDeployment}>manage deployment</b>
                   </button>
-                  <button className={styles.button2}>
+                  <button className={styles.button2} onClick={handleSystemReportClick}>
                     <img
                       className={styles.vuesaxlinearcircleIcon2}
                       alt=""
@@ -87,7 +111,7 @@ const AdminMessage: NextPage = () => {
                 </div>
                 <div className={styles.rectangleParent1}>
                   <div className={styles.frameChild1} />
-                  <div className={styles.wrapperButton}>
+                  <div className={styles.wrapperButton} onClick={handleSendMessageClick}>
                     <img className={styles.buttonIcon} alt="" src="/button-12.svg" />
                   </div>
                 </div>
