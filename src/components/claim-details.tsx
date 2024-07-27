@@ -67,7 +67,7 @@ const StatusStyling: NextPage<ClaimStatusStylingType> = ({ className = '', statu
           <span className={styles.found}>{status_input}</span>
         </div>
       );
-    case 'not found':
+    case 'lost':
       return (
         <div className={styles.notFoundContainer}>
           <span>{`status: `}</span>

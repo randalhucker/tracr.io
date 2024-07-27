@@ -18,7 +18,7 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
   const isClient = useClientSide();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
-  const [name, setName] = useState('admin');
+  const [name, setName] = useState('');
 
   const handleSendMessage = async () => {
     if (newMessage.trim() !== '') {
@@ -38,8 +38,8 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
                 content: newMessage,
                 senderUserId: decoded.id,
                 receiverUserId: decoded.id === 1 ? 2 : 1,
-                senderAdminId: decoded.id === 2 ? 2 : null,
-                receiverAdminId: decoded.id === 1 ? 2 : null
+                senderAdminId: decoded.role === 'admin' ? decoded.id : null,
+                receiverAdminId: null
               })
             });
 
@@ -104,11 +104,9 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
 
             const sender: User = await senderResponse.json();
             const receiver: User = await receiverResponse.json();
+            setName(decoded.id === sender.id ? receiver.firstName : sender.firstName);
 
-            setName(decoded.id === sender.id ? sender.firstName : receiver.firstName);
-
-            const fetchedMessages: Message[] = await response.json();
-            setMessages(fetchedMessages);
+            setMessages(messages);
           }
         }
       } catch (error) {

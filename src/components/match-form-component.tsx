@@ -89,7 +89,7 @@ const MatchFormComponent: NextPage<MatchFormComponentType> = ({ className = '', 
 
   const handleCloseMessageBox = () => {
     setShowMessageBox(false);
-    router.push('/admin-messages');
+    router.push('/admin-message');
   };
 
   useEffect(() => {

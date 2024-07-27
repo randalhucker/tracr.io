@@ -41,11 +41,8 @@ export const getClaimDetails = async (req: Request, res: Response): Promise<void
  * Get claims.
  */
 export const getClaims = async (req: Request, res: Response): Promise<void> => {
-  const { userId } = req.params;
   try {
-    const claims = await prisma.claim.findMany({
-      where: { userId: parseInt(userId) }
-    });
+    const claims = await prisma.claim.findMany();
     res.status(200).json(claims);
   } catch (error) {
     console.error('Error fetching claims:', (error as Error).message);
