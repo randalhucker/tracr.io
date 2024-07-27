@@ -38,11 +38,14 @@ export const getClaimDetails = async (req: Request, res: Response): Promise<void
 };
 
 /**
- * Get claim details.
+ * Get claims.
  */
 export const getClaims = async (req: Request, res: Response): Promise<void> => {
+  const { userId } = req.params;
   try {
-    const claims = await prisma.claim.findMany();
+    const claims = await prisma.claim.findMany({
+      where: { userId: parseInt(userId) }
+    });
     res.status(200).json(claims);
   } catch (error) {
     console.error('Error fetching claims:', (error as Error).message);
@@ -80,6 +83,19 @@ export const deleteClaim = async (req: Request, res: Response): Promise<void> =>
     res.status(200).json({ message: 'Claim deleted successfully' });
   } catch (error) {
     console.error('Error deleting claim:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+/**
+ * Delete all claims.
+ */
+export const deleteAllClaims = async (req: Request, res: Response): Promise<void> => {
+  try {
+    await prisma.claim.deleteMany();
+    res.status(200).json({ message: 'All claims deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting all claims:', (error as Error).message);
     res.status(500).json({ error: (error as Error).message });
   }
 };

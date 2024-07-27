@@ -83,7 +83,7 @@ const PreviousClaims: NextPage = () => {
                 return {
                   name: itemData.name,
                   location: itemData.location,
-                  date: claim.createdAt.toISOString(),
+                  date: claim.createdAt.toString(),
                   status: claim.status
                 };
               })

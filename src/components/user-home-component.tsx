@@ -115,7 +115,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
                 return {
                   name: itemData.name,
                   location: itemData.location,
-                  date: claim.createdAt.toISOString(),
+                  date: claim.createdAt.toString(),
                   status: claim.status
                 };
               })
@@ -124,7 +124,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
             const inProgress = details.filter((claimDetails) => claimDetails.status !== 'FOUND');
             setInProgressClaims(inProgress);
           } else {
-            //router.push('/'); // Commented out for testing
+            router.push('/');
           }
         }
       } catch (error) {

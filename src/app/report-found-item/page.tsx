@@ -52,7 +52,7 @@ const ReportFoundItem: NextPage = () => {
               name: reportDataInput.description.split(' ')[0],
               description: reportDataInput.description,
               location: reportDataInput.location?.name,
-              status: 'FOUND',
+              status: 'LOST',
               category: '',
               buildingId: reportDataInput.location?.id
             })

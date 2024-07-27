@@ -15,14 +15,14 @@ export type ClaimsListType = {
   right_header: string;
   left_claims: DisplayDetails[];
   right_claims: DisplayDetails[];
-  onClick?: () => void;
+  onClick?: (id: number) => void;
 };
 
 export type ClaimsColumnType = {
   className?: string;
   header: string;
   claims: DisplayDetails[];
-  onClick?: () => void;
+  onClick?: (id: number) => void;
 };
 
 const ClaimsList: NextPage<ClaimsListType> = ({
@@ -39,7 +39,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({
   const clientSide = useClientSide();
 
   useEffect(() => {
-    if ((left_claims != null) && (right_claims != null)) {
+    if (left_claims != null && right_claims != null) {
       setLeftClaims(left_claims);
       setRightClaims(right_claims);
       return;
@@ -85,7 +85,7 @@ const ClaimsList: NextPage<ClaimsListType> = ({
     if (clientSide) {
       fetchClaims();
     }
-  }, [clientSide]);
+  }, [clientSide, left_claims, right_claims]);
 
   return (
     <div className={[styles.claimsListContainerWrapper, className].join(' ')}>
@@ -112,7 +112,7 @@ export const ClaimsColumn: NextPage<ClaimsColumnType> = ({
   className = '',
   header,
   claims,
-  onClick
+  onClick = () => {}
 }) => {
   return (
     <div className={styles.inProgressClaimItems}>
@@ -121,11 +121,11 @@ export const ClaimsColumn: NextPage<ClaimsColumnType> = ({
       </div>
       <div className={styles.itemDetailsContainer}>
         {claims.map((claim, index) => (
-          <ClaimDetails key={index} details={claim} handleClick={onClick} />
+          <ClaimDetails key={index} details={claim} handleClick={() => onClick(claim.id ?? 1)} />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default ClaimsList;

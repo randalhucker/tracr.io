@@ -20,9 +20,9 @@ const AdminLostItems: NextPage = () => {
   const [unmatched_reports, setUnmatchedReports] = useState<DisplayDetails[]>([]);
   const [matched_reports, setMatchedReports] = useState<DisplayDetails[]>([]);
 
-  const handleReportClick = () => {
-    console.log('Report clicked');
-    router.push('/admin-item-match');
+  const handleReportClick = (reportId: number) => {
+    console.log('Report clicked', reportId);
+    router.push(`/admin-item-match?id=${reportId.toString()}`);
   };
 
   useEffect(() => {

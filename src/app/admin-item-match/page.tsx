@@ -3,38 +3,80 @@
 import type { NextPage } from 'next';
 import Main from '../../components/main';
 import styles from './admin-item-match.module.scss';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
-import MatchFormComponent, { ReportData } from '@/components/match-form-component';
-import { useEffect, useState } from 'react';
+import MatchFormComponent, { ReportItem } from '@/components/match-form-component';
+import { useEffect, useState, Suspense } from 'react';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { Report, Building, Item } from '@prisma/client';
+import dynamic from 'next/dynamic';
 
 // Test report
-const initialReportData: ReportData = {
-  lat: '123.456',
-  long: '456.789',
-  date: new Date(Date.now()),
-  description: 'test description',
-  location: { id: 1, name: 'Smith Hall', createdAt: new Date(), updatedAt: new Date() },
-  name: 'Airpods'
+const initialReportData: ReportItem = {
+  report: {
+    id: 0,
+    description: 'airpods',
+    image: null,
+    status: 'LOST',
+    userId: 1,
+    itemId: 1,
+    createdAt: new Date(Date.now()),
+    updatedAt: new Date(Date.now())
+  },
+  location: 'Swift Hall'
 };
 
-const AdminItemMatch: NextPage = () => {
-  const router = useRouter();
+const ReportLoader: React.FC = () => {
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
   const isClient = useClientSide();
-
-  const [report, setReport] = useState<ReportData>(initialReportData);
+  const [report, setReport] = useState<ReportItem>(initialReportData);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // API Call to get the relevant report data to pass to the MatchForm Component (may need to put data in URL query if this isn't possible)
-    // Currently, the way to get to this page is by clicking on a report from admin-lost-items. This page should then be loaded with the data of the report that was clicked on.
-    setReport(initialReportData);
-  }, [isClient]);
+    if (isClient && id) {
+      const fetchReportData = async () => {
+        try {
+          const response = await fetch(
+            buildOneEntityUrl(HttpMethod.GET, EntityType.REPORT, parseInt(id))
+          );
+          const data: Report = await response.json();
+          const itemResponse = await fetch(
+            buildOneEntityUrl(HttpMethod.GET, EntityType.ITEM, data.itemId ?? 0)
+          );
+          const itemData: Item = await itemResponse.json();
+          const item = {
+            report: data,
+            location: itemData.location
+          };
 
-  const handleMatchClick = (matchNumber: number) => {
-    console.log(`Match button ${matchNumber} clicked`);
-    // Placeholder function for match action
-  };
+          setReport(item);
+        } catch (error) {
+          console.error('Failed to fetch report data:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
+      fetchReportData();
+    } else {
+      setLoading(false);
+    }
+  }, [id, isClient]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return <MatchFormComponent reportItem={report} />;
+};
+
+// Dynamically import ReportLoader to ensure it’s only used on the client side
+const DynamicReportLoader = dynamic(() => Promise.resolve(ReportLoader), {
+  ssr: false
+});
+
+const AdminItemMatch: NextPage = () => {
   return (
     <div className={styles.adminItemMatch}>
       <div className={styles.wrapperGroup9}>
@@ -42,7 +84,9 @@ const AdminItemMatch: NextPage = () => {
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.lostItemDetailsWrapper}>
-        <MatchFormComponent report={report} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <DynamicReportLoader />
+        </Suspense>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export type DisplayDetails = {
   location: string;
   date: string;
   status: string;
+  id?: number;
 };
 
 export type ClaimDetailsComponentType = {
