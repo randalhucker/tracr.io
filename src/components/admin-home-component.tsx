@@ -38,13 +38,7 @@ const AdminHomeComponent: NextPage<AdminHomeComponentType> = ({ className = '' }
           if (token) {
             const decoded = jwtDecode<DecodedToken>(token);
             const response = await fetch(
-              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id),
-              {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              }
+              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id)
             );
 
             if (!response.ok) {

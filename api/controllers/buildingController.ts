@@ -38,6 +38,19 @@ export const getBuildingDetails = async (req: Request, res: Response): Promise<v
 };
 
 /**
+ * Get all buildings.
+ */
+export const getBuildings = async (_req: Request, res: Response): Promise<void> => {
+  try {
+    const buildings = await prisma.building.findMany();
+    res.status(200).json(buildings);
+  } catch (error) {
+    console.error('Error fetching buildings:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+/**
  * Update building details.
  */
 export const updateBuildingDetails = async (req: Request, res: Response): Promise<void> => {

@@ -9,48 +9,54 @@ import { use, useEffect, useState } from 'react';
 import useClientSide from '@/hooks/useClientSide';
 import { Building } from '@prisma/client';
 import LocationList from '@/components/location-list-component';
-
-// Test Buildings
-const steger: Building = {
-  id: 1,
-  name: 'Steger Student Center',
-  createdAt: new Date(),
-  updatedAt: new Date()
-};
-
-const swift: Building = {
-  id: 1,
-  name: 'Swift Hall',
-  createdAt: new Date(),
-  updatedAt: new Date()
-};
-
-const test_building_list: Building[] = [steger, swift];
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import MessageBoxWithInput from '@/components/message-box-input';
 
 const AdminDeployment: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
 
+  const [message, setMessage] = useState('');
+  const [showMessageBoxWithInput, setShowMessageBoxWithInput] = useState(false);
   const [building_list, setBuildingList] = useState<Building[]>([]);
 
   const handleSaveClick = () => {
     console.log('Save button clicked');
-    // API call to write changes to database (if not done on the add action)
+    router.push('/admin-home');
   };
 
   const handleAddClick = () => {
     console.log('Add button clicked');
-    // API call to create a new building
-    // insert to building_list so it shows up on page (may need to refresh page?)
-  }
+    setMessage('Add a building:');
+    setShowMessageBoxWithInput(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBoxWithInput(false);
+  };
 
   useEffect(() => {
-    if (isClient) {
-      // API call to get the buildings (set them to building list... yes the component expects a list of Buildings)
-      
-      setBuildingList(test_building_list);
-    }
-  } , [isClient]);
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          const buildingsResponse = await fetch(
+            buildOneEntityUrl(HttpMethod.GET, EntityType.BUILDING)
+          );
+
+          buildingsResponse.ok
+            ? console.log('Buildings fetched successfully')
+            : console.log('Buildings fetch failed');
+
+          const fetchedBuildings: Building[] = await buildingsResponse.json();
+          setBuildingList(fetchedBuildings);
+        }
+      } catch (error) {
+        console.error('Error fetching buildings:', error);
+      }
+    };
+
+    fetchData();
+  }, [isClient]);
 
   return (
     <div className={styles.adminDeployment}>
@@ -88,10 +94,13 @@ const AdminDeployment: NextPage = () => {
                 </div>
               </div>
             </div>
-            <Footer saveAndExit="save and exit" onSaveAndExit={handleSaveClick}/>
+            <Footer saveAndExit="save and exit" onSaveAndExit={handleSaveClick} />
           </div>
         </div>
       </div>
+      {showMessageBoxWithInput && (
+        <MessageBoxWithInput message={message} onClose={handleCloseMessageBox} />
+      )}
     </div>
   );
 };

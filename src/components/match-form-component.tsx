@@ -34,10 +34,7 @@ const match2: DisplayDetails = { name: 'Test Match 2', location: 'Test Building 
 
 const test_possible_matches: DisplayDetails[] = [match1, match2]
 
-const MatchFormComponent: NextPage<MatchFormComponentType> = ({
-  className = '',
-  report
-}) => {
+const MatchFormComponent: NextPage<MatchFormComponentType> = ({ className = '', report }) => {
   const isClient = useClientSide();
   const [possible_matches, setPossibleMatches] = useState<DisplayDetails[]>([]);
 
@@ -50,7 +47,7 @@ const MatchFormComponent: NextPage<MatchFormComponentType> = ({
     <div className={styles.rectangleParent}>
       <div className={styles.frameChild}>
         <div className={styles.location}>location</div>
-        <div className={styles.location1}>{report.location.name}</div>
+        <div className={styles.location1}>{report.location?.name}</div>
         <div className={styles.description}>description</div>
         <div className={styles.image}>image</div>
         <div className={styles.dateFound}>date found</div>

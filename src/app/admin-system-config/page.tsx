@@ -23,12 +23,7 @@ const AdminSystemConfig: NextPage = () => {
     const fetchData = async () => {
       if (isClient) {
         try {
-          const uptimeResponse = await fetch(SERVER_URL + 'uptime', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
+          const uptimeResponse = await fetch(SERVER_URL + 'uptime');
           const uptimeData = await uptimeResponse.json();
           setUptime(uptimeData.uptime);
 

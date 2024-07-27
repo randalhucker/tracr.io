@@ -6,7 +6,7 @@ import styles from './admin-lost-items.module.scss';
 import useClientSide from '@/hooks/useClientSide';
 import { useEffect, useState } from 'react';
 import { DisplayDetails } from '@/components/claim-details';
-import { Claim, Item } from '@prisma/client';
+import { Claim, Item, Report } from '@prisma/client';
 import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
@@ -29,59 +29,40 @@ const AdminLostItems: NextPage = () => {
     const fetchData = async () => {
       try {
         if (isClient) {
-          const token = window.localStorage.getItem('token');
-          if (token) {
-            const decoded = jwtDecode<DecodedToken>(token);
+          // TODO Modify the URL to fetch all REPORTS for all users (sorting does not need to change: unmatched are claims that are in progress, matched are claims that are resolved)
+          const reportsResponse = await fetch(buildOneEntityUrl(HttpMethod.GET, EntityType.REPORT));
 
-            // TODO Modify the URL to fetch all REPORTS for all users (sorting does not need to change: unmatched are claims that are in progress, matched are claims that are resolved)
-            const claimsResponse = await fetch(
-              buildOneEntityUrl(HttpMethod.GET, EntityType.CLAIM),
-              {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json'
-                }
+          reportsResponse.ok
+            ? console.log('Claims fetched successfully')
+            : console.log('Claims fetch failed');
+
+          const fetchedResponses: Report[] = await reportsResponse.json();
+          const details: DisplayDetails[] = await Promise.all(
+            fetchedResponses.map(async (report) => {
+              const itemResponse = await fetch(
+                buildOneEntityUrl(HttpMethod.GET, EntityType.ITEM, report.itemId ?? 0)
+              );
+
+              if (!itemResponse.ok) {
+                throw new Error('Network response was not ok');
               }
-            );
 
-            claimsResponse.ok
-              ? console.log('Claims fetched successfully')
-              : console.log('Claims fetch failed');
+              const itemData: Item = await itemResponse.json();
 
-            const fetchedClaims: Claim[] = await claimsResponse.json();
-            const details: DisplayDetails[] = await Promise.all(
-              fetchedClaims.map(async (claim) => {
-                const itemResponse = await fetch(
-                  buildOneEntityUrl(HttpMethod.GET, EntityType.ITEM, claim.itemId),
-                  {
-                    method: 'GET',
-                    headers: {
-                      'Content-Type': 'application/json'
-                    }
-                  }
-                );
+              return {
+                name: itemData.name,
+                location: itemData.location,
+                date: report.createdAt.toString(),
+                status: report.status
+              };
+            })
+          );
 
-                if (!itemResponse.ok) {
-                  throw new Error('Network response was not ok');
-                }
+          const unmatched = details.filter((reportDetails) => reportDetails.status !== 'FOUND');
+          const matched = details.filter((reportDetails) => reportDetails.status === 'FOUND');
 
-                const itemData: Item = await itemResponse.json();
-
-                return {
-                  name: itemData.name,
-                  location: itemData.location,
-                  date: claim.createdAt.toISOString(),
-                  status: claim.status
-                };
-              })
-            );
-
-            const unmatched = details.filter((claimDetails) => claimDetails.status !== 'FOUND');
-            const matched = details.filter((claim) => claim.status === 'FOUND');
-
-            setUnmatchedReports(unmatched);
-            setMatchedReports(matched);
-          }
+          setUnmatchedReports(unmatched);
+          setMatchedReports(matched);
         }
       } catch (error) {
         console.error('Error fetching claims:', error);
