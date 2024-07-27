@@ -18,6 +18,19 @@ export const createReport = async (req: Request, res: Response): Promise<void> =
 };
 
 /**
+ * Get all reports.
+ */
+export const getAllReports = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const reports = await prisma.report.findMany();
+    res.status(200).json(reports);
+  } catch (error) {
+    console.error('Error fetching reports:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+/**
  * Get report details.
  */
 export const getReportDetails = async (req: Request, res: Response): Promise<void> => {

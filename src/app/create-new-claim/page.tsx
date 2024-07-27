@@ -42,7 +42,7 @@ const CreateNewClaim: NextPage = () => {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              name: reportDataInput.description,
+              name: reportDataInput.description.split(' ')[0],
               description: reportDataInput.description,
               location: reportDataInput.location?.name,
               status: 'LOST',

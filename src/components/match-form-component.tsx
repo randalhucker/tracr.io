@@ -25,10 +25,7 @@ export type MatchFormComponentType = {
   report: ReportData;
 };
 
-const MatchFormComponent: NextPage<MatchFormComponentType> = ({
-  className = '',
-  report
-}) => {
+const MatchFormComponent: NextPage<MatchFormComponentType> = ({ className = '', report }) => {
   const isClient = useClientSide();
 
   useEffect(() => {
@@ -47,7 +44,7 @@ const MatchFormComponent: NextPage<MatchFormComponentType> = ({
         <div className={styles.label}>{report.lat}</div>
       </div>
       <div className={styles.input1}>
-      <div className={styles.label1}>{report.long}</div>
+        <div className={styles.label1}>{report.long}</div>
       </div>
       <div className={styles.input2}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>

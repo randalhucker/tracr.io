@@ -14,7 +14,7 @@ const initialReportData: ReportData = {
   long: '456.789',
   date: new Date(Date.now()),
   description: 'test description',
-  location: {id: 1, name: 'Smith Hall', createdAt: new Date(), updatedAt: new Date()},
+  location: { id: 1, name: 'Smith Hall', createdAt: new Date(), updatedAt: new Date() },
   name: 'Airpods'
 };
 
@@ -28,7 +28,7 @@ const AdminItemMatch: NextPage = () => {
     // API Call to get the relevant report data to pass to the MatchForm Component (may need to put data in URL query if this isn't possible)
     // Currently, the way to get to this page is by clicking on a report from admin-lost-items. This page should then be loaded with the data of the report that was clicked on.
     setReport(initialReportData);
-  } , [isClient]);
+  }, [isClient]);
 
   const handleMatchClick = (matchNumber: number) => {
     console.log(`Match button ${matchNumber} clicked`);
@@ -42,7 +42,7 @@ const AdminItemMatch: NextPage = () => {
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.lostItemDetailsWrapper}>
-        <MatchFormComponent report={report}/>
+        <MatchFormComponent report={report} />
       </div>
     </div>
   );
