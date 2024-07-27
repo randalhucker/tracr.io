@@ -5,8 +5,31 @@ import Main from '../../components/main';
 import styles from './admin-item-match.module.scss';
 import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
+import MatchFormComponent, { ReportData } from '@/components/match-form-component';
+import { useEffect, useState } from 'react';
+
+// Test report
+const initialReportData: ReportData = {
+  lat: '123.456',
+  long: '456.789',
+  date: new Date(Date.now()),
+  description: 'test description',
+  location: {id: 1, name: 'Smith Hall', createdAt: new Date(), updatedAt: new Date()},
+  name: 'Airpods'
+};
 
 const AdminItemMatch: NextPage = () => {
+  const router = useRouter();
+  const isClient = useClientSide();
+
+  const [report, setReport] = useState<ReportData>(initialReportData);
+
+  useEffect(() => {
+    // API Call to get the relevant report data to pass to the MatchForm Component (may need to put data in URL query if this isn't possible)
+    // Currently, the way to get to this page is by clicking on a report from admin-lost-items. This page should then be loaded with the data of the report that was clicked on.
+    setReport(initialReportData);
+  } , [isClient]);
+
   const handleMatchClick = (matchNumber: number) => {
     console.log(`Match button ${matchNumber} clicked`);
     // Placeholder function for match action
@@ -19,131 +42,7 @@ const AdminItemMatch: NextPage = () => {
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
       <div className={styles.lostItemDetailsWrapper}>
-        <div className={styles.lostItemDetails}>
-          <div className={styles.rectangleParent}>
-            <div className={styles.frameChild} />
-            <div className={styles.itemDetailsContent}>
-              <div className={styles.itemInformation}>
-                <h3 className={styles.airpods}>AirPods</h3>
-                <div className={styles.location}>location</div>
-              </div>
-              <div className={styles.reportDetails}>
-                <div className={styles.reporterDetails}>
-                  <div className={styles.reportedByRandyContainer}>
-                    <span>{`reported by: `}</span>
-                    <b>randy h.</b>
-                  </div>
-                </div>
-                <div className={styles.description}>description</div>
-              </div>
-            </div>
-            <div className={styles.submissionDetails}>
-              <div className={styles.submissionForm}>
-                <div className={styles.contactInformation}>
-                  <img className={styles.image1Icon} alt="" src="/map.png" />
-                  <div className={styles.emailInputContainer}>
-                    <img
-                      className={styles.emailInputContainerChild}
-                      loading="lazy"
-                      alt=""
-                      src="/line-4.svg"
-                    />
-                    <img className={styles.emailInputContainerItem} alt="" src="/line-5.svg" />
-                  </div>
-                </div>
-                <div className={styles.emailInputLabelWrapper}>
-                  <div className={styles.emailInputLabel}>
-                    <div className={styles.input}>
-                      <input className={styles.label} placeholder="lat" type="text" />
-                    </div>
-                    <div className={styles.input1}>
-                      <input className={styles.label1} placeholder="long" type="text" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.submitButtonWrapperParent}>
-                <div className={styles.submitButtonWrapper}>
-                  <textarea className={styles.input2} rows={11} cols={27} />
-                </div>
-                <div className={styles.additionalDetails}>
-                  <div className={styles.dateLostContainer}>
-                    <div className={styles.dateLostInput}>
-                      <div className={styles.dateLostLabelContainer}>
-                        <div className={styles.dateLost}>date lost</div>
-                      </div>
-                      <div className={styles.input3}>
-                        <div className={styles.label2}>
-                          <div className={styles.email}>4/24/2024</div>
-                        </div>
-                      </div>
-                      <div className={styles.image}>image</div>
-                      <img className={styles.image2Icon} loading="lazy" alt="" src="/airpods.png" />
-                    </div>
-                  </div>
-                  <div className={styles.possibleMatchesParent}>
-                    <div className={styles.possibleMatches}>possible matches</div>
-                    <div className={styles.matchesContainer}>
-                      <div className={styles.matchesContent}>
-                        <div className={styles.matchItems}>
-                          <div className={styles.matchItemDetails}>
-                            <div className={styles.matchItemInfo}>
-                              <b className={styles.airpods1}>
-                                <p className={styles.airpods2}>AirPods</p>
-                              </b>
-                              <div className={styles.smithHall}>Smith Hall | Apr. 25</div>
-                            </div>
-                            <div className={styles.matchItemInfo1}>
-                              <b className={styles.airpods3}>
-                                <p className={styles.airpods4}>AirPods</p>
-                              </b>
-                              <div className={styles.smithHall1}>Smith Hall | Apr. 26</div>
-                            </div>
-                            <div className={styles.matchItemInfo2}>
-                              <b className={styles.airpods5}>
-                                <p className={styles.airpods6}>AirPods</p>
-                              </b>
-                              <div className={styles.smithHall2}>Smith Hall | Apr. 22</div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className={styles.matchActionButtons}>
-                          <div
-                            className={styles.matchActionButtonContainer}
-                            onClick={() => handleMatchClick(1)}
-                          >
-                            <img className={styles.buttonIcon} alt="" src="/button-1.svg" />
-                            <b className={styles.match}>match</b>
-                          </div>
-                          <div
-                            className={styles.matchActionButtonContainer1}
-                            onClick={() => handleMatchClick(2)}
-                          >
-                            <img className={styles.buttonIcon1} alt="" src="/button-1.svg" />
-                            <b className={styles.match1}>match</b>
-                          </div>
-                          <div
-                            className={styles.matchActionButtonContainer2}
-                            onClick={() => handleMatchClick(3)}
-                          >
-                            <img className={styles.buttonIcon2} alt="" src="/button-1.svg" />
-                            <b className={styles.match2}>match</b>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.footer}>
-            <div className={styles.footerContent}>
-              <div className={styles.footerSeparator} />
-              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-            </div>
-          </div>
-        </div>
+        <MatchFormComponent report={report}/>
       </div>
     </div>
   );
