@@ -36,7 +36,7 @@ const MatchFormComponent: NextPage<MatchFormComponentType> = ({ className = '', 
     <div className={styles.rectangleParent}>
       <div className={styles.frameChild} />
       <div className={styles.location}>location</div>
-      <div className={styles.location1}>{report.location.name}</div>
+      <div className={styles.location1}>{report.location?.name}</div>
       <div className={styles.description}>description</div>
       <div className={styles.image}>image</div>
       <div className={styles.dateFound}>date found</div>

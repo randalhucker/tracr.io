@@ -22,7 +22,7 @@ const AdminDeployment: NextPage = () => {
 
   const handleSaveClick = () => {
     console.log('Save button clicked');
-    // API call to write changes to database (if not done on the add action)
+    router.push('/admin-home');
   };
 
   const handleAddClick = () => {
