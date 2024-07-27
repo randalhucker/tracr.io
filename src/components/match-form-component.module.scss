@@ -52,9 +52,20 @@
   left: 0;
   border-radius: var(--br-6xl);
   background-color: var(--colors-base-danger-foreground);
-  width: 100%;
+  width: 50%;
   height: 100%;
-  display: none;
+}
+.frameChild1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-radius: var(--br-6xl);
+  background-color: var(--colors-base-danger-foreground);
+  width: 50%;
+  height: 100%;
+  font-size: var(--font-size-31xl);
+  font-weight: 300;
+  margin-top: 40px;
 }
 .dateFound,
 .description,
@@ -66,20 +77,19 @@
   line-height: 20px;
   font-weight: 500;
   z-index: 2;
+  font-size: var(--font-size-19xl);
+}
+.location {
+  top: 380px
 }
 .location1 {
   position: absolute;
-  top: 187px;
+  top: 422px;
   left: 42px;
   font-size: var(--font-size-lg);
   line-height: 20px;
   font-weight: 500;
   z-index: 2;
-}
-.dateFound,
-.description,
-.image {
-  left: 586px;
 }
 .dateFound,
 .image {
@@ -178,7 +188,7 @@
 .input2,
 .input3 {
   border: 2px solid var(--colors-base-default-200);
-  left: 586px;
+  left: 42px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
   border-radius: var(--br-sm);
   z-index: 2;
@@ -194,7 +204,7 @@
 .input3 {
   background-color: transparent;
   height: 126px;
-  width: 535px;
+  width: 500px;
   outline: 0;
   top: 192px;
   font-size: var(--font-size-lg);

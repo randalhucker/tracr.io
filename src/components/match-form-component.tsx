@@ -10,8 +10,11 @@ import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
 import { jwtDecode } from 'jwt-decode';
 import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { ClaimsColumn } from './claims-list';
+import { DisplayDetails } from './claim-details';
 
-export type ReportData = {
+// This will probably be changed based on what we decide to pass to the component
+export type ReportData1 = {
   lat: string;
   long: string;
   date: Date | null;
@@ -22,66 +25,67 @@ export type ReportData = {
 
 export type MatchFormComponentType = {
   className?: string;
-  report: ReportData;
+  report: ReportData1;
 };
+
+// Test matches
+const match1: DisplayDetails = { name: 'Test Match 1', location: 'Test Building 1', date: '2/2/2022', status: 'pending'};
+const match2: DisplayDetails = { name: 'Test Match 2', location: 'Test Building 2', date: '2/2/2022', status: 'pending'};
+
+const test_possible_matches: DisplayDetails[] = [match1, match2]
 
 const MatchFormComponent: NextPage<MatchFormComponentType> = ({
   className = '',
   report
 }) => {
   const isClient = useClientSide();
+  const [possible_matches, setPossibleMatches] = useState<DisplayDetails[]>([]);
 
   useEffect(() => {
     // API Call to get the claims that may match the report
+    setPossibleMatches(test_possible_matches);
   }, [isClient]);
 
   return (
     <div className={styles.rectangleParent}>
-      <div className={styles.frameChild} />
-      <div className={styles.location}>location</div>
-      <div className={styles.location1}>{report.location.name}</div>
-      <div className={styles.description}>description</div>
-      <div className={styles.image}>image</div>
-      <div className={styles.dateFound}>date found</div>
-      <div className={styles.input}>
-        <div className={styles.label}>{report.lat}</div>
+      <div className={styles.frameChild}>
+        <div className={styles.location}>location</div>
+        <div className={styles.location1}>{report.location.name}</div>
+        <div className={styles.description}>description</div>
+        <div className={styles.image}>image</div>
+        <div className={styles.dateFound}>date found</div>
+        <div className={styles.input2}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              value={report.date}
+              slots={{
+                textField: (params) => <TextField {...params} InputProps={{ readOnly: true }} />
+              }}
+              slotProps={{
+                textField: {
+                  name: '',
+                  id: '',
+                  size: 'medium',
+                  fullWidth: false,
+                  required: false,
+                  autoFocus: false,
+                  error: false,
+                  color: 'primary'
+                },
+                openPickerIcon: {
+                  component: () => <></>
+                }
+              }}
+            />
+          </LocalizationProvider>
+        </div>
+        <div className={styles.input3}>{report.description}</div>
+        <div className={styles.foundItemReport}>{report.name}</div>
+        <div className={styles.lineDiv} />
       </div>
-      <div className={styles.input1}>
-      <div className={styles.label1}>{report.long}</div>
+      <div className={styles.frameChild1}>
+        <ClaimsColumn header="Possible Matches" claims={possible_matches} />
       </div>
-      <div className={styles.input2}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DatePicker
-            value={report.date}
-            slots={{
-              textField: (params) => <TextField {...params} InputProps={{ readOnly: true }} />
-            }}
-            slotProps={{
-              textField: {
-                name: '',
-                id: '',
-                size: 'medium',
-                fullWidth: false,
-                required: false,
-                autoFocus: false,
-                error: false,
-                color: 'primary'
-              },
-              openPickerIcon: {
-                component: () => <></>
-              }
-            }}
-          />
-        </LocalizationProvider>
-      </div>
-      <div className={styles.input3}>{report.description}</div>
-      <div className={styles.image1Parent}>
-        <img className={styles.image1Icon} alt="" src="/map.png" />
-        <img className={styles.frameItem} loading="lazy" alt="" src="/line-4.svg" />
-        <img className={styles.frameInner} alt="" src="/line-5.svg" />
-      </div>
-      <div className={styles.foundItemReport}>{report.name}</div>
-      <div className={styles.lineDiv} />
     </div>
   );
 };

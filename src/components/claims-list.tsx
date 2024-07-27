@@ -18,13 +18,20 @@ export type ClaimsListType = {
   onClick?: () => void;
 };
 
+export type ClaimsColumnType = {
+  className?: string;
+  header: string;
+  claims: DisplayDetails[];
+  onClick?: () => void;
+};
+
 const ClaimsList: NextPage<ClaimsListType> = ({
   className = '',
   title,
   left_header,
   right_header,
-  left_claims,
-  right_claims,
+  left_claims = null,
+  right_claims = null,
   onClick
 }) => {
   const [leftClaims, setLeftClaims] = useState<DisplayDetails[]>([]);
@@ -32,6 +39,11 @@ const ClaimsList: NextPage<ClaimsListType> = ({
   const clientSide = useClientSide();
 
   useEffect(() => {
+    if ((left_claims != null) && (right_claims != null)) {
+      setLeftClaims(left_claims);
+      setRightClaims(right_claims);
+      return;
+    }
     const fetchClaims = async () => {
       try {
         const claimsResponse = await fetch(buildOneEntityUrl(HttpMethod.GET, EntityType.CLAIM)); // Update the URL to your actual API endpoint
@@ -83,29 +95,11 @@ const ClaimsList: NextPage<ClaimsListType> = ({
           <h1 className={styles.claims}>{title}</h1>
           <div className={styles.inProgressClaimContainer}>
             <div className={styles.inProgressClaimDetails}>
-              <div className={styles.inProgressClaimItems}>
-                <div className={styles.inProgressClaimItem}>
-                  <h1 className={styles.inProgress}>{left_header}</h1>
-                </div>
-                <div className={styles.itemDetailsContainer}>
-                  {leftClaims.map((claim, index) => (
-                    <ClaimDetails key={index} details={claim} handleClick={onClick} />
-                  ))}
-                </div>
-              </div>
+              <ClaimsColumn header={left_header} claims={leftClaims} onClick={onClick} />
               <div className={styles.resolvedSeparator}>
                 <div className={styles.resolvedSeparatorChild} />
               </div>
-              <div className={styles.resolvedClaimDetails}>
-                <div className={styles.resolvedClaimItem}>
-                  <h1 className={styles.resolved}>{right_header}</h1>
-                </div>
-                <div className={styles.itemDetailsContainer}>
-                  {rightClaims.map((claim, index) => (
-                    <ClaimDetails key={index} details={claim} handleClick={onClick} />
-                  ))}
-                </div>
-              </div>
+              <ClaimsColumn header={right_header} claims={rightClaims} onClick={onClick} />
             </div>
           </div>
         </div>
@@ -113,5 +107,25 @@ const ClaimsList: NextPage<ClaimsListType> = ({
     </div>
   );
 };
+
+export const ClaimsColumn: NextPage<ClaimsColumnType> = ({
+  className = '',
+  header,
+  claims,
+  onClick
+}) => {
+  return (
+    <div className={styles.inProgressClaimItems}>
+      <div className={styles.inProgressClaimItem}>
+        <h1 className={styles.inProgress}>{header}</h1>
+      </div>
+      <div className={styles.itemDetailsContainer}>
+        {claims.map((claim, index) => (
+          <ClaimDetails key={index} details={claim} handleClick={onClick} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default ClaimsList;
