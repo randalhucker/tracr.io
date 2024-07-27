@@ -37,7 +37,9 @@ const ClaimDetails: NextPage<ClaimDetailsComponentType> = ({
     <div className={styles.itemDetails}>
       <div className={styles.itemDescription}>
         <h1 className={styles.item}>
-          <p className={styles.item1} onClick={handleClick}>{details.name}</p>
+          <p className={styles.item1} onClick={handleClick}>
+            {details.name}
+          </p>
         </h1>
         <div className={styles.itemLocation}>
           <h3 className={styles.location}>

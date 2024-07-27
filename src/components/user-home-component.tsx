@@ -53,7 +53,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
 
   const handleCurrentClaimsClick = () => {
     router.push('/previous-claims');
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -164,7 +164,9 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
             <div className={styles.claimsList}>
               <div className={styles.claimHeaders}>
                 <div className={styles.currentClaims}>
-                  <h1 className={styles.currentClaims1} onClick={handleCurrentClaimsClick}>current claims</h1>
+                  <h1 className={styles.currentClaims1} onClick={handleCurrentClaimsClick}>
+                    current claims
+                  </h1>
                 </div>
                 <div className={styles.headerDivider} />
               </div>

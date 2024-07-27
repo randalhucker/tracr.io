@@ -38,6 +38,19 @@ export const getClaimDetails = async (req: Request, res: Response): Promise<void
 };
 
 /**
+ * Get claim details.
+ */
+export const getClaims = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const claims = await prisma.claim.findMany();
+    res.status(200).json(claims);
+  } catch (error) {
+    console.error('Error fetching claims:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+/**
  * Update claim details.
  */
 export const updateClaimDetails = async (req: Request, res: Response): Promise<void> => {
