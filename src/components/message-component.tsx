@@ -19,6 +19,7 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [name, setName] = useState('');
+  const [decodedID, setDecodedID] = useState(0);
 
   const handleSendMessage = async () => {
     if (newMessage.trim() !== '') {
@@ -28,6 +29,7 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
           const token = window.localStorage.getItem('token');
           if (token) {
             const decoded = jwtDecode<DecodedToken>(token);
+            setDecodedID(decoded.id);
             const response = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.MESSAGE), {
               method: 'POST',
               headers: {
@@ -38,7 +40,7 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
                 content: newMessage,
                 senderUserId: decoded.id,
                 receiverUserId: decoded.id === 1 ? 2 : 1,
-                senderAdminId: decoded.role === 'admin' ? decoded.id : null,
+                senderAdminId: decoded.role === 'ADMIN' ? decoded.id : null,
                 receiverAdminId: null
               })
             });
