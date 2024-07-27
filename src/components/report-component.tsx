@@ -41,7 +41,7 @@ const ReportComponent: NextPage<ReportComponentType> = ({
     long: '',
     date: null,
     description: '',
-    location: null,
+    location: null
   };
 
   const [reportData, setReportData] = useState<ReportData>(initialReportData);

@@ -105,14 +105,7 @@ const MessageComponent: NextPage<MessageComponentType> = ({ className = '' }) =>
             const sender: User = await senderResponse.json();
             const receiver: User = await receiverResponse.json();
 
-            const user_name = 'user';
-            const admin_name = 'admin';
-            if (decoded.role === 'ADMIN') {
-              setName(user_name);
-            }
-            if (decoded.role === 'USER') {
-              setName(admin_name);
-            }
+            setName(decoded.id === sender.id ? sender.firstName : receiver.firstName);
 
             const fetchedMessages: Message[] = await response.json();
             setMessages(fetchedMessages);

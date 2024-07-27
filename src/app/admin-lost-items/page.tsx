@@ -23,7 +23,7 @@ const AdminLostItems: NextPage = () => {
   const handleReportClick = () => {
     console.log('Report clicked');
     router.push('/admin-item-match');
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +35,7 @@ const AdminLostItems: NextPage = () => {
 
             // TODO Modify the URL to fetch all REPORTS for all users (sorting does not need to change: unmatched are claims that are in progress, matched are claims that are resolved)
             const claimsResponse = await fetch(
-              buildTwoEntityUrl(HttpMethod.GET, EntityType.USER, decoded.id, EntityType.CLAIM),
+              buildOneEntityUrl(HttpMethod.GET, EntityType.CLAIM),
               {
                 method: 'GET',
                 headers: {
@@ -97,7 +97,14 @@ const AdminLostItems: NextPage = () => {
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
-      <ClaimsList title='lost items' left_header='unmatched' right_header='matched' left_claims={unmatched_reports} right_claims={matched_reports} onClick={handleReportClick}/>
+      <ClaimsList
+        title="lost items"
+        left_header="unmatched"
+        right_header="matched"
+        left_claims={unmatched_reports}
+        right_claims={matched_reports}
+        onClick={handleReportClick}
+      />
     </div>
   );
 };

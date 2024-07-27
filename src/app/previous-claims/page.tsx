@@ -110,7 +110,13 @@ const PreviousClaims: NextPage = () => {
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
-      <ClaimsList title='your claims' left_header='in progress' right_header='resolved' left_claims={in_progress_claims} right_claims={resolved_claims} />
+      <ClaimsList
+        title="your claims"
+        left_header="in progress"
+        right_header="resolved"
+        left_claims={in_progress_claims}
+        right_claims={resolved_claims}
+      />
     </div>
   );
 };
