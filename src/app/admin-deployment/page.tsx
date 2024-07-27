@@ -35,17 +35,18 @@ const AdminDeployment: NextPage = () => {
 
   const handleSaveClick = () => {
     console.log('Save button clicked');
-    // Placeholder function for save action
+    // API call to write changes to database (if not done on the add action)
   };
 
   const handleAddClick = () => {
     console.log('Add button clicked');
-    // Placeholder function for add action
+    // API call to create a new building
+    // insert to building_list so it shows up on page (may need to refresh page?)
   }
 
   useEffect(() => {
     if (isClient) {
-      // API call to get the buildings
+      // API call to get the buildings (set them to building list... yes the component expects a list of Buildings)
       
       setBuildingList(test_building_list);
     }
