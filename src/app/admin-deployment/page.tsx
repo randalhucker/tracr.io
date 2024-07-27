@@ -10,11 +10,14 @@ import useClientSide from '@/hooks/useClientSide';
 import { Building } from '@prisma/client';
 import LocationList from '@/components/location-list-component';
 import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import MessageBoxWithInput from '@/components/message-box-input';
 
 const AdminDeployment: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
 
+  const [message, setMessage] = useState('');
+  const [showMessageBoxWithInput, setShowMessageBoxWithInput] = useState(false);
   const [building_list, setBuildingList] = useState<Building[]>([]);
 
   const handleSaveClick = () => {
@@ -24,8 +27,12 @@ const AdminDeployment: NextPage = () => {
 
   const handleAddClick = () => {
     console.log('Add button clicked');
-    // API call to create a new building
-    // insert to building_list so it shows up on page (may need to refresh page?)
+    setMessage('Add a building:');
+    setShowMessageBoxWithInput(true);
+  };
+
+  const handleCloseMessageBox = () => {
+    setShowMessageBoxWithInput(false);
   };
 
   useEffect(() => {
@@ -91,6 +98,9 @@ const AdminDeployment: NextPage = () => {
           </div>
         </div>
       </div>
+      {showMessageBoxWithInput && (
+        <MessageBoxWithInput message={message} onClose={handleCloseMessageBox} />
+      )}
     </div>
   );
 };
