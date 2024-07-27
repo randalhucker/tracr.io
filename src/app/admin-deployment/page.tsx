@@ -5,22 +5,51 @@ import Main from '../../components/main';
 import Footer from '../../components/footer';
 import styles from './admin-deployment.module.scss';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { use, useEffect, useState } from 'react';
 import useClientSide from '@/hooks/useClientSide';
+import { Building } from '@prisma/client';
+import LocationList from '@/components/location-list-component';
+
+// Test Buildings
+const steger: Building = {
+  id: 1,
+  name: 'Steger Student Center',
+  createdAt: new Date(),
+  updatedAt: new Date()
+};
+
+const swift: Building = {
+  id: 1,
+  name: 'Swift Hall',
+  createdAt: new Date(),
+  updatedAt: new Date()
+};
+
+const test_building_list: Building[] = [steger, swift];
 
 const AdminDeployment: NextPage = () => {
   const router = useRouter();
   const isClient = useClientSide();
+
+  const [building_list, setBuildingList] = useState<Building[]>([]);
 
   const handleSaveClick = () => {
     console.log('Save button clicked');
     // Placeholder function for save action
   };
 
-  const handleExitClick = () => {
-    console.log('Exit button clicked');
-    // Placeholder function for exit action
-  };
+  const handleAddClick = () => {
+    console.log('Add button clicked');
+    // Placeholder function for add action
+  }
+
+  useEffect(() => {
+    if (isClient) {
+      // API call to get the buildings
+      
+      setBuildingList(test_building_list);
+    }
+  } , [isClient]);
 
   return (
     <div className={styles.adminDeployment}>
@@ -40,57 +69,25 @@ const AdminDeployment: NextPage = () => {
             </div>
             <div className={styles.itemLocation}>
               <div className={styles.itemDropdown}>
-                <div className={styles.dropdownLabel}>
-                  <h3 className={styles.dropOffLocations}>drop off locations</h3>
-                  <div className={styles.dropdownOptions}>
-                    <div className={styles.stegerOption}>
-                      <div className={styles.stegerStudentCenter}>Steger Student Center</div>
-                      <div className={styles.stegerStudentCenter1}>Steger Student Center</div>
-                      <div className={styles.stegerStudentCenter2}>Steger Student Center</div>
-                      <div className={styles.stegerStudentCenter3}>Steger Student Center</div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.buildingOptions}>
-                  <div className={styles.validItemLocation}>
-                    <h3 className={styles.validItemLocations}>valid item locations</h3>
-                  </div>
-                  <div className={styles.smithLocation}>
-                    <div className={styles.smithHall}>Smith Hall</div>
-                  </div>
-                  <div className={styles.buildingValues}>
-                    <div className={styles.braunsteinHall}>Braunstein Hall</div>
-                  </div>
-                  <div className={styles.buildingValues1}>
-                    <div className={styles.baldwinHall}>Baldwin Hall</div>
-                  </div>
-                  <div className={styles.buildingValues2}>
-                    <div className={styles.frenchHall}>French Hall</div>
-                  </div>
-                </div>
+                <LocationList title="drop off locations" buildings={building_list} />
+                <LocationList title="valid item locations" buildings={building_list} />
               </div>
               <div className={styles.actions}>
                 <div className={styles.actionButtons}>
-                  <div className={styles.saveAction} onClick={handleSaveClick}>
+                  <div className={styles.saveAction} onClick={handleAddClick}>
                     <div className={styles.buttonParent}>
                       <img className={styles.buttonIcon} alt="" src="/button-11.svg" />
                       <b className={styles.saveLabel}>+</b>
                     </div>
                   </div>
-                  <div className={styles.exitAction} onClick={handleExitClick}>
+                  <div className={styles.exitAction} onClick={handleAddClick}>
                     <img className={styles.buttonIcon1} alt="" src="/button-11.svg" />
                     <b className={styles.exitLabel}>+</b>
                   </div>
                 </div>
               </div>
             </div>
-            <Footer vuesaxlinearcircle="/vuesaxlinearcircle.svg" saveAndExit="save and exit" />
-          </div>
-          <div className={styles.copyright}>
-            <div className={styles.copyrightContent}>
-              <div className={styles.backgroundShape} />
-              <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-            </div>
+            <Footer saveAndExit="save and exit" onSaveAndExit={handleSaveClick}/>
           </div>
         </div>
       </div>

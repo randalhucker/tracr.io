@@ -6,7 +6,6 @@ import styles from './footer.module.scss';
 
 export type FooterType = {
   className?: string;
-  vuesaxlinearcircle?: string;
   saveAndExit?: string;
   propWidth?: CSSProperties['width'];
   propAlignSelf?: CSSProperties['alignSelf'];
@@ -15,7 +14,6 @@ export type FooterType = {
 
 const Footer: NextPage<FooterType> = ({
   className = '',
-  vuesaxlinearcircle,
   saveAndExit,
   propWidth,
   propAlignSelf,
