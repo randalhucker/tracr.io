@@ -17,6 +17,19 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
 };
 
 /**
+ * Get all users.
+ */
+export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const users = await prisma.user.findMany();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', (error as Error).message);
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+/**
  * Get user details.
  */
 export const getUserDetails = async (req: Request, res: Response): Promise<void> => {
@@ -64,9 +77,14 @@ export const updateUserDetails = async (req: Request, res: Response): Promise<vo
 export const deleteUserAccount = async (req: Request, res: Response): Promise<void> => {
   try {
     const { userId } = req.params;
-    await prisma.user.delete({
+    const deleted = await prisma.user.delete({
       where: { id: parseInt(userId) }
     });
+    if (deleted.role === 'ADMIN') {
+      await prisma.admin.delete({
+        where: { userId: deleted.id }
+      });
+    }
     res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
     console.error('Error deleting user:', (error as Error).message);

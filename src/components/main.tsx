@@ -82,7 +82,7 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages, ho
     <header className={[styles.main, className].join(' ')}>
       <div className={styles.mainChild} />
       <a className={styles.tracrio} onClick={handleTracrClick}>
-        {userRole === 'admin' ? 'tracr.io | admin' : 'tracr.io'}
+        {userRole === 'ADMIN' ? 'tracr.io | admin' : 'tracr.io'}
       </a>
       <div className={styles.mainInner}>
         <div className={styles.frameParent}>
