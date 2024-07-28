@@ -6,7 +6,6 @@ import styles from './footer.module.scss';
 
 export type FooterType = {
   className?: string;
-  vuesaxlinearcircle?: string;
   saveAndExit?: string;
   propWidth?: CSSProperties['width'];
   propAlignSelf?: CSSProperties['alignSelf'];
@@ -15,7 +14,6 @@ export type FooterType = {
 
 const Footer: NextPage<FooterType> = ({
   className = '',
-  vuesaxlinearcircle,
   saveAndExit,
   propWidth,
   propAlignSelf,
@@ -31,7 +29,6 @@ const Footer: NextPage<FooterType> = ({
   return (
     <div className={[styles.footer, className].join(' ')} style={footerStyle}>
       <button className={styles.button} onClick={onSaveAndExit}>
-        <img className={styles.vuesaxlinearcircleIcon} alt="" src={vuesaxlinearcircle} />
         <b className={styles.saveAndExit}>{saveAndExit}</b>
       </button>
     </div>

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/navigation'; // Import useRouter hook
+import { useRouter } from 'next/navigation';
 import styles from './main.module.scss';
 import { DecodedToken } from '@/hooks/useRoleAuth';
 import { jwtDecode } from 'jwt-decode';
@@ -38,9 +38,9 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages, ho
     const token = localStorage.getItem('token');
     if (token) {
       const decoded = jwtDecode<DecodedToken>(token);
-      if (decoded.role === 'admin') {
+      if (decoded.role === 'ADMIN') {
         router.push('/admin-home');
-      } else if (decoded.role === 'user') {
+      } else if (decoded.role === 'USER') {
         router.push('/user-home');
       } else {
         router.push('/');
@@ -63,29 +63,26 @@ const Main: NextPage<MainType> = ({ className = '', back, settings, messages, ho
   };
 
   const handleHomeClick = () => {
-    // Uncomment once tokens are implemented
-
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   const decoded = jwtDecode<DecodedToken>(token);
-    //   if (decoded.role === 'admin') {
-    //     router.push('/admin-home');
-    //   } else if (decoded.role === 'user') {
-    //     router.push('/user-home');
-    //   } else {
-    //     router.push('/');
-    //   }
-    // } else {
-    //   router.push('/');
-    // }
-    router.push('/user-home');
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded = jwtDecode<DecodedToken>(token);
+      if (decoded.role === 'ADMIN') {
+        router.push('/admin-home');
+      } else if (decoded.role === 'USER') {
+        router.push('/user-home');
+      } else {
+        router.push('/');
+      }
+    } else {
+      router.push('/');
+    }
   };
 
   return (
     <header className={[styles.main, className].join(' ')}>
       <div className={styles.mainChild} />
       <a className={styles.tracrio} onClick={handleTracrClick}>
-        {userRole === 'admin' ? 'tracr.io | admin' : 'tracr.io'}
+        {userRole === 'ADMIN' ? 'tracr.io | admin' : 'tracr.io'}
       </a>
       <div className={styles.mainInner}>
         <div className={styles.frameParent}>

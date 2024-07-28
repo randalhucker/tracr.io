@@ -43,27 +43,16 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
 
   const [in_progress_claims, setInProgressClaims] = useState<DisplayDetails[]>([]);
 
-  useEffect(() => {
-    if (isClient) {
-      // API call to get all previous claims for a given user
-
-      // Transform response into array of DisplayDetails objects (may involve some weirdness with the dates)
-
-      // Test data
-      const fetchedClaims = [airpods, bearcatCard, shoes];
-
-      // Sort claims into inProgressClaims
-      const inProgress = fetchedClaims.filter((claim) => claim.status !== 'found');
-      setInProgressClaims(inProgress);
-    }
-  }, [isClient]);
-
   const handleCreateNewClaimClick = () => {
     router.push('/create-new-claim');
   };
 
   const handleReportLostItemClick = () => {
     router.push('/report-found-item');
+  };
+
+  const handleCurrentClaimsClick = () => {
+    router.push('/previous-claims');
   };
 
   useEffect(() => {
@@ -126,7 +115,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
                 return {
                   name: itemData.name,
                   location: itemData.location,
-                  date: claim.createdAt.toISOString(),
+                  date: claim.createdAt.toString(),
                   status: claim.status
                 };
               })
@@ -135,7 +124,7 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
             const inProgress = details.filter((claimDetails) => claimDetails.status !== 'FOUND');
             setInProgressClaims(inProgress);
           } else {
-            router.push('/login');
+            router.push('/');
           }
         }
       } catch (error) {
@@ -175,7 +164,9 @@ const UserHomeComponent: NextPage<UserHomeComponentType> = ({ className = '' }) 
             <div className={styles.claimsList}>
               <div className={styles.claimHeaders}>
                 <div className={styles.currentClaims}>
-                  <h1 className={styles.currentClaims1}>current claims</h1>
+                  <h1 className={styles.currentClaims1} onClick={handleCurrentClaimsClick}>
+                    current claims
+                  </h1>
                 </div>
                 <div className={styles.headerDivider} />
               </div>

@@ -1,155 +1,128 @@
 'use client';
 import type { NextPage } from 'next';
-import styles from './claims-list.module.scss';
+import styles from '../app/previous-claims/previous-claims.module.scss';
+import ClaimDetails, { DisplayDetails } from './claim-details';
+import { useEffect, useState } from 'react';
+import { Claim, Item, User } from '@prisma/client';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 
 export type ClaimsListType = {
   className?: string;
-  onClaimClick?: () => void; // Added callback prop for handling claim click events
+  title: string;
+  left_header: string;
+  right_header: string;
+  left_claims: DisplayDetails[];
+  right_claims: DisplayDetails[];
+  onClick?: (id: number) => void;
 };
 
-const ClaimsList: NextPage<ClaimsListType> = ({ className = '', onClaimClick }) => {
+export type ClaimsColumnType = {
+  className?: string;
+  header: string;
+  claims: DisplayDetails[];
+  onClick?: (id: number) => void;
+};
+
+const ClaimsList: NextPage<ClaimsListType> = ({
+  className = '',
+  title,
+  left_header,
+  right_header,
+  left_claims = null,
+  right_claims = null,
+  onClick
+}) => {
+  const [leftClaims, setLeftClaims] = useState<DisplayDetails[]>([]);
+  const [rightClaims, setRightClaims] = useState<DisplayDetails[]>([]);
+  const clientSide = useClientSide();
+
+  useEffect(() => {
+    if (left_claims != null && right_claims != null) {
+      setLeftClaims(left_claims);
+      setRightClaims(right_claims);
+      return;
+    }
+    const fetchClaims = async () => {
+      try {
+        const claimsResponse = await fetch(buildOneEntityUrl(HttpMethod.GET, EntityType.CLAIM)); // Update the URL to your actual API endpoint
+        if (!claimsResponse.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const claimsData: Claim[] = await claimsResponse.json();
+
+        const claimsWithItems = await Promise.all(
+          claimsData.map(async (claim) => {
+            const itemResponse = await fetch(
+              buildOneEntityUrl(HttpMethod.GET, EntityType.ITEM, claim.id)
+            ); // Update the URL to your actual API endpoint
+            const userResponse = await fetch(
+              buildOneEntityUrl(HttpMethod.GET, EntityType.USER, claim.userId)
+            ); // Update the URL to your actual API endpoint
+            if (!itemResponse.ok || !userResponse.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const itemData: Item = await itemResponse.json();
+            const userData: User = await userResponse.json();
+            return {
+              name: itemData.name,
+              location: itemData.location,
+              date: itemData.createdAt.toString(), // Assuming createdAt is a date field
+              status: claim.status
+            };
+          })
+        );
+
+        // Assuming leftClaims are claims with status not 'FOUND' and rightClaims are with status 'FOUND'
+        setLeftClaims(claimsWithItems.filter((claim) => claim.status !== 'FOUND'));
+        setRightClaims(claimsWithItems.filter((claim) => claim.status === 'FOUND'));
+      } catch (error) {
+        console.error('Error fetching claims or items:', error);
+      }
+    };
+
+    if (clientSide) {
+      fetchClaims();
+    }
+  }, [clientSide, left_claims, right_claims]);
+
   return (
-    <div className={[styles.claimsList, className].join(' ')}>
-      <div className={styles.claimsListChild} />
-      <h1 className={styles.claims}>claims</h1>
-      <div className={styles.claimItems}>
-        <div className={styles.frameParent}>
-          <div className={styles.inProgressStatusContainerParent}>
-            <div className={styles.inProgressStatusContainer}>
-              <h1 className={styles.inProgress}>in progress</h1>
-            </div>
-            <div className={styles.frameGroup}>
-              <div className={styles.frameContainer} onClick={onClaimClick}>
-                <div className={styles.airpodsParent}>
-                  <h1 className={styles.airpods}>
-                    <p className={styles.airpods1}>AirPods</p>
-                  </h1>
-                  <h3 className={styles.smithHall}>Smith Hall | Apr. 27</h3>
-                </div>
-                <div className={styles.randyHParent}>
-                  <b className={styles.randyH}>randy h.</b>
-                  <div className={styles.statusNotFoundContainer}>
-                    <span>{`status: `}</span>
-                    <span className={styles.notFound}>not found</span>
-                  </div>
-                </div>
+    <div className={[styles.claimsListContainerWrapper, className].join(' ')}>
+      <div className={styles.claimsListContainer}>
+        <div className={styles.rectangleParent}>
+          <div className={styles.frameChild} />
+          <h1 className={styles.claims}>{title}</h1>
+          <div className={styles.inProgressClaimContainer}>
+            <div className={styles.inProgressClaimDetails}>
+              <ClaimsColumn header={left_header} claims={leftClaims} onClick={onClick} />
+              <div className={styles.resolvedSeparator}>
+                <div className={styles.resolvedSeparatorChild} />
               </div>
-              <div className={styles.duplicateItemsParent}>
-                <div className={styles.duplicateItems}>
-                  <div className={styles.duplicateItemDetails} />
-                </div>
-                <div className={styles.frameWrapper} onClick={onClaimClick}>
-                  <div className={styles.pendingStatusContainerParent}>
-                    <div className={styles.pendingStatusContainer}>
-                      <div className={styles.pendingStatusContainerInner}>
-                        <div className={styles.bearcatCardParent}>
-                          <h1 className={styles.bearcatCard}>Bearcat Card</h1>
-                          <div className={styles.baldwinHallMay2Wrapper}>
-                            <h3 className={styles.baldwinHall}>Baldwin Hall | May 2</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.randyHGroup}>
-                        <b className={styles.randyH1}>randy h.</b>
-                        <div className={styles.statusPending}>
-                          <span>{`status: `}</span>
-                          <span className={styles.pending}>pending</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={styles.divider}>
-                      <div className={styles.dividerChild} />
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.duplicateItems1}>
-                  <div className={styles.frameDiv} onClick={onClaimClick}>
-                    <div className={styles.airpodsGroup}>
-                      <h1 className={styles.airpods2}>
-                        <p className={styles.airpods3}>AirPods</p>
-                      </h1>
-                      <h3 className={styles.smithHall1}>Smith Hall | Apr. 27</h3>
-                    </div>
-                    <div className={styles.duplicateReporter}>
-                      <b className={styles.bearnardB}>bearnard b.</b>
-                      <div className={styles.statusNotFoundContainer1}>
-                        <span>{`status: `}</span>
-                        <span className={styles.notFound1}>not found</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.duplicateItems2}>
-                  <div className={styles.duplicateItemsChild} />
-                </div>
-                <div className={styles.duplicateItems3}>
-                  <div className={styles.frameParent1} onClick={onClaimClick}>
-                    <div className={styles.airpodsContainer}>
-                      <h1 className={styles.airpods4}>
-                        <p className={styles.airpods5}>AirPods</p>
-                      </h1>
-                      <h3 className={styles.smithHall2}>Smith Hall | Apr. 27</h3>
-                    </div>
-                    <div className={styles.frankParent}>
-                      <b className={styles.frank}>frank</b>
-                      <div className={styles.statusNotFoundContainer2}>
-                        <span>{`status: `}</span>
-                        <span className={styles.notFound2}>not found</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.duplicateItems4}>
-                  <div className={styles.duplicateItemsItem} />
-                </div>
-                <div className={styles.frameParent2} onClick={onClaimClick}>
-                  <div className={styles.airpodsParent1}>
-                    <h1 className={styles.airpods6}>
-                      <p className={styles.airpods7}>AirPods</p>
-                    </h1>
-                    <h3 className={styles.smithHall3}>Smith Hall | Apr. 27</h3>
-                  </div>
-                  <div className={styles.hughJParent}>
-                    <b className={styles.hughJ}>hugh j.</b>
-                    <div className={styles.statusNotFoundContainer3}>
-                      <span>{`status: `}</span>
-                      <span className={styles.notFound3}>not found</span>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.duplicateItems5}>
-                  <div className={styles.duplicateItemsInner} />
-                </div>
-                <div className={styles.unknownItem} onClick={onClaimClick}>
-                  <b className={styles.what}>what</b>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.lineWrapper}>
-            <div className={styles.frameChild} />
-          </div>
-          <div className={styles.resolvedTitleParent}>
-            <div className={styles.resolvedTitle}>
-              <h1 className={styles.resolved}>resolved</h1>
-            </div>
-            <div className={styles.resolvedItems} onClick={onClaimClick}>
-              <div className={styles.resolvedItemsInner}>
-                <div className={styles.shoesParent}>
-                  <h1 className={styles.shoes}>Shoes</h1>
-                  <h3 className={styles.recCenter}>Rec Center | Mar. 27</h3>
-                </div>
-              </div>
-              <div className={styles.randyHContainer}>
-                <b className={styles.randyH2}>randy h.</b>
-                <div className={styles.statusFound}>
-                  <span>{`status: `}</span>
-                  <span className={styles.found}>found</span>
-                </div>
-              </div>
+              <ClaimsColumn header={right_header} claims={rightClaims} onClick={onClick} />
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const ClaimsColumn: NextPage<ClaimsColumnType> = ({
+  className = '',
+  header,
+  claims,
+  onClick = () => {}
+}) => {
+  return (
+    <div className={styles.inProgressClaimItems}>
+      <div className={styles.inProgressClaimItem}>
+        <h1 className={styles.inProgress}>{header}</h1>
+      </div>
+      <div className={styles.itemDetailsContainer}>
+        {claims.map((claim, index) => (
+          <ClaimDetails key={index} details={claim} handleClick={() => onClick(claim.id ?? 1)} />
+        ))}
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ import ReportComponent, { ReportData } from '@/components/report-component';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '@/hooks/useRoleAuth';
 import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { Item } from '@prisma/client';
 
 const ReportFoundItem: NextPage = () => {
   const router = useRouter();
@@ -26,7 +27,7 @@ const ReportFoundItem: NextPage = () => {
     long: '',
     date: null,
     description: '',
-    location: ''
+    location: null
   };
 
   const handleUploadImageClick = () => {
@@ -42,16 +43,36 @@ const ReportFoundItem: NextPage = () => {
         const token = window.localStorage.getItem('token');
         if (token) {
           const decoded = jwtDecode<DecodedToken>(token);
+          const itemResponse = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.ITEM), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: reportDataInput.description.split(' ')[0],
+              description: reportDataInput.description,
+              location: reportDataInput.location?.name,
+              status: 'LOST',
+              category: '',
+              buildingId: reportDataInput.location?.id
+            })
+          });
+
+          if (!itemResponse.ok) {
+            throw new Error('Network response was not ok');
+          }
+
+          const item: Item = await itemResponse.json();
+
           const response = await fetch(buildOneEntityUrl(HttpMethod.POST, EntityType.REPORT), {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            // TODO: Update itemId to the actual item id
             body: JSON.stringify({
-              description: reportDataInput.description,
-              status: 'FOUND',
-              itemId: 1,
+              description: item.description,
+              status: item.status,
+              itemId: item.id,
               userId: decoded.id
             })
           });
@@ -60,6 +81,7 @@ const ReportFoundItem: NextPage = () => {
             throw new Error('Network response was not ok');
           }
           console.log('Report submitted:', reportData);
+
           setShowMessageBox(true); // Show message box on submit
         }
       }

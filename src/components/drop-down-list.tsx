@@ -1,8 +1,9 @@
+import { Building } from '@prisma/client';
 import React, { useState } from 'react';
 
 type DropdownComponentProps = {
-  locations: string[];
-  onSelectLocation: (selectedLocation: string) => void;
+  locations: Building[];
+  onSelectLocation: (selectedLocation: Building) => void;
   className?: string;
 };
 
@@ -14,9 +15,12 @@ const DropdownComponent: React.FC<DropdownComponentProps> = ({
   const [selectedLocation, setSelectedLocation] = useState<string>('');
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selected = event.target.value;
-    setSelectedLocation(selected);
-    onSelectLocation(selected);
+    const selectedName = event.target.value;
+    setSelectedLocation(selectedName);
+    const selectedBuilding = locations.find((location) => location.name === selectedName);
+    if (selectedBuilding) {
+      onSelectLocation(selectedBuilding);
+    }
   };
 
   return (
@@ -25,8 +29,8 @@ const DropdownComponent: React.FC<DropdownComponentProps> = ({
         -- Please choose an option --
       </option>
       {locations.map((location, index) => (
-        <option key={index} value={location}>
-          {location}
+        <option key={index} value={location.name}>
+          {location.name}
         </option>
       ))}
     </select>

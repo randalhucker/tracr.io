@@ -398,7 +398,10 @@
 .messageText {
   font-size: 16px;
 }
-
+.messageTimestamp {
+  font-size: 12px;
+  color: #666;
+}
 .inputContainer {
   display: flex;
   flex-direction: row;

@@ -2,16 +2,75 @@
 'use client';
 import type { NextPage } from 'next';
 import Main from '../../components/main';
-import ClaimsList from '../../components/claims-list';
 import styles from './admin-lost-items.module.scss';
-import { useRouter } from 'next/navigation';
 import useClientSide from '@/hooks/useClientSide';
+import { useEffect, useState } from 'react';
+import { DisplayDetails } from '@/components/claim-details';
+import { Claim, Item, Report } from '@prisma/client';
+import { buildOneEntityUrl, buildTwoEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken } from '@/hooks/useRoleAuth';
+import ClaimsList from '@/components/claims-list';
+import { useRouter } from 'next/navigation';
 
 const AdminLostItems: NextPage = () => {
-  const handleClaimClick = () => {
-    console.log('Claim button clicked');
-    // Placeholder function for claim action
+  const router = useRouter();
+  const isClient = useClientSide();
+
+  const [unmatched_reports, setUnmatchedReports] = useState<DisplayDetails[]>([]);
+  const [matched_reports, setMatchedReports] = useState<DisplayDetails[]>([]);
+
+  const handleReportClick = (reportId: number) => {
+    console.log('Report clicked', reportId);
+    router.push(`/admin-item-match?id=${reportId.toString()}`);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          // TODO Modify the URL to fetch all REPORTS for all users (sorting does not need to change: unmatched are claims that are in progress, matched are claims that are resolved)
+          const reportsResponse = await fetch(buildOneEntityUrl(HttpMethod.GET, EntityType.REPORT));
+
+          reportsResponse.ok
+            ? console.log('Claims fetched successfully')
+            : console.log('Claims fetch failed');
+
+          const fetchedResponses: Report[] = await reportsResponse.json();
+          const details: DisplayDetails[] = await Promise.all(
+            fetchedResponses.map(async (report) => {
+              const itemResponse = await fetch(
+                buildOneEntityUrl(HttpMethod.GET, EntityType.ITEM, report.itemId ?? 0)
+              );
+
+              if (!itemResponse.ok) {
+                throw new Error('Network response was not ok');
+              }
+
+              const itemData: Item = await itemResponse.json();
+
+              return {
+                name: itemData.name,
+                location: itemData.location,
+                date: report.createdAt.toString(),
+                status: report.status
+              };
+            })
+          );
+
+          const unmatched = details.filter((reportDetails) => reportDetails.status !== 'FOUND');
+          const matched = details.filter((reportDetails) => reportDetails.status === 'FOUND');
+
+          setUnmatchedReports(unmatched);
+          setMatchedReports(matched);
+        }
+      } catch (error) {
+        console.error('Error fetching claims:', error);
+      }
+    };
+
+    fetchData();
+  }, [isClient]);
 
   return (
     <div className={styles.adminLostItems}>
@@ -19,27 +78,14 @@ const AdminLostItems: NextPage = () => {
         <img className={styles.wrapperGroup9Child} alt="" src="/background.svg" />
       </div>
       <Main back="/back.svg" settings="/settings.svg" messages="/messages.svg" home="/home.svg" />
-      <h1 className={styles.airpods}>
-        <span className={styles.airpodsTxt}>
-          <p className={styles.airpods1}>AirPods</p>
-        </span>
-      </h1>
-      <div className={styles.claimsContentWrapper}>
-        <div className={styles.claimsContent}>
-          <ClaimsList onClaimClick={handleClaimClick} />
-          <div className={styles.footer}>
-            <div className={styles.footerContent}>
-              <div className={styles.footerDivider} />
-              <div className={styles.copyright}>
-                <div className={styles.copyrightDetails}>
-                  <div className={styles.copyrightDetailsChild} />
-                  <b className={styles.coreDumpersLimited}>© Core Dumpers Limited 2024</b>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ClaimsList
+        title="lost items"
+        left_header="unmatched"
+        right_header="matched"
+        left_claims={unmatched_reports}
+        right_claims={matched_reports}
+        onClick={handleReportClick}
+      />
     </div>
   );
 };

@@ -8,11 +8,13 @@ export type DisplayDetails = {
   location: string;
   date: string;
   status: string;
+  id?: number;
 };
 
 export type ClaimDetailsComponentType = {
   className?: string;
   details: DisplayDetails;
+  handleClick?: () => void;
 };
 
 export type ClaimStatusStylingType = {
@@ -29,13 +31,16 @@ const emptyDetails: DisplayDetails = {
 
 const ClaimDetails: NextPage<ClaimDetailsComponentType> = ({
   className = '',
-  details = emptyDetails
+  details = emptyDetails,
+  handleClick = () => {}
 }) => {
   return (
     <div className={styles.itemDetails}>
       <div className={styles.itemDescription}>
         <h1 className={styles.item}>
-          <p className={styles.item1}>{details.name}</p>
+          <p className={styles.item1} onClick={handleClick}>
+            {details.name}
+          </p>
         </h1>
         <div className={styles.itemLocation}>
           <h3 className={styles.location}>
@@ -62,7 +67,7 @@ const StatusStyling: NextPage<ClaimStatusStylingType> = ({ className = '', statu
           <span className={styles.found}>{status_input}</span>
         </div>
       );
-    case 'not found':
+    case 'lost':
       return (
         <div className={styles.notFoundContainer}>
           <span>{`status: `}</span>

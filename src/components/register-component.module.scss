@@ -157,9 +157,7 @@
 }
 .rectangleParent {
   margin: 0;
-  position: absolute;
-  top: 146px;
-  left: 589px;
+  position: relative;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
   border-radius: var(--br-mini);
   background-color: var(--colors-base-danger-foreground);

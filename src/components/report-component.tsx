@@ -1,17 +1,23 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import DropdownComponent from './drop-down-list';
 import styles from '../app/report-found-item/report-found-item.module.scss';
+import { Building } from '@prisma/client';
+import { useRouter } from 'next/navigation';
+import useClientSide from '@/hooks/useClientSide';
+import { jwtDecode } from 'jwt-decode';
+import { buildOneEntityUrl, EntityType, HttpMethod } from '@/helpers/api';
 
 export type ReportData = {
   lat: string;
   long: string;
   date: Date | null;
   description: string;
-  location: string;
+  location: Building | null;
 };
 
 export type ReportComponentType = {
@@ -25,28 +31,63 @@ const ReportComponent: NextPage<ReportComponentType> = ({
   formTitle = '',
   onSubmit = null
 }) => {
-  const [reportData, setReportData] = useState<ReportData>({
+  const router = useRouter();
+  const isClient = useClientSide();
+
+  const [locations, setLocations] = useState<Building[]>([]);
+
+  const initialReportData: ReportData = {
     lat: '',
     long: '',
     date: null,
     description: '',
-    location: ''
-  });
-  const locations = ['Location 1', 'Location 2', 'Location 3', 'Location 4', 'Location 5'];
+    location: null
+  };
 
-  const handleChange = (key: keyof ReportData, value: string | Date | null) => {
+  const [reportData, setReportData] = useState<ReportData>(initialReportData);
+
+  const handleChange = (key: keyof ReportData, value: string | Date | Building | null) => {
     setReportData((prevData) => ({ ...prevData, [key]: value }));
   };
 
   const handleSubmitClick = () => {
     if (onSubmit) {
       onSubmit(reportData);
+      // Clear form values
+      setReportData(initialReportData);
     }
   };
 
   const handleUploadImageClick = () => {
     // Implement image upload functionality if needed
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (isClient) {
+          const response = await fetch(buildOneEntityUrl(HttpMethod.GET, EntityType.BUILDING), {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+
+          const locations: Building[] = await response.json();
+          // Assuming userData contains fields for firstName, lastName, and email
+          setLocations(locations);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [isClient]);
 
   return (
     <div className={styles.rectangleParent}>
@@ -127,7 +168,7 @@ const ReportComponent: NextPage<ReportComponentType> = ({
       <div className={styles.dropdownParent}>
         <DropdownComponent
           locations={locations}
-          onSelectLocation={(location: string) => handleChange('location', location)}
+          onSelectLocation={(location: Building) => handleChange('location', location)}
           className={styles.dropdown}
         />
       </div>
